@@ -22,6 +22,15 @@ def get_webpage_source(url: str):
 
 # 特殊字符问题
 
+## 1. 目录名称
+
+```python
+directory: str = directory.replace('.', '')
+directory: str = directory.replace('...', '')
+```
+
+## 2. 标题名称
+
 有些操作系统的文件名和文件夹名不能包含以下特殊字符：\ / : * ? " < > |
 
 ```python
@@ -48,7 +57,7 @@ paper_title: str = paper_title.replace('!', '.')
 
 ## Details
 
-### 1.关键信息
+### 1. 关键信息
 
 #### （1）大标题
 
@@ -83,7 +92,7 @@ pattern = r'<span class="title" itemprop="name">([^<]+)</span>'
 <a href="https://www.usenix.org/conference/usenixsecurity23/presentation/anliker" itemprop="url">
 ```
 
-### 2.获取论文
+### 2. 获取论文
 
 ```html
 <meta name="citation_pdf_url" content="https://www.usenix.org/system/files/usenixsecurity23-dong-feng.pdf" />
@@ -95,7 +104,7 @@ pattern = r'<span class="title" itemprop="name">([^<]+)</span>'
 pattern = r'<meta\s+name="citation_pdf_url"\s+content="([^"]+)"\s*/>'
 ```
 
-### 3.遗漏
+### 3. 遗漏
 
 ```python
 err_papers: list = []

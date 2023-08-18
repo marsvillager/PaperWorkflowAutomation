@@ -2,7 +2,7 @@ import os
 import re
 import requests
 
-from character import handle_special_character
+from character import handle_special_character, handle_directory
 
 
 def get_webpage_source(url: str):
@@ -104,6 +104,9 @@ if __name__ == '__main__':
 
     err_papers: list = []
     for taxonomy, papers in taxonomy.items():
+        # 特殊字符问题
+        taxonomy: str = handle_directory(taxonomy)
+
         create_directory(f"./{parent_dir_name}/{taxonomy}")
 
         for paper_url, paper_title in papers:
