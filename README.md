@@ -27,11 +27,14 @@ def get_webpage_source(url: str):
 ```python
 paper_title: str = paper_title.replace(': ', '：')
 paper_title: str = paper_title.replace('/', ' or ')
+paper_title: str = paper_title.replace('&#34;', '"')  # HTML 中双引号编码成 &#34;
+
+# 有些论文以问号或感叹号结尾, 但这里下载用的它原本的 . 加 pdf, 所以需要统一转为 .
+paper_title: str = paper_title.replace('?', '.') 
+paper_title: str = paper_title.replace('!', '.')  
 ```
 
-# usenix security
-
-https://dblp.uni-trier.de/db/conf/uss/index.html
+# [![usenix](./img/usenix_logo_300x150_neat_2.png)](https://dblp.uni-trier.de/db/conf/uss/index.html)
 
 ## Use
 
@@ -105,9 +108,7 @@ for err in err_papers:
     print(f"未成功下载论文地址: {err}")
 ```
 
-# S&P
-
-https://dblp.org/db/conf/sp/index.html
+# [S&P](https://dblp.org/db/conf/sp/index.html)
 
 ## Use
 
