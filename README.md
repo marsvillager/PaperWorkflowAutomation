@@ -28,13 +28,14 @@ def get_webpage_source(url: str):
 paper_title: str = paper_title.replace(': ', '：')
 paper_title: str = paper_title.replace('/', ' or ')
 paper_title: str = paper_title.replace('&#34;', '"')  # HTML 中双引号编码成 &#34;
+paper_title: str = paper_title.replace('&#181;', 'μ')  # HTML 中 μ 编码成 &#181;
 
 # 有些论文以问号或感叹号结尾, 但这里下载用的它原本的 . 加 pdf, 所以需要统一转为 .
 paper_title: str = paper_title.replace('?', '.') 
 paper_title: str = paper_title.replace('!', '.')  
 ```
 
-# [![usenix](./img/usenix_logo_300x150_neat_2.png)](https://dblp.uni-trier.de/db/conf/uss/index.html)
+# <img src="./img/usenix_logo_300x150_neat_2.png" alt="usenix" style="zoom:33%;" />[USENIX Security](https://dblp.uni-trier.de/db/conf/uss/index.html)
 
 ## Use
 
@@ -108,7 +109,7 @@ for err in err_papers:
     print(f"未成功下载论文地址: {err}")
 ```
 
-# [S&P](https://dblp.org/db/conf/sp/index.html)
+# <img src="./img/ieee_logo_white.svg" alt="IEEE" width="20%">[S&P](https://dblp.org/db/conf/sp/index.html)
 
 ## Use
 
