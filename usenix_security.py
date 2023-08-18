@@ -2,6 +2,8 @@ import os
 import re
 import requests
 
+from character import handle_special_character
+
 
 def get_webpage_source(url: str):
     """
@@ -35,9 +37,10 @@ def extract_taxonomy(html_content: str) -> dict:
     taxonomy_dict: dict = {}
     for match in matches:
         taxonomy_id, taxonomy_title, paper_content = match
-        # paper_pattern: str = r'<span class="title" itemprop="name">([^<]+)</span>'
-        paper_pattern = r'<span class="title" itemprop="name">([^<]+)</span>[\s\S]*?<a href="([^"]+)" itemprop="url">'
+
+        paper_pattern = r'<a href="([^"]+)" itemprop="url">[\s\S]*?<span class="title" itemprop="name">([^<]+)</span>'
         papers_list: list = re.findall(paper_pattern, paper_content)
+
         taxonomy_dict[taxonomy_title] = papers_list
 
     return taxonomy_dict
@@ -102,7 +105,8 @@ if __name__ == '__main__':
     err_papers: list = []
     for taxonomy, papers in taxonomy.items():
         create_directory(f"./{parent_dir_name}/{taxonomy}")
-        for paper_title, paper_url in papers:
+
+        for paper_url, paper_title in papers:
             pdf_urls: list = extract_pdf_urls(get_webpage_source(paper_url))
             # 论文 pdf 地址不符合规范(正则表达式)
             if len(pdf_urls) == 0:
@@ -110,8 +114,7 @@ if __name__ == '__main__':
                 print(f"No paper URLs found for '{paper_url}'")
             else:
                 # 特殊字符问题
-                paper_title: str = paper_title.replace(': ', '：')
-                paper_title: str = paper_title.replace('/', ' or ')
+                paper_title: str = handle_special_character(paper_title)
 
                 download_file(pdf_urls[0], f"./usenix_paper_2023/{taxonomy}/{paper_title}pdf")
 
