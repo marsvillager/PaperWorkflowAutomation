@@ -1,27 +1,8 @@
-import os
 import re
-import requests
 
 from character import handle_special_character, handle_directory
-
-
-def get_webpage_source(url: str):
-    """
-    获取网页源码
-
-    :param url: 网页地址
-    :return: 网页地址源代码
-    """
-    try:
-        response = requests.get(url)
-        if response.status_code == 200:
-            return response.text
-        else:
-            print(f"Failed to fetch webpage. Status code: {response.status_code}")
-            return None
-    except requests.exceptions.RequestException as e:
-        print(f"An error occurred: {e}")
-        return None
+from log import logger
+from tools import get_webpage_source, create_directory, download_file
 
 
 def extract_taxonomy(html_content: str) -> dict:
@@ -54,50 +35,16 @@ def extract_pdf_urls(html_content: str) -> list:
     :return: 论文 pdf 地址
     """
     pattern: str = r'<meta\s+name="citation_pdf_url"\s+content="([^"]+)"\s*/>'
-    pdf_urls: list = re.findall(pattern, html_content)
 
-    return pdf_urls
-
-
-def create_directory(directory_path: str) -> None:
-    """
-    创建文件夹
-
-    :param directory_path: 文件夹目录
-    :return: None
-    """
-    try:
-        os.makedirs(directory_path)
-        print(f"Directory '{directory_path}' created successfully.")
-    except FileExistsError:
-        print(f"Directory '{directory_path}' already exists.")
-    except OSError as e:
-        print(f"An error occurred: {e}")
-
-
-def download_file(url: str, save_path: str) -> None:
-    """
-    下载论文
-
-    :param url: 论文地址
-    :param save_path: 保存地址
-    :return: None
-    """
-    try:
-        response = requests.get(url)
-        if response.status_code == 200:
-            with open(save_path, 'wb') as file:
-                file.write(response.content)
-            print(f"File downloaded and saved at {save_path}")
-        else:
-            print(f"Failed to download file. Status code: {response.status_code}")
-    except requests.exceptions.RequestException as e:
-        print(f"An error occurred: {e}")
+    return re.findall(pattern, html_content)
 
 
 if __name__ == '__main__':
     url: str = "https://dblp.uni-trier.de/db/conf/uss/uss2023.html"
+    logger.info(f"Download from <{url}>")
+
     parent_dir_name: str = "usenix_paper_2023"
+    logger.info(f"Download to './{parent_dir_name}'")
 
     content: str = get_webpage_source(url)
     taxonomy: dict = extract_taxonomy(content)
@@ -114,12 +61,13 @@ if __name__ == '__main__':
             # 论文 pdf 地址不符合规范(正则表达式)
             if len(pdf_urls) == 0:
                 err_papers.append(paper_url)
-                print(f"No paper URLs found for '{paper_url}'")
+                logger.error(f"No paper URLs found for '{paper_url}'")
             else:
                 # 特殊字符问题
                 paper_title: str = handle_special_character(paper_title)
 
-                download_file(pdf_urls[0], f"./usenix_paper_2023/{taxonomy}/{paper_title}pdf")
+                download_file(pdf_urls[0], f"{parent_dir_name}/{taxonomy}/{paper_title}pdf")
 
+    print("\n")
     for err in err_papers:
-        print(f"未成功下载论文地址: {err}")
+        logger.error(f"未成功下载论文地址: {err}")

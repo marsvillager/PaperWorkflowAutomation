@@ -25,8 +25,11 @@ def get_webpage_source(url: str):
 ## 1. 目录名称
 
 ```python
+directory: str = directory.replace('&#38;', '&')  # HTML 中 & 编码成 &#38;
+directory: str = directory.replace(': ', '：')
 directory: str = directory.replace('.', '')
 directory: str = directory.replace('...', '')
+directory: str = directory.replace('\n', ' ')
 ```
 
 ## 2. 标题名称
@@ -36,8 +39,12 @@ directory: str = directory.replace('...', '')
 ```python
 paper_title: str = paper_title.replace(': ', '：')
 paper_title: str = paper_title.replace('/', ' or ')
+paper_title: str = title.replace('\n', ' ')
 paper_title: str = paper_title.replace('&#34;', '"')  # HTML 中双引号编码成 &#34;
+paper_title: str = title.replace('&#38;', '&')  # HTML 中 & 编码成 &#38;
 paper_title: str = paper_title.replace('&#181;', 'μ')  # HTML 中 μ 编码成 &#181;
+paper_title: str = title.replace('&#241;', 'ñ')  # HTML 中 ñ 编码成 &#241;
+paper_title: str = title.replace('&#248;', 'ø')  # HTML 中 ø 编码成 &#248;
 
 # 有些论文以问号或感叹号结尾, 但这里下载用的它原本的 . 加 pdf, 所以需要统一转为 .
 paper_title: str = paper_title.replace('?', '.') 
@@ -51,8 +58,8 @@ paper_title: str = paper_title.replace('!', '.')
 输入**会议地址**和**要保存的目录名称**
 
 ```python
-    url: str = "https://dblp.uni-trier.de/db/conf/uss/uss2023.html"
-    parent_dir_name: str = "usenix_paper_2023"
+url: str = "https://dblp.uni-trier.de/db/conf/uss/uss2023.html"
+parent_dir_name: str = "usenix_paper_2023"
 ```
 
 ## Details
@@ -92,6 +99,12 @@ pattern = r'<span class="title" itemprop="name">([^<]+)</span>'
 <a href="https://www.usenix.org/conference/usenixsecurity23/presentation/anliker" itemprop="url">
 ```
 
+正则表达：
+
+```python
+pattern = r'<a\s+href="([^"]+)"\s+itemprop="url">'
+```
+
 ### 2. 获取论文
 
 ```html
@@ -120,9 +133,7 @@ for err in err_papers:
 
 # <img src="./img/ieee_logo_white.svg" alt="IEEE" width="20%">  [S&P](https://dblp.org/db/conf/sp/index.html)
 
-## Use
-
-
-
-## Details
+> - S&P 本身是分类了的，但在官网却没有分类归纳，只能从《Table of Contents》中得知分类信息
+> - 需要登录信息，爬取返回 418
+> - 官网可批量下载，较为方便
 
