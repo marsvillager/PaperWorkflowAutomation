@@ -18,12 +18,10 @@ def extract_ndss_pdf_urls(html_content: str) -> list:
 
 
 if __name__ == '__main__':
-    # url: str = "https://dblp.uni-trier.de/db/conf/ndss/ndss2023.html"
-    url: str = "https://dblp.uni-trier.de/db/conf/ndss/ndss2021.html"
+    url: str = "https://dblp.uni-trier.de/db/conf/ndss/ndss2023.html"
     logger.info(f"Download from <{url}>")
 
-    # parent_dir_name: str = "2023(30th)"
-    parent_dir_name: str = "2021(28th)"
+    parent_dir_name: str = "2023(30th)"
     logger.info(f"Download to './{parent_dir_name}'")
 
     content: str = get_webpage_source(url)
