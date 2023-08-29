@@ -25,6 +25,7 @@ def get_webpage_source(url: str):
 ## 1. 目录名称
 
 ```python
+directory: str = directory.replace('&#34;', '"')  # HTML 中双引号编码成 &#34;
 directory: str = directory.replace('&#38;', '&')  # HTML 中 & 编码成 &#38;
 directory: str = directory.replace(': ', '：')
 directory: str = directory.replace('.', '')
@@ -131,9 +132,38 @@ for err in err_papers:
     print(f"未成功下载论文地址: {err}")
 ```
 
-# <img src="./img/ieee_logo_white.svg" alt="IEEE" width="20%">  [S&P](https://dblp.org/db/conf/sp/index.html)
+# <img src="./img/ieee_logo_white.svg" alt="ieee" width="20%">  [S&P](https://dblp.org/db/conf/sp/index.html)
 
 > - S&P 本身是分类了的，但在官网却没有分类归纳，只能从《Table of Contents》中得知分类信息
 > - 需要登录信息，爬取返回 418
 > - 官网可批量下载，较为方便
+
+# <img src="./img/NDSS-Logo-120x37.svg" alt="ndss"/> [NDSS](https://dblp.uni-trier.de/db/conf/ndss/index.html)
+
+## Use
+
+输入**会议地址**和**要保存的目录名称**
+
+```python
+url: str = "https://dblp.uni-trier.de/db/conf/ndss/ndss2023.html"
+parent_dir_name: str = "2023(30th)"
+```
+
+## Details
+
+### 获取论文
+
+> 其它部分均与 USENIX Security 一样，只有在官网获取论文的部分有所区别
+
+```html
+<a role="button" class="btn btn-light btn-sm pdf-button" target="_blank" href="https://www.ndss-symposium.org/wp-content/uploads/2023-289-paper.pdf">Paper</a>
+
+<a role="button" class="btn btn-light btn-sm pdf-button" target="_blank" href="https://www.ndss-symposium.org/wp-content/uploads/2023-362-paper.pdf">Paper</a>
+```
+
+正则表达：
+
+```python
+pattern = r'href="(https?://.*?\.pdf)"'
+```
 

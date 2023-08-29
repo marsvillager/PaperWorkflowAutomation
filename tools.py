@@ -1,4 +1,5 @@
 import os
+import re
 import requests
 
 from log import logger
@@ -61,3 +62,25 @@ def download_file(url: str, save_path: str) -> None:
             logger.error(f"Failed to download file. Status code: {response.status_code}")
     except requests.exceptions.RequestException as e:
         logger.error(f"An error occurred: {e}")
+
+
+def extract_taxonomy(html_content: str) -> dict:
+    """
+    使用正则表达式提取特征
+
+    :param html_content: HTML 内容
+    :return: 匹配得到的分类及其对应分类下的论文标题
+    """
+    taxonomy_pattern: str = r'<h2 id="([^"]+)">([^<]+)</h2>([\s\S]*?)(?=(?:<h2 id="|$))'
+    matches: list = re.findall(taxonomy_pattern, html_content)
+
+    taxonomy_dict: dict = {}
+    for match in matches:
+        taxonomy_id, taxonomy_title, paper_content = match
+
+        paper_pattern = r'<a href="([^"]+)" itemprop="url">[\s\S]*?<span class="title" itemprop="name">([^<]+)</span>'
+        papers_list: list = re.findall(paper_pattern, paper_content)
+
+        taxonomy_dict[taxonomy_title] = papers_list
+
+    return taxonomy_dict
