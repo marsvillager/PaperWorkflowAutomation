@@ -2,7 +2,7 @@ import re
 
 from character import handle_special_character, handle_directory
 from log import logger
-from tools import get_webpage_source, create_directory, download_file, extract_taxonomy
+from tools import get_webpage_source, create_directory, download_file, extract_taxonomy, if_exist
 
 
 def extract_usenix_pdf_urls(html_content: str) -> list:
@@ -44,7 +44,11 @@ if __name__ == '__main__':
                 # 特殊字符问题
                 paper_title: str = handle_special_character(paper_title)
 
-                download_file(pdf_urls[0], f"{parent_dir_name}/{taxonomy}/{paper_title}pdf")
+                paper_path: str = f"{parent_dir_name}/{taxonomy}/{paper_title}pdf"
+
+                # 若路径已存在, 跳过
+                if not if_exist(paper_path):
+                    download_file(pdf_urls[0], paper_path)
 
     print("\n")
     for err in err_papers:

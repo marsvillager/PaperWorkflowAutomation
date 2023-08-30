@@ -84,3 +84,18 @@ def extract_taxonomy(html_content: str) -> dict:
         taxonomy_dict[taxonomy_title] = papers_list
 
     return taxonomy_dict
+
+
+def if_exist(paper_path: str) -> bool:
+    """
+    判断论文路径是否已存在, 避免重复下载
+
+    :param paper_path: 论文路径
+    :return: 是否存在
+    """
+    if os.path.exists(paper_path):
+        logger.warning(f"The paper path '{paper_path}' already exists. Skipping....")
+
+        return True
+
+    return False
