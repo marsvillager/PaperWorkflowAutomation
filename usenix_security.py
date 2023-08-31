@@ -18,24 +18,28 @@ def extract_usenix_pdf_urls(html_content: str) -> list:
 
 
 if __name__ == '__main__':
+    proxy: dict[str, str] = {
+    }
+
     url: str = "https://dblp.uni-trier.de/db/conf/uss/uss2023.html"
     logger.info(f"Download from <{url}>")
 
     parent_dir_name: str = "usenix_paper_2023"
     logger.info(f"Download to './{parent_dir_name}'")
 
-    content: str = get_webpage_source(url)
-    taxonomy: dict = extract_taxonomy(content)
+    content: str = get_webpage_source(url, proxy)
+    taxonomies: dict = extract_taxonomy(content)
 
     err_papers: list = []
-    for taxonomy, papers in taxonomy.items():
+    for taxonomy, papers in taxonomies.items():
         # 特殊字符问题
         taxonomy: str = handle_directory(taxonomy)
 
         create_directory(f"./{parent_dir_name}/{taxonomy}")
 
         for paper_url, paper_title in papers:
-            pdf_urls: list = extract_usenix_pdf_urls(get_webpage_source(paper_url))
+            pdf_urls: list = extract_usenix_pdf_urls(get_webpage_source(paper_url, proxy))
+
             # 论文 pdf 地址不符合规范(正则表达式)
             if len(pdf_urls) == 0:
                 err_papers.append(paper_url)
@@ -48,7 +52,7 @@ if __name__ == '__main__':
 
                 # 若路径已存在, 跳过
                 if not if_exist(paper_path):
-                    download_file(pdf_urls[0], paper_path)
+                    download_file(pdf_urls[0], paper_path, proxy)
 
     print("\n")
     for err in err_papers:

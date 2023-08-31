@@ -30,6 +30,11 @@ def add_prefix_links(pdf_url: str) -> str:
 
 
 if __name__ == '__main__':
+    proxy: dict[str, str] = {
+        'http': 'http://127.0.0.1:1080',
+        'https': 'http://127.0.0.1:1080'
+    }
+
     # url: str = "https://dblp.org/db/conf/raid/raid2021.html"
     url: str = "https://dblp.org/db/conf/acsac/acsac2020.html"
     logger.info(f"Download from <{url}>")
@@ -38,18 +43,18 @@ if __name__ == '__main__':
     parent_dir_name: str = "2020(36h)"
     logger.info(f"Download to './{parent_dir_name}'")
 
-    content: str = get_webpage_source(url)
-    taxonomy: dict = extract_taxonomy(content)
+    content: str = get_webpage_source(url, proxy)
+    taxonomies: dict = extract_taxonomy(content)
 
     err_papers: list = []
-    for taxonomy, papers in taxonomy.items():
+    for taxonomy, papers in taxonomies.items():
         # 特殊字符问题
         taxonomy: str = handle_directory(taxonomy)
 
         create_directory(f"./{parent_dir_name}/{taxonomy}")
 
         for paper_url, paper_title in papers:
-            pdf_urls: list = extract_acm_pdf_urls(get_webpage_source(paper_url))
+            pdf_urls: list = extract_acm_pdf_urls(get_webpage_source(paper_url, proxy))
 
             # 论文 pdf 地址不符合规范(正则表达式)
             if len(pdf_urls) == 0:
@@ -63,7 +68,7 @@ if __name__ == '__main__':
 
                 # 若路径已存在, 跳过
                 if not if_exist(paper_path):
-                    download_file(add_prefix_links(pdf_urls[0]), paper_path)
+                    download_file(add_prefix_links(pdf_urls[0]), paper_path, proxy)
 
     print("\n")
     for err in err_papers:

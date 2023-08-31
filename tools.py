@@ -5,15 +5,16 @@ import requests
 from log import logger
 
 
-def get_webpage_source(url: str):
+def get_webpage_source(url: str, proxy: dict[str, str]):
     """
     获取网页源码
 
     :param url: 网页地址
+    :param proxy: 修改 IP
     :return: 网页地址源代码
     """
     try:
-        response = requests.get(url)
+        response = requests.get(url, proxies=proxy)
         if response.status_code == 200:
             return response.text
         else:
@@ -40,16 +41,17 @@ def create_directory(directory_path: str) -> None:
         logger.error(f"An error occurred: {e}")
 
 
-def download_file(url: str, save_path: str) -> None:
+def download_file(url: str, save_path: str, proxy: dict[str, str]) -> None:
     """
     下载论文
 
     :param url: 论文地址
     :param save_path: 保存地址
+    :param proxy: 修改 IP
     :return: None
     """
     try:
-        response = requests.get(url)
+        response = requests.get(url, proxies=proxy)
         if response.status_code == 200:
             try:
                 with open(save_path, 'wb') as file:
