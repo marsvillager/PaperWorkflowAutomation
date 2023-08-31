@@ -24,7 +24,7 @@ def handle_directory(directory: str) -> str:
     """
     处理特殊字符
 
-    :param title: 带有特殊字符的目录名称
+    :param directory: 带有特殊字符的目录名称
     :return: 修正后的目录名称
     """
     directory: str = directory.replace('&#34;', '"')  # HTML 中双引号编码成 &#34;

@@ -119,6 +119,13 @@ pattern = r'href="(https?://.*?\.pdf)"'
 
 > ⚠️ ACM 有可能会因为爬虫遇到 [ERROR] Failed to fetch webpage. Status code: 403, 此时 ACM 会封锁你的 IP: Your IP Address has been blocked, Please contact [dl-support@acm.org](mailto:dl-support@acm.org)
 
+IP 被墙时输入**代理**以修改 IP
+
+```python
+proxy: dict[str, str] = {
+}
+```
+
 输入**会议地址**和**要保存的目录名称**
 
 ### 1. [ACSAC](https://dblp.org/db/conf/acsac/index.html)

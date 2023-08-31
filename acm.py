@@ -30,9 +30,8 @@ def add_prefix_links(pdf_url: str) -> str:
 
 
 if __name__ == '__main__':
+    # IP 被墙时输入代理以修改 IP
     proxy: dict[str, str] = {
-        'http': 'http://127.0.0.1:1080',
-        'https': 'http://127.0.0.1:1080'
     }
 
     # url: str = "https://dblp.org/db/conf/raid/raid2021.html"
