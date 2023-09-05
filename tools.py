@@ -10,11 +10,16 @@ def get_webpage_source(url: str, proxy: dict[str, str]):
     获取网页源码
 
     :param url: 网页地址
-    :param proxy: 修改 IP
+    :param proxy: 代理
     :return: 网页地址源代码
     """
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
+                      "Chrome/116.0.0.0 Safari/537.36 Edg/116.0.1938.62"
+    }
+
     try:
-        response = requests.get(url, proxies=proxy)
+        response = requests.get(url, headers=headers, proxies=proxy)
         if response.status_code == 200:
             return response.text
         else:
@@ -23,6 +28,23 @@ def get_webpage_source(url: str, proxy: dict[str, str]):
     except requests.exceptions.RequestException as e:
         logger.error(f"An error occurred: {e}")
         return None
+
+
+def get_webpage_source_by_browser(url: str, driver):
+    """
+    通过 Selenium 模拟浏览器的行为以获取网页源代码
+
+    :param url: 网页地址
+    :param driver: 浏览器实例
+    :return: 网页地址源代码
+    """
+    # 访问网页
+    driver.get(url)
+
+    # 获取网页源代码
+    page_source = driver.page_source
+
+    return page_source
 
 
 def create_directory(directory_path: str) -> None:
@@ -47,11 +69,16 @@ def download_file(url: str, save_path: str, proxy: dict[str, str]) -> None:
 
     :param url: 论文地址
     :param save_path: 保存地址
-    :param proxy: 修改 IP
+    :param proxy: 代理
     :return: None
     """
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
+                      "Chrome/116.0.0.0 Safari/537.36 Edg/116.0.1938.62"
+    }
+
     try:
-        response = requests.get(url, proxies=proxy)
+        response = requests.get(url, headers=headers, proxies=proxy)
         if response.status_code == 200:
             try:
                 with open(save_path, 'wb') as file:

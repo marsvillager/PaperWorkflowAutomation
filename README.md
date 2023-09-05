@@ -1,4 +1,4 @@
-# <img src="./img/usenix_logo_300x150_neat_2.png" alt="usenix" style="zoom:33%;" />  [USENIX Security](https://dblp.uni-trier.de/db/conf/uss/index.html)
+# <img src="./img/usenix_logo_300x150_neat_2.png" alt="usenix" style="zoom:33%;" />  [USENIX Security](https://dblp.uni-trier.de/db/conf/uss/index.html)（&#x2713;）
 
 ## Use
 
@@ -78,13 +78,7 @@ for err in err_papers:
     print(f"未成功下载论文地址: {err}")
 ```
 
-# <img src="./img/ieee_logo_white.svg" alt="ieee" width="20%">  [S&P](https://dblp.org/db/conf/sp/index.html)
-
-> - S&P 本身是分类了的，但在官网却没有分类归纳，只能从《Table of Contents》中得知分类信息
-> - 需要登录信息，爬取返回 418
-> - 官网可批量下载，较为方便
-
-# <img src="./img/NDSS-Logo-120x37.svg" alt="ndss"/> [NDSS](https://dblp.uni-trier.de/db/conf/ndss/index.html)
+# <img src="./img/NDSS-Logo-120x37.svg" alt="ndss"/> [NDSS](https://dblp.uni-trier.de/db/conf/ndss/index.html)（&#x2713;）
 
 ## Use
 
@@ -113,51 +107,67 @@ parent_dir_name: str = "2023(30th)"
 pattern = r'href="(https?://.*?\.pdf)"'
 ```
 
-# <img src="./img/acm-logo-3.png" alt="ACM"/> ACM
+# 需要分析页面的 JavaScript 代码
 
-## Use
+## <img src="./img/ieee_logo_white.svg" alt="ieee" width="20%">  [S&P](https://dblp.org/db/conf/sp/index.html)（&cross;）
 
-> ⚠️ ACM 有可能会因为爬虫遇到 [ERROR] Failed to fetch webpage. Status code: 403, 此时 ACM 会封锁你的 IP: Your IP Address has been blocked, Please contact [dl-support@acm.org](mailto:dl-support@acm.org)
+> - S&P 本身是分类了的，但在官网却没有分类归纳，只能从《Table of Contents》中得知分类信息
+> - 需要登录信息
+> - \<iframe> 中的内容并不包含 PDF 文件，而是通过向服务器发送请求动态获取的
+>
+> ```html
+> <iframe src="https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?tp=&amp;arnumber=10179411&amp;ref=aHR0cHM6Ly9pZWVleHBsb3JlLmllZWUub3JnL2RvY3VtZW50LzEwMTc5NDEx" frameborder="0"></iframe>
 
-IP 被墙时输入**代理**以修改 IP
+## <img src="./img/acm-logo-3.png" alt="ACM"/> ACM（&cross;）
 
-```python
-proxy: dict[str, str] = {
-}
-```
+### Use
+
+> ⚠️ 
+>
+> （1）ACM 无法简单爬虫 [ERROR] Failed to fetch webpage. Status code: 403, 此时 ACM 会封锁你的 IP: Your IP Address has been blocked, Please contact [dl-support@acm.org](mailto:dl-support@acm.org)
+>
+> （2）这是因为 ACM 启用了 Cloudflare 的 DDoS 保护页面, 所以使用了工具 `Selenium` 模拟浏览器的行为以获取网页源代码
+>
+> （3）尝试了无头模式, 但无法获取网页源代码, 所以程序运行过程中会调用 Chrome 浏览器（可通过修改代码选择使用的浏览器）
+>
+> （4）**可以爬取到 pdf 页面这一步, 却无法下载**, 其网页代码显示如下, 页面中的 `<embed>` 元素的 `src` 属性设置为 `about:blank`, 这意味着它本身不包含 PDF 文件的实际内容, 然而, 这个 `<embed>` 元素的 `name` 和 `internalid` 属性都设置为相同的值 `"3F177C14357E6DD8CC43D14A68765C3D"`, 这可能是一种引用或标识, 指示页面上的某个脚本或其他资源可以在运行时动态加载 PDF 内容并将其显示在 `<embed>` 元素中, 这种情况下, 页面的显示与 JavaScript 或其他前端脚本的操作有关: 当页面加载时, 脚本可能会根据某些条件或用户的交互行为来获取实际的 PDF 内容, 然后将其注入到 `<embed>` 元素中以显示出来, 即 **PDF 文件内容是从服务器端获取的，而不是在 HTML 页面中静态地包含的**
+>
+> ```html
+> <embed name="3F177C14357E6DD8CC43D14A68765C3D" style="position:absolute; left: 0; top: 0;" width="100%" height="100%" src="about:blank" type="application/pdf" internalid="3F177C14357E6DD8CC43D14A68765C3D">
+> ```
 
 输入**会议地址**和**要保存的目录名称**
 
-### 1. [ACSAC](https://dblp.org/db/conf/acsac/index.html)
+#### 1. [ACSAC](https://dblp.org/db/conf/acsac/index.html)
 
 ```python
 url: str = "https://dblp.org/db/conf/acsac/acsac2022.html"
 parent_dir_name: str = "2022(38th)"
 ```
 
-### 2. [RAID](https://dblp.org/db/conf/raid/index.html)
+#### 2. [RAID](https://dblp.org/db/conf/raid/index.html)
 
 ```python
 url: str = "https://dblp.org/db/conf/raid/raid2022.html"
 parent_dir_name: str = "2022(25th)"
 ```
 
-## Details
+### Details
 
-### 获取论文
-
-> 其它部分均与 USENIX Security 一样，只有在官网获取论文的部分有所区别
+#### 获取论文
 
 ```html
 <a href="/doi/pdf/10.1145/3471621.3471854" title="PDF" target="_blank" class="btn red">
   
 <a href="/doi/pdf/10.1145/3471621.3471841" title="PDF" target="_blank" class="btn red">
+  
+<a href="/doi/pdf/10.1145/3564625" title="PDF" class="btn red">
 ```
 
 正则表达：
 
 ```python
-pattern = r'<a\s+(?:[^>]*?\s+)?href="([^"]+)"[^>]*?\btarget="_blank"\s+class="btn red"[^>]*>'
+pattern = r'<a\s+href="([^"]+)"\s+title="PDF"(?:\s+target="_blank")?\s+class="btn red"'
 ```
 
 补上前缀：
