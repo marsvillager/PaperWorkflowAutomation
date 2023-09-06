@@ -140,7 +140,7 @@ pattern = r'href="(https?://.*?\.pdf)"'
 
 `python s\&p.py`，然后输入**会议地址**和**要保存的目录名称**
 
-![image-20230906121023077](./img/s&p_show.png)
+![image-20230906121023077](./img/s&p_use.png)
 
 e.g.
 
@@ -155,7 +155,7 @@ parent_dir_name: str = "2023(44th)"
 
 效果：
 
-
+![image-20230906153749931](./img/s&p_show.png)
 
 ## Details
 
