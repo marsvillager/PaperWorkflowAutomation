@@ -36,44 +36,46 @@ if __name__ == '__main__':
     }
 
     # 创建 Chrome 浏览器实例
-    driver = webdriver.Chrome()
+    # driver = webdriver.Chrome()
 
-    url: str = "https://dblp.org/db/conf/acsac/acsac2020.html"
+    # url: str = "https://dblp.org/db/conf/acsac/acsac2020.html"
+    url: str = "https://dblp.uni-trier.de/db/conf/raid/raid2022.html"
     logger.info(f"Download from <{url}>")
 
-    parent_dir_name: str = "2020(36h)"
+    # parent_dir_name: str = "2020(36th)"
+    parent_dir_name: str = "2022(25th)"
     logger.info(f"Download to './{parent_dir_name}'")
 
     content: str = get_webpage_source(url, proxy)
     taxonomies: dict = extract_taxonomy(content)
 
-    err_papers: list = []
+    # err_papers: list = []
     for taxonomy, papers in taxonomies.items():
         # 特殊字符问题
         taxonomy: str = handle_directory(taxonomy)
 
         create_directory(f"./{parent_dir_name}/{taxonomy}")
 
-        for paper_url, paper_title in papers:
-            pdf_urls: list = extract_acm_pdf_urls(get_webpage_source_by_browser(paper_url, driver))
+        # for paper_url, paper_title in papers:
+        #     pdf_urls: list = extract_acm_pdf_urls(get_webpage_source_by_browser(paper_url, driver))
+        #
+        #     # 论文 pdf 地址不符合规范(正则表达式)
+        #     if len(pdf_urls) == 0:
+        #         err_papers.append(paper_url)
+        #         logger.error(f"No paper URLs found for '{paper_url}'")
+        #     else:
+        #         # 特殊字符问题
+        #         paper_title: str = handle_special_character(paper_title)
+        #
+        #         paper_path: str = f"{parent_dir_name}/{taxonomy}/{paper_title}pdf"
+        #
+        #         # 若路径已存在, 跳过
+        #         if not if_exist(paper_path):
+        #             download_file(add_prefix_links(pdf_urls[0]), paper_path, proxy)
 
-            # 论文 pdf 地址不符合规范(正则表达式)
-            if len(pdf_urls) == 0:
-                err_papers.append(paper_url)
-                logger.error(f"No paper URLs found for '{paper_url}'")
-            else:
-                # 特殊字符问题
-                paper_title: str = handle_special_character(paper_title)
-
-                paper_path: str = f"{parent_dir_name}/{taxonomy}/{paper_title}pdf"
-
-                # 若路径已存在, 跳过
-                if not if_exist(paper_path):
-                    download_file(add_prefix_links(pdf_urls[0]), paper_path, proxy)
-
-    print("\n")
-    for err in err_papers:
-        logger.error(f"未成功下载论文地址: {err}")
+    # print("\n")
+    # for err in err_papers:
+    #     logger.error(f"未成功下载论文地址: {err}")
 
     # 关闭浏览器
-    driver.quit()
+    # driver.quit()

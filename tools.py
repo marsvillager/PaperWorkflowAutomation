@@ -95,10 +95,10 @@ def download_file(url: str, save_path: str, proxy: dict[str, str]) -> None:
 
 def extract_taxonomy(html_content: str) -> dict:
     """
-    使用正则表达式提取特征
+    使用正则表达式提取特征, 获取分类及其下的论文
 
     :param html_content: HTML 内容
-    :return: 匹配得到的分类及其对应分类下的论文标题
+    :return: 匹配得到的分类及其对应分类下的论文标题、论文网址
     """
     taxonomy_pattern: str = r'<h2 id="([^"]+)">([^<]+)</h2>([\s\S]*?)(?=(?:<h2 id="|$))'
     matches: list = re.findall(taxonomy_pattern, html_content)
@@ -113,6 +113,17 @@ def extract_taxonomy(html_content: str) -> dict:
         taxonomy_dict[taxonomy_title] = papers_list
 
     return taxonomy_dict
+
+
+def extract_paper_url_without_taxonomy(html_content: str) -> list:
+    """
+    使用正则表达式提取特征, 获取论文
+
+    :param html_content: HTML 内容
+    :return: 匹配得到论文标题、论文网址
+    """
+    paper_pattern = r'<a href="([^"]+)" itemprop="url">[\s\S]*?<span class="title" itemprop="name">([^<]+)</span>'
+    return re.findall(paper_pattern, html_content)
 
 
 def if_exist(paper_path: str) -> bool:

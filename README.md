@@ -1,13 +1,26 @@
+# 重要提示
+
+1. 需要**订阅论文**后才能使用该工具，学校可能进行了订阅，此时连接校园网即可使用
+2. 从 https://dblp.org 总结的论文开始爬取，需要从该网站中找到对应的会议，然后具体到年份，比如 https://dblp.uni-trier.de/db/conf/uss/uss2023.html
+
 # <img src="./img/usenix_logo_300x150_neat_2.png" alt="usenix" style="zoom:33%;" />  [USENIX Security](https://dblp.uni-trier.de/db/conf/uss/index.html)（&#x2713;）
 
 ## Use
 
-输入**会议地址**和**要保存的目录名称**
+`python usenix_security.py`，然后输入**会议地址**和**要保存的目录名称**
+
+![image-20230906115524454](./img/usenix_use.png)
+
+e.g.
 
 ```python
 url: str = "https://dblp.uni-trier.de/db/conf/uss/uss2023.html"
 parent_dir_name: str = "usenix_paper_2023"
 ```
+
+效果：
+
+![image-20230906113352408](./img/usenix_show.png)
 
 ## Details
 
@@ -82,12 +95,20 @@ for err in err_papers:
 
 ## Use
 
-输入**会议地址**和**要保存的目录名称**
+`python ndss.py`，然后输入**会议地址**和**要保存的目录名称**
+
+![image-20230906120144437](./img/ndss_use.png)
+
+e.g.
 
 ```python
 url: str = "https://dblp.uni-trier.de/db/conf/ndss/ndss2023.html"
 parent_dir_name: str = "2023(30th)"
 ```
+
+效果：
+
+![image-20230906113743388](./img/ndss_show.png)
 
 ## Details
 
@@ -107,16 +128,73 @@ parent_dir_name: str = "2023(30th)"
 pattern = r'href="(https?://.*?\.pdf)"'
 ```
 
-# 需要分析页面的 JavaScript 代码
+# <img src="./img/ieee_logo_white.svg" alt="ieee" width="20%">  [S&P](https://dblp.org/db/conf/sp/index.html)（&#x2713;）
 
-## <img src="./img/ieee_logo_white.svg" alt="ieee" width="20%">  [S&P](https://dblp.org/db/conf/sp/index.html)（&cross;）
-
-> - S&P 本身是分类了的，但在官网却没有分类归纳，只能从《Table of Contents》中得知分类信息
-> - 需要登录信息
-> - \<iframe> 中的内容并不包含 PDF 文件，而是通过向服务器发送请求动态获取的
->
-> ```html
+> - S&P 本身是分类了的，但在官网却没有分类归纳，只能从《Table of Contents》中得知分类信息，所以这里直接爬取了论文，没有进行分类
+> - 需要用于访问或下载内容的令牌或标记，以进行权限验证或跟踪目的，所以在拥有订阅权限的情况（IP）下需要对下载地址做出相应的修改
+> 
+>```html
 > <iframe src="https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?tp=&amp;arnumber=10179411&amp;ref=aHR0cHM6Ly9pZWVleHBsb3JlLmllZWUub3JnL2RvY3VtZW50LzEwMTc5NDEx" frameborder="0"></iframe>
+
+## Use
+
+`python s\&p.py`，然后输入**会议地址**和**要保存的目录名称**
+
+![image-20230906121023077](./img/s&p_show.png)
+
+e.g.
+
+```python
+url: str = "https://dblp.org/db/conf/sp/sp2023.html"
+parent_dir_name: str = "2023(44th)"
+```
+
+> ⚠️ 实测发现存在未下载完整导致如下图所示 pdf 无法读取的情况，请求返回 200 因此也难以进行区分，此时**请删除错误格式的 pdf 后（预览查看更快）重新运行程序**，已下载的完整 pdf 会自动跳过不再重新下载以节省时间
+
+![image-20230906144058923](./img/unexpected.png)
+
+效果：
+
+
+
+## Details
+
+### 获取论文
+
+```html
+"pdfUrl":"/stamp/stamp.jsp?tp=&arnumber=9833594"
+```
+
+即 https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9833594
+
+但实际 https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?tp=&arnumber=9833594&ref=aHR0cHM6Ly9pZWVleHBsb3JlLmllZWUub3JnL2RvY3VtZW50Lzk4MzM1OTQ%2FZGVuaWVkPQ%3D%3D
+
+改成这种前缀即可，&ref= 后的内容需要等 stamp.jsp 响应才能获取
+
+> ❓但实际发现不加 &ref= 的后缀也可以下载
+
+正则表达：
+
+```python
+pattern: str = r'"pdfUrl":"\/stamp\/stamp\.jsp\?tp=&arnumber=(\d+)"'
+```
+
+补上前缀：
+
+```python
+def add_prefix_links(pdf_url: str) -> str:
+    """
+    '/stamp/stamp.jsp?tp=&arnumber=10179411'
+    '/stamp/stamp.jsp?tp=&arnumber=10179343'
+    正则提取的网址仅有后半段的 arnumber, 需要补全能获取论文的网址前缀
+
+    :param pdf_url: 提取的网址
+    :return: 补全前缀的网址
+    """
+    return "https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?tp=&arnumber=" + pdf_url
+```
+
+# TODO
 
 ## <img src="./img/acm-logo-3.png" alt="ACM"/> ACM（&cross;）
 
@@ -233,6 +311,8 @@ paper_title: str = title.replace('&#38;', '&')  # HTML 中 & 编码成 &#38;
 paper_title: str = paper_title.replace('&#181;', 'μ')  # HTML 中 μ 编码成 &#181;
 paper_title: str = title.replace('&#241;', 'ñ')  # HTML 中 ñ 编码成 &#241;
 paper_title: str = title.replace('&#248;', 'ø')  # HTML 中 ø 编码成 &#248;
+paper_title: str = title.replace('&#402;', 'ƒ')  # HTML 中 ø 编码成 &#402;
+paper_title: str = title.replace('&#956;', 'μ')  # HTML 中 μ 编码成 &#956;
 
 # 有些论文以问号或感叹号结尾, 但这里下载用的它原本的 . 加 pdf, 所以需要统一转为 .
 paper_title: str = paper_title.replace('?', '.') 

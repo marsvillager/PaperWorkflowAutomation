@@ -21,10 +21,12 @@ if __name__ == '__main__':
     proxy: dict[str, str] = {
     }
 
-    url: str = "https://dblp.uni-trier.de/db/conf/uss/uss2023.html"
+    # url: str = "https://dblp.uni-trier.de/db/conf/uss/uss2023.html"
+    url: str = input("Please input the website of conference: ")
     logger.info(f"Download from <{url}>")
 
-    parent_dir_name: str = "usenix_paper_2023"
+    # parent_dir_name: str = "usenix_paper_2023"
+    parent_dir_name: str = input("Please input the name of directory: ")
     logger.info(f"Download to './{parent_dir_name}'")
 
     content: str = get_webpage_source(url, proxy)
@@ -38,6 +40,15 @@ if __name__ == '__main__':
         create_directory(f"./{parent_dir_name}/{taxonomy}")
 
         for paper_url, paper_title in papers:
+            # 特殊字符问题
+            paper_title: str = handle_special_character(paper_title)
+
+            paper_path: str = f"{parent_dir_name}/{taxonomy}/{paper_title}pdf"
+
+            # 若路径已存在, 跳过
+            if if_exist(paper_path):
+                continue
+
             pdf_urls: list = extract_usenix_pdf_urls(get_webpage_source(paper_url, proxy))
 
             # 论文 pdf 地址不符合规范(正则表达式)
@@ -45,14 +56,7 @@ if __name__ == '__main__':
                 err_papers.append(paper_url)
                 logger.error(f"No paper URLs found for '{paper_url}'")
             else:
-                # 特殊字符问题
-                paper_title: str = handle_special_character(paper_title)
-
-                paper_path: str = f"{parent_dir_name}/{taxonomy}/{paper_title}pdf"
-
-                # 若路径已存在, 跳过
-                if not if_exist(paper_path):
-                    download_file(pdf_urls[0], paper_path, proxy)
+                download_file(pdf_urls[0], paper_path, proxy)
 
     print("\n")
     for err in err_papers:
