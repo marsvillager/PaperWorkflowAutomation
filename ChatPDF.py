@@ -1,7 +1,8 @@
+import json
 import os
-import pickle
 import requests
 import sys
+import time
 
 from log import logger
 
@@ -11,8 +12,8 @@ def add_pdf_via_file_upload(filepath: str, chatpdf_api_key: str, proxy: dict[str
     Add a PDF file by uploading it to ChatPDF as a multipart form data. You can only upload one file at a time.
     This endpoint returns a source ID that can be used to interact with the PDF file.
 
-    :param filepath:
-    :param chatpdf_api_key:
+    :param filepath: paper or set of paper
+    :param chatpdf_api_key: you can find your API key in https://www.chatpdf.com/
     :param proxy:
     :return:
     """
@@ -40,6 +41,7 @@ def add_pdf_via_file_upload(filepath: str, chatpdf_api_key: str, proxy: dict[str
 
 def chat_with_pdf(chatpdf_api_key: str, source_id: str, messages: list, proxy: dict[str, str]):
     """
+    Send a chat message to a PDF file using its source ID.
 
     :param chatpdf_api_key:
     :param source_id:
@@ -92,72 +94,82 @@ def find_pdf(target_directory: str) -> list:
 
 if __name__ == '__main__':
     # proxy
-    ports: str = input("Please input the proxy port number: (default is 1087)") or '1087'
+    ports: str = input("Please input the proxy port number(default is 1087): ") or '1087'
     proxies: dict[str, str] = {
-        'http': f'http://127.0.0.1:{ports}',
-        'https': f'http://127.0.0.1:{ports}'
+        # 'http': f'http://127.0.0.1:{ports}',
+        # 'https': f'http://127.0.0.1:{ports}'
     }
     logger.info(f"Your proxy is http://127.0.0.1:{ports}")
+    time.sleep(0.5)
 
     # ChatPDF API key
     chatpdf: str = input("Please input the API Key of ChatPDF(You can find your API key in https://www.chatpdf.com/): ")
     logger.info(f"Your API key is <{chatpdf}>")
+    time.sleep(0.5)
 
     # messages
     user_requests_1: list = [
         {
             'role': "user",
-            'content': '请直接给出论文的题目，并在题目后面的括号中给出其中文翻译'
+            'content': '请将论文开头的摘要部分完整地提取出来并逐句翻译为中文'
         }
     ]
     user_requests_2: list = [
         {
             'role': "user",
-            'content': '请完整地提取论文开头的 Abstract 并翻译为中文'
-        }
-    ]
-    user_requests_3: list = [
-        {
-            'role': "user",
             'content': input(
                 "Please input the ask question about the paper: (or use default)")
-                       or "请分别概括论文的核心问题、主要贡献、解决方法（用中文）"
+                       or "请用一长段话连贯地讲述论文的核心问题、主要贡献、解决方法等（中文表述）"
         }
     ]
 
     # result path
-    saved_path: str = './summary/sp.pickle'
+    saved_path: str = input(
+        "Please input the path to save results(default is ./summary/sp_2023.json): ") or './summary/sp_2023.json'
+    logger.info(f"Saved path is <{saved_path}>")
+    time.sleep(0.5)
 
     # paper path
     papers: str = input(
         "Please input the absolute path of papers: "
-        "(If it's not a PDF file, then traverse the files in its subdirectories)\n") or '/Volumes/frp-ask.top-1/Library/Papers/IEEE S&P/2023(44th)SP/Session 1A：Infrastructure security/Red Team vs. Blue Team：A Real-World Hardware Trojan Detection Case Study Across Four Modern CMOS Technology Generations.pdf'
+        "(If it's not a PDF file, then traverse the files in its subdirectories)\n")
     logger.info(f"Upload from <{papers}>")
     
     # process
     paper_list: list = []
-    result_papers: dict = {}  # directory, name, abstract(self), abstract(gpt)
+
+    summary_papers: dict = {}  # summary of item_paper
+    # 避免重复上传
+    if os.path.exists(saved_path):
+        with open(saved_path, "r", encoding='utf-8') as json_file:
+            summary_papers = json.load(json_file)
+
     if os.path.splitext(papers)[1] == '.pdf':  # pdf 文件
         paper_list.append(papers)
     else:
         paper_list: list = find_pdf(papers)  # 目录
     for paper in paper_list:
-        # 避免重复上传
-        with open('result.pickle', 'rb') as file:
-            loaded_data = pickle.load(file)
+        # 跳过已处理文件
+        if paper in summary_papers:
+            logger.warning(f'<{paper}> has already been processed.')
+            continue
 
-        paper_id: str = add_pdf_via_file_upload(papers, chatpdf, proxies)
+        item_paper: dict = {}  # directory, name, abstract(self), abstract(gpt)
+
+        paper_id: str = add_pdf_via_file_upload(paper, chatpdf, proxies)
 
         if paper_id is None:
+            # 保存已处理结果
+            with open(saved_path, 'w', encoding='utf-8') as file:
+                json.dump(summary_papers, file, indent=4, ensure_ascii=False)
+            logger.info(f"Results saved to <{saved_path}>")
             sys.exit()
 
-        result_papers['directory'] = papers
-        result_papers['src_id'] = paper_id
-        result_papers['name'] = chat_with_pdf(chatpdf, paper_id, user_requests_1, proxies)
-        result_papers['abstract(self)'] = chat_with_pdf(chatpdf, paper_id, user_requests_2, proxies)
-        result_papers['abstract(gpt)'] = chat_with_pdf(chatpdf, paper_id, user_requests_3, proxies)
-            
-        # 增量写入
-        with open(saved_path, 'ab') as file:
-            pickle.dump(result_papers, file)
-        logger.info(f"Results saved to <{saved_path}>")
+        item_paper['src_id'] = paper_id
+        item_paper['abstract(self)'] = chat_with_pdf(chatpdf, paper_id, user_requests_1, proxies)
+        item_paper['abstract(gpt)'] = chat_with_pdf(chatpdf, paper_id, user_requests_2, proxies)
+        summary_papers[paper] = item_paper
+
+    with open(saved_path, 'w', encoding='utf-8') as file:
+        json.dump(summary_papers, file, indent=4, ensure_ascii=False)
+    logger.info(f"Results saved to <{saved_path}>")
