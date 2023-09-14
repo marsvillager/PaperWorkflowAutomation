@@ -330,6 +330,14 @@ def extract_group_pdf_content(pdf_file_path: str, num: int) -> list
     # logger.info(f"Your proxy is http://127.0.0.1:{ports}")
 ```
 
+### 4. 问题定义
+
+```python
+def summarize_paper(api_key: str, contents: list, proxy: dict[str, str]) -> json
+	……
+	question: str = '用一长段话连贯地讲述上述论文的核心问题、主要贡献、解决方法等(中文表述)'
+```
+
 # Appendix
 
 ## 网页源代码
