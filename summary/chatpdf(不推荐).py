@@ -4,18 +4,26 @@ import requests
 import sys
 import time
 
+from pdf_tools import find_pdf
+
+# 获取当前模块所在的目录
+current_dir = os.path.dirname(__file__)
+# 获取根目录的路径
+root_dir = os.path.abspath(os.path.join(current_dir, '..'))
+# 将根目录添加到模块搜索路径中
+sys.path.append(root_dir)
 from log import logger
 
 
-def add_pdf_via_file_upload(filepath: str, chatpdf_api_key: str, proxy: dict[str, str]):
+def add_pdf_via_file_upload(chatpdf_api_key: str, filepath: str, proxy: dict[str, str]):
     """
     Add a PDF file by uploading it to ChatPDF as a multipart form data. You can only upload one file at a time.
     This endpoint returns a source ID that can be used to interact with the PDF file.
 
-    :param filepath: paper or set of paper
     :param chatpdf_api_key: you can find your API key in https://www.chatpdf.com/
-    :param proxy:
-    :return:
+    :param filepath: paper or set of paper
+    :param proxy: proxy
+    :return: source id if successful
     """
     files = [
         ('file', ('file', open(filepath, 'rb'), 'application/octet-stream'))
@@ -43,11 +51,11 @@ def chat_with_pdf(chatpdf_api_key: str, source_id: str, messages: list, proxy: d
     """
     Send a chat message to a PDF file using its source ID.
 
-    :param chatpdf_api_key:
-    :param source_id:
-    :param content:
-    :param proxy:
-    :return:
+    :param chatpdf_api_key: you can find your API key in https://www.chatpdf.com/
+    :param source_id: id of upload pdf
+    :param messages: questions
+    :param proxy: proxy
+    :return: content
     """
     headers = {
         'x-api-key': chatpdf_api_key,
@@ -72,32 +80,12 @@ def chat_with_pdf(chatpdf_api_key: str, source_id: str, messages: list, proxy: d
         return None
 
 
-def find_pdf(target_directory: str) -> list:
-    """
-
-    :param target_directory:
-    :return:
-    """
-    # 定义一个空列表来存储PDF文件的路径
-    pdf_files = []
-
-    # 遍历目录及其子目录
-    for root, dirs, files in os.walk(target_directory):
-        for file in files:
-            # 检查文件扩展名是否为.pdf
-            if file.endswith('.pdf'):
-                # 构建完整的文件路径并添加到pdf_files列表中
-                pdf_files.append(os.path.join(root, file))
-
-    return pdf_files
-
-
 if __name__ == '__main__':
     # proxy
     ports: str = input("Please input the proxy port number(default is 1087): ") or '1087'
     proxies: dict[str, str] = {
-        # 'http': f'http://127.0.0.1:{ports}',
-        # 'https': f'http://127.0.0.1:{ports}'
+        'http': f'http://127.0.0.1:{ports}',
+        'https': f'http://127.0.0.1:{ports}'
     }
     logger.info(f"Your proxy is http://127.0.0.1:{ports}")
     time.sleep(0.5)
@@ -125,7 +113,7 @@ if __name__ == '__main__':
 
     # result path
     saved_path: str = input(
-        "Please input the path to save results(default is ./summary/sp_2023.json): ") or './summary/sp_2023.json'
+        "Please input the path to save results(default is ./sp_2023.json): ") or './sp_2023.json'
     logger.info(f"Saved path is <{saved_path}>")
     time.sleep(0.5)
 
@@ -156,7 +144,7 @@ if __name__ == '__main__':
 
         item_paper: dict = {}  # directory, name, abstract(self), abstract(gpt)
 
-        paper_id: str = add_pdf_via_file_upload(paper, chatpdf, proxies)
+        paper_id: str = add_pdf_via_file_upload(chatpdf, paper, proxies)
 
         if paper_id is None:
             # 保存已处理结果
@@ -165,6 +153,7 @@ if __name__ == '__main__':
             logger.info(f"Results saved to <{saved_path}>")
             sys.exit()
 
+        logger.info(f"Processing <{paper}> ...")
         item_paper['src_id'] = paper_id
         item_paper['abstract(self)'] = chat_with_pdf(chatpdf, paper_id, user_requests_1, proxies)
         item_paper['abstract(gpt)'] = chat_with_pdf(chatpdf, paper_id, user_requests_2, proxies)
