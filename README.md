@@ -261,7 +261,7 @@ def add_prefix_links(pdf_url: str) -> str:
     return "https://dl.acm.org" + pdf_url
 ```
 
-# Summary
+# Summary (保存为 json)
 
 > ⚠️ 两种方式
 >
@@ -276,7 +276,7 @@ def add_prefix_links(pdf_url: str) -> str:
 >
 > 已处理完的内容会被保存起来（根据 `json` 文件的 <pdf 路径> 判断）, 下次**同样的目录输入**会跳过已处理部分而非从头开始
 
-位于项目根目录下, `python  ./summary/chatgpt.py` 后分别输入：
+位于项目根目录下,  `python  ./summary/chatgpt.py` 后分别输入（）：
 
 - Please input the API Key of ChatGPT:
   - API Key of ChatGPT 
@@ -303,6 +303,32 @@ def add_prefix_links(pdf_url: str) -> str:
 ```
 
 <img src="./img/chatgpt_show.png" alt="result"/>
+
+## Advanced
+
+### 1. 论文位置
+
+```python
+def extract_specified_pdf_content(pdf_content: str, start: str, end: str)
+```
+
+### 2. 论文分页
+
+```python
+def extract_group_pdf_content(pdf_file_path: str, num: int) -> list
+```
+
+### 3. 代理（未启用）
+
+```python
+    # proxy, 最好不直接用代理, 路由器接代理更不易察觉
+    # ports: str = input("Please input the proxy port number(default is 1087): ") or '1087'
+    proxies: dict[str, str] = {
+        # 'http': f'http://127.0.0.1:{ports}',
+        # 'https': f'http://127.0.0.1:{ports}'
+    }
+    # logger.info(f"Your proxy is http://127.0.0.1:{ports}")
+```
 
 # Appendix
 
