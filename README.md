@@ -261,6 +261,49 @@ def add_prefix_links(pdf_url: str) -> str:
     return "https://dl.acm.org" + pdf_url
 ```
 
+# Summary
+
+> ⚠️ 两种方式
+>
+> - [ChatPDF - Chat with any PDF](https://www.chatpdf.com/)，需要上传文件，但这种方式最大的问题是分析的**不准确**，所以不推荐，也未做后续的优化
+> - ChatGPT，由于 ***token*** 和 ***请求速率* 的限制**，整个处理时间较为**漫长**
+>   - （1）需要对 pdf 进行分页（可调整函数的参数）然后**分若干次上传**
+>   - （2）OpenAI GPT-3.5 Turbo 模型的请求速率限制为每分钟 3 个请求，所以每次请求通过 `time.sleep(20)` 来**等待 20 s 后进行下一次的请求**
+
+## Use (推荐 ChatGPT)
+
+> ⚠️ 断点机制
+>
+> 已处理完的内容会被保存起来（根据 `json` 文件的 <pdf 路径> 判断）, 下次**同样的目录输入**会跳过已处理部分而非从头开始
+
+位于项目根目录下, `python  ./summary/chatgpt.py` 后分别输入：
+
+- Please input the API Key of ChatGPT:
+  - API Key of ChatGPT 
+- Please input the path to save results(default is ./sp_2023.json):
+  - 结果保存路径
+- Please input the absolute path of papers: 
+  - **一篇论文的路径**
+  - 论文集的目录, 此时会依次处理**该目录下所有以 pdf 结尾的文件**
+
+处理过程：
+
+<img src="./img/chatgpt_process.png" alt="process"/>
+
+结果保存为 `json` 文件（abstract(gpt) 是 ChatGPT 根据问题对论文的总结概括, abstract(paper) 是对论文本身的摘要内容的翻译）：
+
+```json
+{
+	"<pdf 路径>": {
+    "title": "",
+    "abstract(gpt)": "",
+    "abstract(paper)": ""
+	}
+}
+```
+
+<img src="./img/chatgpt_show.png" alt="result"/>
+
 # Appendix
 
 ## 网页源代码
