@@ -22,9 +22,9 @@ def find_pdf(target_directory: str) -> list:
     return pdf_files
 
 
-def extract_all_pdf_content(pdf_file_path: str) -> list:
+def extract_all_pdf_content(pdf_file_path: str) -> str:
     """
-    提取 pdf 内容, 每 4 页为一组(tokens)
+    提取 pdf 内容
 
     :param pdf_file_path: pdf 路径
     :return: pdf 内容
@@ -37,7 +37,42 @@ def extract_all_pdf_content(pdf_file_path: str) -> list:
     # 存储提取的文本内容
     extracted_content: list = []
 
-    # 用于累积每 4 页的文本内容
+    # 遍历每一页
+    for page_num in range(len(pdf_reader.pages)):
+        # 获取当前页面的文本
+        page = pdf_reader.pages[page_num]
+        page_text = page.extract_text()
+
+        # 如果页面包含 "references"，则停止提取
+        if 'references' in page_text.lower():
+            break
+
+        extracted_content.append(page_text)
+
+    # 关闭 PDF 文件
+    pdf_file.close()
+
+    # 返回提取的内容
+    return '\n'.join(extracted_content)
+
+
+def extract_group_pdf_content(pdf_file_path: str, num: int) -> list:
+    """
+    提取 pdf 内容, 每 <num> 页为一组(tokens)
+
+    :param pdf_file_path: pdf 路径
+    :param num: 每组页数
+    :return: pdf 内容
+    """
+    pdf_file = open(pdf_file_path, 'rb')
+
+    # 创建 PDF 文件阅读器对象
+    pdf_reader = PyPDF2.PdfReader(pdf_file)
+
+    # 存储提取的文本内容
+    extracted_content: list = []
+
+    # 用于累积每 <num> 页的文本内容
     current_group = []
 
     # 遍历每一页
@@ -53,8 +88,8 @@ def extract_all_pdf_content(pdf_file_path: str) -> list:
         # 将当前页的文本添加到当前组中
         current_group.append(page_text)
 
-        # 当达到4页时，将当前组添加到结果列表，并清空当前组
-        if len(current_group) == 4:
+        # 当达到 <num> 页时，将当前组添加到结果列表，并清空当前组
+        if len(current_group) == num:
             extracted_content.append("\n".join(current_group))
             current_group = []
 
@@ -109,8 +144,3 @@ def extract_specified_pdf_content(pdf_content: str, start: str, end: str):
 
     # 如果未找到开始或结束字符串，则返回 None
     return None
-
-
-# content = extract_all_pdf_content('/Volumes/frp-ask.top-1/Library/Papers/IEEE S&P/2023(44th)SP/Session 1A：Infrastructure security/Red Team vs. Blue Team：A Real-World Hardware Trojan Detection Case Study Across Four Modern CMOS Technology Generations.pdf')
-#
-# print(extract_specified_pdf_content(content, 'Abstract', '1.'))

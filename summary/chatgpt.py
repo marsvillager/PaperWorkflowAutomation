@@ -4,7 +4,7 @@ import requests
 import sys
 import time
 
-from pdf_tools import find_pdf, extract_all_pdf_content, extract_specified_pdf_title, extract_specified_pdf_content
+from pdf_tools import find_pdf, extract_group_pdf_content, extract_specified_pdf_title, extract_specified_pdf_content
 
 # 获取当前模块所在的目录
 current_dir = os.path.dirname(__file__)
@@ -41,8 +41,14 @@ def chat_with_gpt(api_key: str, messages: str, proxy: dict[str, str]) -> json:
     }
 
     response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=data, proxies=proxy)
-
-    return response.json()
+    if "choices" in response.json() and isinstance(response.json()["choices"], list) and len(
+            response.json()["choices"]) > 0:  # choices 存在且为非空列表
+        content: str = response.json()["choices"][0]["message"]["content"]
+        logger.debug(f"Chatting...")
+        return content
+    else:  # choices 不存在或为空列表
+        logger.error(f"ChatGPT has a processing error: {response.json()}")
+        sys.exit()
 
 
 def translate_abstract(api_key: str, content: str, proxy: dict[str, str]) -> json:
@@ -55,7 +61,7 @@ def translate_abstract(api_key: str, content: str, proxy: dict[str, str]) -> jso
     :return: 翻译内容
     """
     abstract_content: str = extract_specified_pdf_content(content, 'Abstract', '1.')
-    return chat_with_gpt(api_key, f'将下面内容翻译成中文: {abstract_content}', proxy)
+    return chat_with_gpt(api_key, f'请结合自己的理解(作为备注放括号中)将下面内容翻译成中文: {abstract_content}', proxy)
 
 
 def summarize_paper(api_key: str, contents: list, proxy: dict[str, str]) -> json:
@@ -68,23 +74,26 @@ def summarize_paper(api_key: str, contents: list, proxy: dict[str, str]) -> json
     :return: 论文概述
     """
 
-    chat_with_gpt(api_key, f'下面将分段给出论文的每部分, 收到「end」标记前不用回复', proxy)
+    chat_with_gpt(api_key, f'我即将提交的文本将分为几个部分, 请等到所有部分都提供完之前即收到「end」标记前不用回复', proxy)
     for content in contents:
+        # OpenAI GPT-3.5 Turbo 模型的请求速率限制(每分钟 3 个请求)
+        time.sleep(20)
+
         chat_with_gpt(api_key, content, proxy)
 
-    question: str = '将上述内容请用一长段话连贯地讲述论文的核心问题、主要贡献、解决方法等(中文表述)'
+    question: str = '用一长段话连贯地讲述上述论文的核心问题、主要贡献、解决方法等(中文表述)'
     return chat_with_gpt(api_key, f'「end」{question}', proxy)
 
 
 if __name__ == '__main__':
-    # proxy
-    ports: str = input("Please input the proxy port number(default is 1087): ") or '1087'
+    # proxy, 最好不直接用代理, 路由器接代理更不易察觉
+    # ports: str = input("Please input the proxy port number(default is 1087): ") or '1087'
     proxies: dict[str, str] = {
-        'http': f'http://127.0.0.1:{ports}',
-        'https': f'http://127.0.0.1:{ports}'
+        # 'http': f'http://127.0.0.1:{ports}',
+        # 'https': f'http://127.0.0.1:{ports}'
     }
-    logger.info(f"Your proxy is http://127.0.0.1:{ports}")
-    time.sleep(0.5)
+    # logger.info(f"Your proxy is http://127.0.0.1:{ports}")
+    # time.sleep(0.5)
 
     # ChatGPT API key
     chatgpt: str = input("Please input the API Key of ChatGPT: ")
@@ -124,7 +133,7 @@ if __name__ == '__main__':
 
         item_paper: dict = {}  # title, abstract(self), abstract(gpt)
 
-        paper_content: list = extract_all_pdf_content(paper)
+        paper_content: list = extract_group_pdf_content(paper, 2)
 
         if paper_content is None:
             # 保存已处理结果
@@ -138,24 +147,11 @@ if __name__ == '__main__':
         item_paper['title'] = extract_specified_pdf_title(paper_content[0])
 
         # ChatGPT
-        response: json = translate_abstract(chatgpt, paper_content[0], proxies)
-        all_responses: list = []
-        while True:
-            print("hello")
-            for choice in response.get("choices", []):
-                answer = choice['message']['content']
-                logger.info(f"Chatting: {answer}")
-                all_responses.append(answer)
+        item_paper['abstract(gpt)'] = summarize_paper(chatgpt, paper_content, proxies)
+        item_paper['abstract(paper)'] = translate_abstract(chatgpt, paper_content[0], proxies)
 
-            if len(response.get("choices", [])) == 0:
-                break  # 流式传输结束
+        summary_papers[paper] = item_paper
 
-        logger.warning(all_responses)
-        # item_paper['abstract(paper)'] =
-
-        # item_paper['abstract(gpt)'] = summarize_paper(chatgpt, paper_content, proxies)
-        # summary_papers[paper] = item_paper
-
-    # with open(saved_path, 'w', encoding='utf-8') as file:
-    #     json.dump(summary_papers, file, indent=4, ensure_ascii=False)
-    # logger.info(f"Results saved to <{saved_path}>")
+    with open(saved_path, 'w', encoding='utf-8') as file:
+        json.dump(summary_papers, file, indent=4, ensure_ascii=False)
+    logger.info(f"Results saved to <{saved_path}>")
