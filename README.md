@@ -1,11 +1,22 @@
+# 最终目标
+
+- 论文全过程自动化（爬虫 + 概述）
+- 可视化展示（如下图）
+- 可在搜索框进行关键词筛选
+
+<img src="./img/visualize.png" alt="visualize"/>
+
 # 重要提示
 
 1. 需要**订阅论文**后才能使用该工具，学校可能进行了订阅，此时连接校园网即可使用
 2. 从 https://dblp.org 总结的论文开始爬取，需要从该网站中找到对应的会议，然后具体到年份，比如 https://dblp.uni-trier.de/db/conf/uss/uss2023.html
+3. 论文概述需要拥有 **ChatGPT 3.5 的 API key** 和**科学上网**的能力
 
-# <img src="./img/usenix_logo_300x150_neat_2.png" alt="usenix" style="zoom:33%;" />  [USENIX Security](https://dblp.uni-trier.de/db/conf/uss/index.html)（&#x2713;）
+# 一、论文爬虫
 
-## Use
+## <img src="./img/usenix_logo_300x150_neat_2.png" alt="usenix" style="zoom:33%;" />  [USENIX Security](https://dblp.uni-trier.de/db/conf/uss/index.html)（&#x2713;）
+
+### Use
 
 `python usenix_security.py`，然后输入**会议地址**和**要保存的目录名称**
 
@@ -22,11 +33,11 @@ parent_dir_name: str = "usenix_paper_2023"
 
 ![image-20230906113352408](./img/usenix_show.png)
 
-## Details
+### Details
 
-### 1. 关键信息
+#### 1. 关键信息
 
-#### （1）大标题
+##### （1）大标题
 
 ```html
 <h2 id="secBreakingWirelessProtocols">Breaking Wireless Protocols</h2>
@@ -39,7 +50,7 @@ parent_dir_name: str = "usenix_paper_2023"
 pattern = r'<h2 id="[^"]+">([^<]+)</h2>'
 ```
 
-#### （2）论文题目
+##### （2）论文题目
 
 ```html
 <span class="title" itemprop="name">PhyAuth: Physical-Layer Message Authentication for ZigBee Networks.</span>
@@ -52,7 +63,7 @@ pattern = r'<h2 id="[^"]+">([^<]+)</h2>'
 pattern = r'<span class="title" itemprop="name">([^<]+)</span>'
 ```
 
-#### （3）论文地址
+##### （3）论文地址
 
 ```html
 <a href="https://www.usenix.org/conference/usenixsecurity23/presentation/li-ang" itemprop="url">
@@ -65,7 +76,7 @@ pattern = r'<span class="title" itemprop="name">([^<]+)</span>'
 pattern = r'<a\s+href="([^"]+)"\s+itemprop="url">'
 ```
 
-### 2. 获取论文
+#### 2. 获取论文
 
 ```html
 <meta name="citation_pdf_url" content="https://www.usenix.org/system/files/usenixsecurity23-dong-feng.pdf" />
@@ -77,7 +88,7 @@ pattern = r'<a\s+href="([^"]+)"\s+itemprop="url">'
 pattern = r'<meta\s+name="citation_pdf_url"\s+content="([^"]+)"\s*/>'
 ```
 
-### 3. 遗漏
+#### 3. 遗漏
 
 ```python
 err_papers: list = []
@@ -91,9 +102,9 @@ for err in err_papers:
     print(f"未成功下载论文地址: {err}")
 ```
 
-# <img src="./img/NDSS-Logo-120x37.svg" alt="ndss"/> [NDSS](https://dblp.uni-trier.de/db/conf/ndss/index.html)（&#x2713;）
+## <img src="./img/NDSS-Logo-120x37.svg" alt="ndss"/> [NDSS](https://dblp.uni-trier.de/db/conf/ndss/index.html)（&#x2713;）
 
-## Use
+### Use
 
 `python ndss.py`，然后输入**会议地址**和**要保存的目录名称**
 
@@ -110,9 +121,9 @@ parent_dir_name: str = "2023(30th)"
 
 ![image-20230906113743388](./img/ndss_show.png)
 
-## Details
+### Details
 
-### 获取论文
+#### 获取论文
 
 > 其它部分均与 USENIX Security 一样，只有在官网获取论文的部分有所区别
 
@@ -128,7 +139,7 @@ parent_dir_name: str = "2023(30th)"
 pattern = r'href="(https?://.*?\.pdf)"'
 ```
 
-# <img src="./img/ieee_logo_white.svg" alt="ieee" width="20%">  [S&P](https://dblp.org/db/conf/sp/index.html)（&#x2713;）
+## <img src="./img/ieee_logo_white.svg" alt="ieee" width="20%">  [S&P](https://dblp.org/db/conf/sp/index.html)（&#x2713;）
 
 > - S&P 本身是分类了的，但在官网却没有分类归纳，只能从《Table of Contents》中得知分类信息，所以这里直接爬取了论文，没有进行分类
 > - 需要用于访问或下载内容的令牌或标记，以进行权限验证或跟踪目的，所以在拥有订阅权限的情况（IP）下需要对下载地址做出相应的修改
@@ -136,7 +147,7 @@ pattern = r'href="(https?://.*?\.pdf)"'
 >```html
 > <iframe src="https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?tp=&amp;arnumber=10179411&amp;ref=aHR0cHM6Ly9pZWVleHBsb3JlLmllZWUub3JnL2RvY3VtZW50LzEwMTc5NDEx" frameborder="0"></iframe>
 
-## Use
+### Use
 
 `python s\&p.py`，然后输入**会议地址**和**要保存的目录名称**
 
@@ -157,9 +168,9 @@ parent_dir_name: str = "2023(44th)"
 
 ![image-20230906153749931](./img/s&p_show.png)
 
-## Details
+### Details
 
-### 获取论文
+#### 获取论文
 
 ```html
 "pdfUrl":"/stamp/stamp.jsp?tp=&arnumber=9833594"
@@ -194,11 +205,11 @@ def add_prefix_links(pdf_url: str) -> str:
     return "https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?tp=&arnumber=" + pdf_url
 ```
 
-# TODO
+## TODO
 
-## <img src="./img/acm-logo-3.png" alt="ACM"/> ACM（&cross;）
+### <img src="./img/acm-logo-3.png" alt="ACM"/> ACM（&cross;）
 
-### Use
+#### Use
 
 > ⚠️ 
 >
@@ -216,23 +227,23 @@ def add_prefix_links(pdf_url: str) -> str:
 
 输入**会议地址**和**要保存的目录名称**
 
-#### 1. [ACSAC](https://dblp.org/db/conf/acsac/index.html)
+##### 1. [ACSAC](https://dblp.org/db/conf/acsac/index.html)
 
 ```python
 url: str = "https://dblp.org/db/conf/acsac/acsac2022.html"
 parent_dir_name: str = "2022(38th)"
 ```
 
-#### 2. [RAID](https://dblp.org/db/conf/raid/index.html)
+##### 2. [RAID](https://dblp.org/db/conf/raid/index.html)
 
 ```python
 url: str = "https://dblp.org/db/conf/raid/raid2022.html"
 parent_dir_name: str = "2022(25th)"
 ```
 
-### Details
+#### Details
 
-#### 获取论文
+##### 获取论文
 
 ```html
 <a href="/doi/pdf/10.1145/3471621.3471854" title="PDF" target="_blank" class="btn red">
@@ -261,7 +272,7 @@ def add_prefix_links(pdf_url: str) -> str:
     return "https://dl.acm.org" + pdf_url
 ```
 
-# Summary (保存为 json)
+# 二、论文概述
 
 > ⚠️ 两种方式（默认关闭了，因为 ChatGPT 3.5 在胡说八道）
 >
@@ -290,19 +301,35 @@ def add_prefix_links(pdf_url: str) -> str:
 
 <img src="./img/chatgpt_process.png" alt="process"/>
 
-结果保存为 `json` 文件（abstract(gpt) 是 ChatGPT 根据问题对论文的总结概括, abstract(paper) 是对论文本身的摘要内容的翻译）：
+结果保存为 `json` 文件（abstract(gpt) 是 ChatGPT 根据问题对论文的总结概括, abstract是对论文本身的摘要内容的翻译）：
 
 ```json
 {
 	"<pdf 路径>": {
     "title": "",
-    "abstract(gpt)": "",
+    "abstract": "",
     "abstract(paper)": ""
 	}
 }
 ```
 
 <img src="./img/chatgpt_show.png" alt="result"/>
+
+## [可视化](https://observablehq.com/)
+
+> ⚠️ Edge 和 Chrome 可能失败, 火狐可以打开 以 iframe 形式插入的网页
+
+方式：provided by **observablehq**
+
+（1）将 `json` 文件转化为 `csv` 文件
+
+（2）在 observablehq 创建 Notebooks 后生成分享链接
+
+（3）将 Embed 以 iframe 形式插入网页框架中
+
+效果见 `<PREFIX>/summary/visualize.html`:
+
+<img src="./img/visualize.png" alt="visualize"/>
 
 ## Advanced
 

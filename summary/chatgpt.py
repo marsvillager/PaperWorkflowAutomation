@@ -117,7 +117,7 @@ if __name__ == '__main__':
 
     # result path
     saved_path: str = input(
-        "Please input the path to save results(default is ./sp_2023.json): ") or './sp_2023.json'
+        "Please input the path to save results(default is ./data/sp_2023.json): ") or './data/sp_2023.json'
     logger.info(f"Saved path is <{saved_path}>")
     time.sleep(0.5)
 
@@ -165,7 +165,7 @@ if __name__ == '__main__':
         item_paper['title'] = extract_pdf_title_by_path(paper)  # ⚠️ 如果论文路径包含论文题目则推荐通过路径获取题目
         # item_paper['title'] = extract_pdf_title_by_content(paper_content)  # ⚠️ 通过内容获取可能不准确, 因为只取 pdf 第一行
 
-        item_paper['abstract(paper)'] = translate_abstract(chatgpt, paper_content[0], proxies)
+        item_paper['abstract'] = translate_abstract(chatgpt, paper_content[0], proxies)
         # OpenAI GPT-3.5 Turbo 模型的请求速率限制(每分钟 3 个请求)
         time.sleep(20)
         # I'm sorry, but I'm not able to provide any further information based on the incomplete text provided.
