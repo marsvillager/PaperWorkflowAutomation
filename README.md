@@ -263,7 +263,7 @@ def add_prefix_links(pdf_url: str) -> str:
 
 # Summary (保存为 json)
 
-> ⚠️ 两种方式
+> ⚠️ 两种方式（默认关闭了，因为 ChatGPT 3.5 在胡说八道）
 >
 > - [ChatPDF - Chat with any PDF](https://www.chatpdf.com/)，需要上传文件，但这种方式最大的问题是分析的**不准确**，所以不推荐，也未做后续的优化
 > - ChatGPT，由于 ***token*** 和 ***请求速率* 的限制**，整个处理时间较为**漫长**
@@ -278,11 +278,11 @@ def add_prefix_links(pdf_url: str) -> str:
 
 位于项目根目录下,  `python  ./summary/chatgpt.py` 后分别输入（）：
 
-- Please input the API Key of ChatGPT:
+- *Please input the API Key of ChatGPT:*
   - API Key of ChatGPT 
-- Please input the path to save results(default is ./sp_2023.json):
+- *Please input the path to save results(default is ./sp_2023.json):*
   - 结果保存路径
-- Please input the absolute path of papers: 
+- *Please input the absolute path of papers:* 
   - **一篇论文的路径**
   - 论文集的目录, 此时会依次处理**该目录下所有以 pdf 结尾的文件**
 
@@ -314,6 +314,10 @@ def extract_specified_pdf_content(pdf_content: str, start: str, end: str)
 
 ### 2. 论文分页
 
+<img src="./img/problem1.png" alt="problem"/>
+
+遇到 token 的限制请修改分页数目（默认两页为一组）
+
 ```python
 def extract_group_pdf_content(pdf_file_path: str, num: int) -> list
 ```
@@ -337,6 +341,12 @@ def summarize_paper(api_key: str, contents: list, proxy: dict[str, str]) -> json
 	……
 	question: str = '用一长段话连贯地讲述上述论文的核心问题、主要贡献、解决方法等(中文表述)'
 ```
+
+### Other
+
+等待：
+
+<img src="./img/problem.png" alt="problem"/>
 
 # Appendix
 

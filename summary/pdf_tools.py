@@ -44,7 +44,7 @@ def extract_all_pdf_content(pdf_file_path: str) -> str:
         page_text = page.extract_text()
 
         # 如果页面包含 "references"，则停止提取
-        if 'references' in page_text.lower():
+        if 'References' in page_text:
             break
 
         extracted_content.append(page_text)
@@ -82,7 +82,7 @@ def extract_group_pdf_content(pdf_file_path: str, num: int) -> list:
         page_text = page.extract_text()
 
         # 如果页面包含 "references"，则停止提取
-        if 'references' in page_text.lower():
+        if 'References' in page_text:
             break
 
         # 将当前页的文本添加到当前组中
@@ -103,7 +103,7 @@ def extract_group_pdf_content(pdf_file_path: str, num: int) -> list:
     return extracted_content
 
 
-def extract_specified_pdf_title(pdf_content: str):
+def extract_pdf_title_by_content(pdf_content: str):
     """
     提取 pdf 标题
 
@@ -121,13 +121,26 @@ def extract_specified_pdf_title(pdf_content: str):
         return None
 
 
-def extract_specified_pdf_content(pdf_content: str, start: str, end: str):
+def extract_pdf_title_by_path(pdf_path: str) -> str:
+    """
+    提取 pdf 标题
+
+    :param pdf_path: pdf 路径
+    :return: pdf 标题
+    """
+    # 获取路径中的文件名
+    file_name = os.path.basename(pdf_path)
+    return os.path.splitext(file_name)[0]
+
+
+def extract_specified_pdf_content(pdf_content: str, start: str, end1: str, end2: str):
     """
     提取 pdf 特定内容
 
     :param pdf_content: pdf 内容
     :param start: 开始位置
-    :param end: 结束位置
+    :param end1: 结束位置
+    :param end2: 结束位置
     :return: pdf 摘要
     """
     # 找到开始字符串的位置
@@ -135,7 +148,18 @@ def extract_specified_pdf_content(pdf_content: str, start: str, end: str):
 
     if start_index != -1:
         # 找到结束字符串的位置，从开始字符串之后开始查找
-        end_index = pdf_content.find(end, start_index + len(start))
+        end_index1 = pdf_content.find(end1, start_index + len(start))
+        end_index2 = pdf_content.find(end2, start_index + len(start))
+
+        # 选择存在的结束索引中较小的那个
+        if end_index1 != -1 and end_index2 != -1:
+            end_index = min(end_index1, end_index2)
+        elif end_index1 != -1:
+            end_index = end_index1
+        elif end_index2 != -1:
+            end_index = end_index2
+        else:
+            end_index = -1
 
         if end_index != -1:
             # 提取从开始字符串到结束字符串之间的内容
