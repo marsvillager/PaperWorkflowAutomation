@@ -674,5 +674,93 @@
     "\\\\NAS\\Library\\Papers\\IEEE S&P\\2023(44th)SP\\Session 8C：Side-channel attacks\\DevIOus：Device-Driven Side-Channel Attacks on the IOMMU.pdf": {
         "title": "DevIOus：Device-Driven Side-Channel Attacks on the IOMMU",
         "abstract": "现代计算机系统利用输入/输出内存管理单元（IOMMU）来保护内存免受DMA攻击，或在虚拟化中实现强隔离。尽管IOMMU有很多潜在好处，但它也可能成为安全威胁的新来源。与内存管理单元（MMU）类似，IOMMU也有一个名为IOTLB的地址转换缓存，用于保存最近的转换。因此，IOTLB可能成为一种时序侧信道攻击的目标，揭示受害者的秘密。本文介绍了一种新型的基于设备的侧信道攻击D EVIOUS，利用IOTLB来进行攻击。D EVIOUS利用支持DMA的PCIe设备（如GPU和支持RDMA的NIC）来进行攻击。因此，我们的攻击对受害者机器的CPU缓存或TLB没有影响。实施D EVIOUS并不容易，因为Intel处理器的IOTLB的微体系结构细节是隐藏的。我们通过逆向工程IOTLB并揭示其隐藏的体系结构属性来克服这个问题。基于此，我们使用GPU和RNIC构建了两种基于IOTLB的时序攻击原语。然后，我们演示了针对硬件辅助隔离下的共存虚拟机和通过RDMA网络连接的远程机器的实际攻击。我们还讨论了可能的缓解措施来抵御提出的侧信道攻击。"
+    },
+    "\\\\NAS\\Library\\Papers\\IEEE S&P\\2023(44th)SP\\Session 8C：Side-channel attacks\\DVFS Frequently Leaks Secrets：Hertzbleed Attacks Beyond SIKE, Cryptography, and CPU-Only Data.pdf": {
+        "title": "DVFS Frequently Leaks Secrets：Hertzbleed Attacks Beyond SIKE, Cryptography, and CPU-Only Data",
+        "abstract": "最近的Hertzbleed披露展示了远程时序分析如何揭示之前只能通过本地功率分析获得的秘密信息。在最坏的情况下，这构成了对符合常量时间编程原则并依赖于这些原则的许多已部署程序的重大破坏。但并非一切希望都已丧失。Hertzbleed依赖于一个粗粒度、嘈杂的通道，很难利用。事实上，Hertzbleed论文需要一种定制的密码分析方法来攻击特定的密码系统（SIKE）。因此，Hertzbleed是否对更广泛的安全生态系统构成威胁仍不清楚。\n\n在本文中，我们展示了Hertzbleed的影响范围广泛，不仅影响了SIKE之外的加密系统，还影响了密码学之外的程序，甚至发生在CPU核心以外的计算。首先，我们展示了如何将其他加密系统实现中的潜在工具（具体来说是“常量时间”ECDSA和Classic McEliece）与现有密码分析相结合，以启动对这些加密系统的Hertzbleed攻击。其次，我们展示了集成GPU上的功耗如何影响CPU的频率，并且如何利用这一点来执行首个跨域像素窃取攻击，利用Google Chrome上的“常量时间”SVG滤镜。"
+    },
+    "\\\\NAS\\Library\\Papers\\IEEE S&P\\2023(44th)SP\\Session 8C：Side-channel attacks\\Scatter and Split Securely：Defeating Cache Contention and Occupancy Attacks.pdf": {
+        "title": "Scatter and Split Securely：Defeating Cache Contention and Occupancy Attacks",
+        "abstract": "在这篇论文中，我们提出了一种名为SassCache的安全的倾斜关联缓存，其具有键索引映射。为此，我们设计了一个新的两层低延迟密码构造，基于最先进的密码原语，并具有可配置的输出覆盖。基于这种构造，SassCache是第一个具有安全间隔的安全随机缓存。受害者缓存行在攻击者平均进行不到1次访问后自动隐藏在攻击者无法到达的位置。因此，无论攻击者执行哪些和多少内存访问，他们都无法逐出缓存行。我们的安全分析表明，所有现有的驱逐集构建技术都失败了，而最先进的攻击只适用于300万个地址中的1个，而SassCache在这种情况下仍然与ScatterCache一样安全。与标准缓存相比，在SPEC2017基准测试中，SassCache在最后级别缓存命中率上有1:75%的单线程性能损失，并且在我们的高安全设置下，MiBench、GAP和Scimark的命中率平均下降了11:7个百分点。"
+    },
+    "\\\\NAS\\Library\\Papers\\IEEE S&P\\2023(44th)SP\\Session 8C：Side-channel attacks\\SQUIP：Exploiting the Scheduler Queue Contention Side Channel.pdf": {
+        "title": "SQUIP：Exploiting the Scheduler Queue Contention Side Channel",
+        "abstract": "现代超标量CPU具有多个执行单元，可以独立执行指令流中的操作。以前的研究表明，这些乱序执行流水线周围存在许多侧信道，特别是对于在SMT核心上运行的攻击者而言。在本文中，我们提出了SQUIP攻击，这是对调度器队列的第一个侧信道攻击，调度器队列对于决定在超标量CPU中执行的指令的调度至关重要。迄今为止，调度器队列还没有被探索为一个侧信道，因为英特尔CPU只有一个调度器队列，争用问题与重排序缓冲区的争用问题几乎相同。然而，苹果M1、AMD Zen 2和Zen 3微架构为每个执行单元都有单独的调度器队列。我们首先对这些CPU上的调度器队列的行为进行了逆向工程，并展示了它们可以被激活和探测。SQUIP攻击观察了同一硬件核心内和跨SMT线程的占用水平。我们评估了SQUIP攻击在一个隐蔽信道中的性能，从一个共享的虚拟机中以低于0.8%的错误率泄露0.89 Mbit/s，从一个共享的进程中以低于0.8%的错误率泄露2.70 Mbit/s。然后，我们在一个共享的进程和一个共享的虚拟机中展示了对mbedTLS RSA签名过程的侧信道攻击。我们的攻击仅使用50,500个迹线和平均不到5到18个位错误就可以恢复出完整的RSA-4096密钥。最后，我们讨论了必要的缓解措施，特别是针对Zen 2和Zen 3系统，以防止我们的攻击。"
+    },
+    "\\\\NAS\\Library\\Papers\\IEEE S&P\\2023(44th)SP\\Session 9A：Model-based software security\\Callee：Recovering Call Graphs for Binaries with Transfer and Contrastive Learning.pdf": {
+        "title": "Callee：Recovering Call Graphs for Binaries with Transfer and Contrastive Learning",
+        "abstract": "恢复二进制程序的调用图对于基于它们的跨过程分析任务和应用程序至关重要。其中一个核心挑战是识别间接调用的目标（即间接被调用者）。现有的解决方案都存在高误报和漏报的问题，导致调用图不准确。在本文中，我们提出了一种新的解决方案CALLEE，结合了迁移学习和对比学习。关键洞察力是，深度神经网络（DNN）可以自动识别与间接调用相关的模式。受问答应用程序的进展启发，我们利用对比学习来回答调用点-被调用者的问题。然而，其中最困难的挑战之一是，DNN需要大规模数据集才能达到高性能，而收集大规模的间接调用真相可能计算代价高昂。因此，我们利用迁移学习来用易于收集的直接调用预训练DNN，并进一步对间接调用进行微调。我们在几组目标上评估了CALLEE，并结果显示，我们的解决方案可以以94.6％的F1-Measure匹配调用点和被调用者，远优于现有解决方案。此外，我们将CALLEE应用于二进制代码相似性检测和混合模糊测试两个应用程序，并发现它可以极大地提高它们的性能。"
+    },
+    "\\\\NAS\\Library\\Papers\\IEEE S&P\\2023(44th)SP\\Session 9A：Model-based software security\\D-ARM：Disassembling ARM Binaries by Lightweight Superset Instruction Interpretation and Graph Modeling.pdf": {
+        "title": "D-ARM：Disassembling ARM Binaries by Lightweight Superset Instruction Interpretation and Graph Modeling",
+        "abstract": "—ARM二进制分析在ARM系统安全中具有广泛的应用。一个基本的挑战是ARM反汇编。ARM，特别是AArch32，具有许多独特的特性，使得反汇编与x86反汇编不同，例如ARM和Thumb指令模式的混合，应用程序内的隐式模式切换，以及更广泛使用的内联数据。现有的技术在二进制变得复杂并经历了混淆时无法实现高精度。我们提出了一种新颖的ARM二进制反汇编技术，专门设计用于解决32位ARM二进制遗留代码中的挑战。它采用轻量级超集指令解释方法来推导丰富的语义信息，并采用基于图论的方法来聚合这些信息以产生最终结果。我们与包括Ghidra、IDA、P-Disasm、XDA、D-Disasm和Spedi在内的一些最先进的反汇编器进行了比较评估，使用了从SPEC2000和SPEC2006生成的数千个二进制文件以及从在线收集的真实应用程序，结果显示我们的技术D-ARM在性能上明显优于基准线。"
+    },
+    "\\\\NAS\\Library\\Papers\\IEEE S&P\\2023(44th)SP\\Session 9A：Model-based software security\\Effective ReDoS Detection by Principled Vulnerability Modeling and Exploit Generation.pdf": {
+        "title": "Effective ReDoS Detection by Principled Vulnerability Modeling and Exploit Generation",
+        "abstract": "正则表达式拒绝服务（ReDoS）是一种算法复杂性攻击的一种。对于易受攻击的正则表达式，攻击者可以构造特定的字符串来触发超线性的最坏情况匹配时间，从而导致正则表达式引擎的拒绝服务。最近提出了各种ReDoS检测方法。其中，吸收静态和动态方法的优点的混合方法表现出了其性能优势。然而，仍然有两个关键挑战阻碍了检测的有效性：1）现有的建模基于易受攻击的正则表达式的部分特征总结了局部化的漏洞模式；2）现有的攻击字符串生成策略是无效的，因为它们忽略了正则表达式的非易受攻击部分可能会意外地使攻击字符串失效（我们将这种失效称为干扰）。\n\nRENGAR是我们的混合ReDoS检测器，具有新的漏洞建模和无干扰攻击字符串生成器。它具有以下关键特点：1）通过总结易受攻击的正则表达式的全部特征模式，它的建模更精确地解释了ReDoS漏洞的根本原因。该建模比现有建模的并集更具描述性和精确性，同时保持简洁性；2）对于每个易受攻击的正则表达式，它的生成器会自动检查所有潜在的干扰，并组合生成约束以避免可能的干扰。\n\n与九种最先进的工具相比，RENGAR不仅检测到了它们发现的所有易受攻击的正则表达式，还检测到了3-197倍更多的易受攻击的正则表达式。此外，与包含动态验证过程的工具相比，它节省了57.41% - 99.83%的平均检测时间。使用RENGAR，我们已经发现了69个零日漏洞（21个CVE），这些漏洞影响了拥有数千万周下载量的热门项目。"
+    },
+    "\\\\NAS\\Library\\Papers\\IEEE S&P\\2023(44th)SP\\Session 9A：Model-based software security\\Examining Zero-Shot Vulnerability Repair with Large Language Models.pdf": {
+        "title": "Examining Zero-Shot Vulnerability Repair with Large Language Models",
+        "abstract": "—人类开发人员可能会产生带有网络安全漏洞的代码。新兴的“智能”代码自动补全工具可以帮助修复这些漏洞吗？在这项工作中，我们研究了使用大型语言模型（LLMs）进行代码修复（例如OpenAI的Codex和AI21的Jurassic J-1）的零-shot漏洞修复。我们研究了如何设计提示，使LLMs生成修复后的不安全代码版本。由于自然语言在语义和句法上有多种表达关键信息的方式，这是困难的。我们对五个商业可用的“即插即用” LLMs（黑盒模型），以及一个开源模型和我们自己的本地训练模型进行了大规模研究，涵盖了合成的、手工制作的和真实世界的安全漏洞场景。我们的实验表明，虽然这种方法有希望（LLMs能够共同修复我们合成生成和手工制作的所有场景），但对历史真实世界示例的模型性能进行定性评估时，显示出生成功能正确代码的挑战。索引词-网络安全，人工智能，代码生成，CWE"
+    },
+    "\\\\NAS\\Library\\Papers\\IEEE S&P\\2023(44th)SP\\Session 9A：Model-based software security\\GraphSPD：Graph-Based Security Patch Detection with Enriched Code Semantics.pdf": {
+        "title": "GraphSPD：Graph-Based Security Patch Detection with Enriched Code Semantics",
+        "abstract": "随着开源软件的日益普及，嵌入式漏洞已经广泛传播到下游软件。由于不同的维护政策，软件供应商可能会悄悄发布安全补丁，而不提供足够的警告（例如，CVE）。这使得用户对安全补丁不知情，并为攻击者提供了利用未修补漏洞的机会。因此，检测这些悄悄发布的安全补丁对于安全软件的维护至关重要。在本文中，我们提出了一种基于图神经网络的安全补丁检测系统，名为GraphSPD，它将补丁表示为具有更丰富语义的图，并利用适合补丁的图模型进行检测。我们首先开发了一种称为PatchCPG的新型图结构，通过合并前补丁和后补丁源代码的两个代码属性图（CPGs），以及保留补丁的上下文、删除和添加组件来表示软件补丁。通过应用切片技术，我们保留了最相关的上下文，并减小了PatchCPG的大小。然后，我们开发了第一个端到端的深度学习模型，称为PatchGNN，可以直接从其图结构的PatchCPG中确定补丁是否与安全相关。PatchGNN包括一个新的嵌入过程，将PatchCPG转换为数值格式，并采用新的多属性图卷积机制来适应PatchCPG中的多样关系。实验结果表明，GraphSPD在安全补丁检测方面明显优于现有方法。"
+    },
+    "\\\\NAS\\Library\\Papers\\IEEE S&P\\2023(44th)SP\\Session 9A：Model-based software security\\XFL：Naming Functions in Binaries with Extreme Multi-label Learning.pdf": {
+        "title": "XFL：Naming Functions in Binaries with Extreme Multi-label Learning",
+        "abstract": "逆向工程师受益于二进制文件中的函数名等标识符的存在，但通常这些标识符在发布时会被删除。训练机器学习模型以自动预测函数名是具有潜力的，但基本上很困难：与自然语言中的单词不同，大多数函数名只出现一次。在本文中，我们通过引入极端多标签学习方法eXtreme Function Labeling（XFL），来解决这个问题，以选择适当的二进制函数标签。XFL将函数名分割为标记，将每个标记视为类似于自然语言文本标记问题的信息标签。我们通过D EXTER将二进制代码的语义与标签相关联，D EXTER是一种新颖的函数嵌入方法，将基于静态分析的特征与调用图的局部上下文以及整个二进制文件的全局上下文相结合。我们证明了XFL/D EXTER在Debian项目的10,047个二进制文件数据集上在函数标记方面优于现有技术，达到了83.5%的精度。我们还研究了XFL与文献中的其他二进制嵌入方法的组合，并显示D EXTER在这个任务中始终表现最佳。因此，我们证明了二进制函数标记可以有效地表述为多标签学习问题，并且二进制函数嵌入受益于包含明确的语义特征。"
+    },
+    "\\\\NAS\\Library\\Papers\\IEEE S&P\\2023(44th)SP\\Session 9A：Model-based software security\\μSwitch：Fast Kernel Context Isolation with Implicit Context Switches.pdf": {
+        "title": "μSwitch：Fast Kernel Context Isolation with Implicit Context Switches",
+        "abstract": "隔离应用程序组件对于限制敏感数据和代码暴露给不受信任组件的漏洞至关重要。基于进程的隔离是实践中使用的事实标准，例如，Web浏览器。然而，它会产生显著的性能开销，并且在频繁切换隔离域时通常是不可行的。为了解决这个问题，许多基于进程内存隔离技术已被提出，使用了新颖的内核抽象、最近的CPU扩展（如Intel®MPK）和基于软件的故障隔离（如WebAssembly）。然而，这些技术不足以隔离内核资源，如文件描述符，或者在访问资源时产生高开销。其他工作在特权用户空间域内虚拟化内核上下文，但这是临时的、容易出错的，并且仅提供有限的内核功能。\n\n我们提出了μSWITCH，一种具有内存保护的高效内核上下文隔离机制，解决了这些限制。我们使用一个由内核和用户空间共享的受保护结构来进行上下文切换，并提出隐式上下文切换来通过推迟内核资源切换到下一个系统调用来提高性能。我们将μSWITCH应用于隔离Firefox Web浏览器和HTTP服务器中的库，并将隔离的开销与其他隔离技术相比，降低了32.7%至98.4%。\n\n索引术语 - 系统安全，操作系统安全。"
+    },
+    "\\\\NAS\\Library\\Papers\\IEEE S&P\\2023(44th)SP\\Session 9B：Blockchain 2\\BlindHub：Bitcoin-Compatible Privacy-Preserving Payment Channel Hubs Supporting Variable Amounts.pdf": {
+        "title": "BlindHub：Bitcoin-Compatible Privacy-Preserving Payment Channel Hubs Supporting Variable Amounts",
+        "abstract": "—-支付通道中心（Payment Channel Hub，PCH）是解决第一代区块链或比特币等加密货币可扩展性问题的一种有前景的解决方案。它通过中介（称为清洗者）支持发送方和接收方之间的离线支付。隐私保护的PCH具有关系匿名性和价值隐私性，可以防止清洗者识别发送方和接收方的配对以及支付金额。据我们所知，所有现有的与比特币兼容的PCH构建都只允许（预先定义的）固定支付金额来保证关系匿名性。因此，要实现不同金额的支付，它们要么需要多个PCH系统，要么需要多次运行一个PCH系统。这些解决方案都不被认为是实际可行的。\n\n在本文中，我们提出了第一个与比特币兼容的PCH，实现了关系匿名性，并支持可变金额的支付。为了实现这一点，我们有几层技术构建，每一层都可能对社区具有独立的兴趣。首先，我们提出了BlindChannel，一种新颖的双向支付通道协议，用于隐私保护支付，其中一个通道方无法看到通道余额。然后，我们进一步提出了BlindHub，一种三方（发送方、清洗者、接收方）协议，用于私密条件支付，只有在发送方支付给清洗者时，清洗者才会支付给接收方。BlindHub的吸引人的附加特性是，在支持可变支付金额的同时，清洗者无法将发送方和接收方进行关联。为了构建BlindHub，我们还引入了两个新的密码原语作为构建块，即Blind Adaptor Signature（BAS）和Flexible Blind Conditional Signature（FBCS）。BAS是建立在盲签名方案之上的适配器签名协议。FBCS是一种新的密码概念，使我们能够提供具有原子性和隐私保护的PCH。最后，我们实现了BlindChannel和BlindHub协议，并呈现了实现结果以展示它们的实用性。"
+    },
+    "\\\\NAS\\Library\\Papers\\IEEE S&P\\2023(44th)SP\\Session 9B：Blockchain 2\\Clockwork Finance：Automated Analysis of Economic Security in Smart Contracts.pdf": {
+        "title": "Clockwork Finance：Automated Analysis of Economic Security in Smart Contracts",
+        "abstract": "我们介绍了Clockwork Finance Framework（CFF），这是一个通用的正式验证框架，用于对组合的去中心化金融（DeFi）智能合约的经济安全性进行机械化推理。\n\nCFF具有三个关键属性。它是“合约完整”的，意味着它可以对任何智能合约平台及其所有合约进行建模，无论是图灵完备还是其他类型的合约。同时，CFF的模型开销是渐进恒定的。它还是“攻击穷尽”的，意味着它可以自动机械地提取出对用户加密货币的所有可能的经济攻击，跨越了建模的合约。\n\n由于这些属性，CFF可以支持多个目标：开发者对合约的经济安全性分析，用户对DeFi交易风险的分析，费用用户体验以及机器人或矿工对套利机会的优化。由于CFF提供了可组合性，它可以通过对任何所需的可能相互作用的智能合约模型进行推理来支持这些目标。\n\n我们将CFF实例化为以太坊合约的可执行模型，并结合最先进的演绎验证器。在之前的工作基础上，我们引入了“可提取价值”（EV），这是一个新的关于组合DeFi合约的经济安全性的形式概念，既是CFF的基础，也具有一般的兴趣。\n\n我们构建了以太坊中四个受欢迎的部署的DeFi协议（Uniswap、Uniswap V2、Sushiswap和MakerDAO）的模块化、可读性强、可组合的CFF模型，截至2022年3月，这些协议的总价值达到了240亿美元。我们使用这些模型以及其他一些常见的模型，如闪电贷、空投和投票，通过实验表明CFF是实用的，并且可以从真实世界的交易活动中提供有用的、基于数据的EV洞察。在没有明确编程的攻击策略的情况下，CFF在最近的过去平均发现了预期的每月5600万美元的EV。"
+    },
+    "\\\\NAS\\Library\\Papers\\IEEE S&P\\2023(44th)SP\\Session 9B：Blockchain 2\\Leaking Arbitrarily Many Secrets：Any-out-of-Many Proofs and Applications to RingCT Protocols.pdf": {
+        "title": "Leaking Arbitrarily Many Secrets：Any-out-of-Many Proofs and Applications to RingCT Protocols",
+        "abstract": "环路保密交易（Ring Confidential Transaction，简称RingCT）协议是保护加密货币隐私的一种有效的加密组件。然而，现有的RingCT协议仅从一个中选证明中实例化一个秘密，处理具有多个输入的交易时效率低下且匿名性较弱。此外，当前具有多个秘密的部分知识证明既不安全也不高效，无法应用于RingCT协议中。\n\n本文提出了一种新型的任意多选证明，这是一种用于展示公共列表中任意多个秘密知识的对数大小的零知识证明方案。与其他必须透露秘密数量的部分知识证明不同，我们的方法证明了多个秘密的知识，而不泄露具体数量。此外，我们通过一种通用内积转换来提高方法的效率，以采用Bulletproofs压缩，从而将证明大小减小到2⌈log2(N)⌉+9。\n\n基于我们提出的证明方案，我们进一步构建了一种紧凑的用于隐私加密货币的RingCT协议，可为具有多个输入的交易提供对数大小的通信复杂度。更重要的是，作为唯一从部分知识证明实例化的已知RingCT协议，与Omniring等其他方法相比，我们的协议可以实现最高的匿名级别。对于其他应用，如多重环签名，我们的协议也可以进行一些修改后应用。我们相信我们的技术在其他隐私保护场景中也适用，例如区块链中的多重环签名和币混合。"
+    },
+    "\\\\NAS\\Library\\Papers\\IEEE S&P\\2023(44th)SP\\Session 9B：Blockchain 2\\Optimistic Fast Confirmation While Tolerating Malicious Majority in Blockchains.pdf": {
+        "title": "Optimistic Fast Confirmation While Tolerating Malicious Majority in Blockchains",
+        "abstract": "区块链的强韧性对抗敌对势力的能力通常由其能够容忍的最大敌对势力比例（fmax）来描述。尽管大多数现有的区块链只能容忍fmax<1/2或更低的比例，但也有一些区块链系统能够容忍恶意多数，即fmax≥1/2。然而，这类区块链所付出的一个关键代价是较长的确认延迟。本研究旨在显著减少这类区块链在实际敌对势力比例相对较小的普遍情况下的确认延迟。为此，我们提出了一种名为FLINT的新型区块链。FLINT能够容忍fmax≥1/2，并且在敌对势力比例相对较小的情况下能够进行乐观执行（即快速确认）。我们的实验证明，与之前的作品相比，FLINT的快速确认仅需几分钟，而之前的作品需要数小时的确认延迟。"
+    },
+    "\\\\NAS\\Library\\Papers\\IEEE S&P\\2023(44th)SP\\Session 9B：Blockchain 2\\SoK：Decentralized Finance (DeFi) Attacks.pdf": {
+        "title": "SoK：Decentralized Finance (DeFi) Attacks",
+        "abstract": "在仅仅四年的时间里，基于区块链的去中心化金融（DeFi）生态系统累计锁定了超过2530亿美元的峰值总价值。不幸的是，DeFi的流行也伴随着许多有影响力的事件。根据我们的数据，从2018年4月30日到2022年4月30日，用户、流动性提供者、投机者和协议运营商共计损失了至少32.4亿美元。鉴于区块链的透明度和事件频发性，我们提出了两个问题：我们如何系统地衡量、评估和比较DeFi事件？我们如何从过去的攻击中汲取经验，加强DeFi的安全性？在本文中，我们引入了一个共同的参考框架来系统地评估和比较DeFi事件，包括攻击和事故。我们调查了77篇学术论文、30份审计报告和181个真实世界的事件。我们的数据揭示了学术界与从业者社区之间的几个差距。例如，很少有学术论文涉及“价格预言机攻击”和“无需许可的交互”，而我们的数据表明它们是最常见的两种事件类型（分别为15%和10.5%）。我们还调查了潜在的防御措施，并发现：（i）103次（56%）攻击未被原子化执行，为防御者提供了一个救援时间窗口；（ii）字节码相似性分析至少可以检测出31个易受攻击/23个敌对合约；（iii）33个（15.3%）对手通过与中心化交易所的交互泄露了潜在的可识别信息。"
+    },
+    "\\\\NAS\\Library\\Papers\\IEEE S&P\\2023(44th)SP\\Session 9B：Blockchain 2\\Tyr：Finding Consensus Failure Bugs in Blockchain System with Behaviour Divergent Model.pdf": {
+        "title": "Tyr：Finding Consensus Failure Bugs in Blockchain System with Behaviour Divergent Model",
+        "abstract": "区块链是一个去中心化的分布式系统，许多金融应用程序都在其上部署。其中的共识过程起着重要作用，它保证了链上的合法交易可以被公平、一致地执行和记录。然而，由于共识失败漏洞（CFBs），许多区块链系统甚至无法提供这一基本保证。区块链系统的有效性和一致性依赖于复杂共识逻辑实现的正确性。任何导致区块链共识失败的漏洞都可能是关键性的。\n\n在这项工作中，我们介绍了一个名为Tyr的开源工具，用于检测具有大量异常分歧共识行为的区块链系统中的CFBs。首先，我们设计了四个Oracle检测器来监视节点的行为并分析共识属性的违规情况。为了有效触发这些Oracle，Tyr利用行为分歧模型不断生成共识消息，并使节点的行为尽可能不同。我们在包括IBM Fabric、WeBank FISCO-BCOS、ConsenSys Quorum、Facebook Diem、Go-Ethereum和EOS在内的六个广泛使用的商业区块链共识系统上实施和评估了Tyr。与最先进的工具Peach、Fluffy和Twins相比，Tyr分别覆盖了27.3%、228.2%和297.1%更多的分支。此外，Tyr还发现了20个严重的以前未知漏洞，所有这些漏洞都已由相应的维护人员修复。"
+    },
+    "\\\\NAS\\Library\\Papers\\IEEE S&P\\2023(44th)SP\\Session 9C：Malware and malicious sites\\Beyond Phish：Toward Detecting Fraudulent e-Commerce Websites at Scale.pdf": {
+        "title": "Beyond Phish：Toward Detecting Fraudulent e-Commerce Websites at Scale",
+        "abstract": "尽管近年来在恶意网站检测和网络钓鱼防范方面取得了一些进展，但安全生态系统对于欺诈电子商务网站（FCWs）几乎没有关注，例如欺诈购物网站、假慈善机构和加密货币诈骗网站。更糟糕的是，目前没有活跃的大规模缓解系统或公开可用的FCWs数据集。\n\n在本文中，我们首先提出了一种通过众包来收集FCWs的高效自动化方法。我们确定了八种不同类型的非网络钓鱼FCWs并推导出关键定义特征。然后，我们发现反网络钓鱼缓解系统（例如Google Safe Browsing）在我们的数据集上的检测率仅为0.46%。我们创建了一个名为“超越网络钓鱼（B EYOND PHISH）”的分类器，使用基于我们分析的手动定义特征来识别FCWs。通过对从未见过的未经训练和测试的数据进行用户研究验证“超越网络钓鱼”的结果表明，我们的系统具有高检测率和低误报率，分别为98.34%和1.34%。\n\n最后，我们与一家主要的互联网安全公司Palo Alto Networks以及一家主要的金融服务提供商合作，对我们的分类器进行了手动标记的真实世界数据评估。该模型实现了2.46%的误报率和94.88%的检测率，显示了对抗FCWs的潜力。"
+    },
+    "\\\\NAS\\Library\\Papers\\IEEE S&P\\2023(44th)SP\\Session 9C：Malware and malicious sites\\Collaborative Ad Transparency：Promises and Limitations.pdf": {
+        "title": "Collaborative Ad Transparency：Promises and Limitations",
+        "abstract": "一些定向广告平台提供透明机制，但研究人员和民间组织多次表明这些机制存在重大局限性。在本文中，我们提出了一种协作广告透明度方法，可以在没有广告平台的合作下推断广告主用于定向广告的目标参数。我们的想法是要求用户捐赠有关其属性和接收到的广告的数据，并利用这些数据推断广告活动的定向属性。我们提出了基于简化伯努利广告投放模型的最大似然估计器。我们首先通过在Facebook上进行受控广告实验来测试我们的推断方法。然后，为了进一步研究协作广告透明度的潜力和局限性，我们提出了一个允许变化关键参数的模拟框架。我们验证了我们的框架提供与真实观察一致的准确性，从而使我们的模拟结果可以迁移到现实世界。然后，我们对定向两个属性的广告活动进行了广泛的模拟研究。结果显示，只要至少有十个受监测用户接收到广告，我们就可以获得良好的准确性。这通常需要几千个受监测用户，而不论人口规模如何。我们的模拟框架基于一种生成类似实际人口统计属性的合成人口的新方法，这可能具有独立的利益。"
+    },
+    "\\\\NAS\\Library\\Papers\\IEEE S&P\\2023(44th)SP\\Session 9C：Malware and malicious sites\\Could you clean up the Internet with a Pit of Tar. Investigating tarpit feasibility on Internet worms.pdf": {
+        "title": "Could you clean up the Internet with a Pit of Tar. Investigating tarpit feasibility on Internet worms",
+        "abstract": "僵尸网络通常通过广泛的互联网扫描来传播，识别和感染容易受攻击的面向互联网的设备，以扩大其网络规模。对于执法部门来说，摧毁这些网络通常很困难，一些人提出使用tarpits作为一种防御方法，因为它不需要扣押基础设施，也不依赖设备所有者确保其设备配置良好和受保护。这些tarpits是网络服务，旨在让感染恶意软件的设备保持繁忙，减慢或消除恶意行为。\n\n本文发现了无状态扫描恶意软件中的基于网络的tarpit漏洞，并开发了一个tarpitting漏洞利用程序。我们将这种技术应用于基于Mirai扫描例程的恶意软件，以确定大规模tarpitting在遏制自我传播的恶意软件传播方面是否有效。我们证明，即使在一个单独的tarpit中，我们也可以有效地困住数千台设备，这显著减缓了僵尸网络在互联网上的传播，并提供了一个模拟在各种网络条件下恶意软件传播以预先评估tarpits对特定恶意软件的影响的框架。我们展示了即使在没有对受感染的路由器或互联网服务提供商产生可衡量的不利影响的情况下，只需几千个tarpits就可以遏制自我传播的恶意软件，并将我们的tarpitting解决方案作为开放平台发布给社区来实现这一目标。"
+    },
+    "\\\\NAS\\Library\\Papers\\IEEE S&P\\2023(44th)SP\\Session 9C：Malware and malicious sites\\From Grim Reality to Practical Solution：Malware Classification in Real-World Noise.pdf": {
+        "title": "From Grim Reality to Practical Solution：Malware Classification in Real-World Noise",
+        "abstract": "恶意软件数据集中不可避免地包含由于标记样本所需的专业知识和经验不足而产生的错误标签。先前的研究表明，训练集中存在错误标记样本会导致模型学习的不准确。为了解决这个问题，研究人员提出了各种噪声学习方法来抵消错误标记样本的影响，在图像识别和文本挖掘应用中，这些方法显示出了巨大的成功。在这项工作中，我们将代表性的和最先进的噪声学习方法应用于真实世界的恶意软件分类任务中。令人惊讶的是，我们观察到现有方法都不能最小化错误标签的影响。通过精心设计的实验，我们发现无效主要是由于极端数据不平衡和高比例的错误标记数据样本导致的。因此，我们进一步提出了一种新的噪声学习方法，并将其命名为MORSE。与现有方法不同，MORSE定制和扩展了一种最先进的半监督学习技术。它将可能存在错误标记的数据视为未标记数据，从而避免了它们对模型学习的潜在负面影响。在MORSE中，我们还整合了一种样本重新加权方法，平衡了模型学习中的训练数据使用，从而解决了数据不平衡的挑战。我们在自己合成的数据集和真实世界的数据集上评估了MORSE。我们表明，MORSE能显著优于现有的噪声学习方法，并最小化错误标记数据的影响。"
+    },
+    "\\\\NAS\\Library\\Papers\\IEEE S&P\\2023(44th)SP\\Session 9C：Malware and malicious sites\\Limits of I or O Based Ransomware Detection：An Imitation Based Attack.pdf": {
+        "title": "Limits of I or O Based Ransomware Detection：An Imitation Based Attack",
+        "abstract": "通过加密被感染主机的数据，加密勒索软件给各种受害者造成了数十亿美元的财务损失。在过去的十年里，已经提出了许多检测技术来对抗勒索软件威胁。它们的共同方法是监控用户空间的I/O行为，并应用自定义启发式来区分勒索软件。这些技术隐含地假设，就启发式而言，勒索软件与良性程序的行为差异非常大。然而，当我们调查良性程序和勒索软件的行为时，我们发现它们之间的界限变得模糊。即使遵循良性程序的行为模式，勒索软件程序仍然可以达到其目标。在本文中，我们旨在探索基于I/O行为的勒索软件检测技术的局限性。为此，我们提出了一种名为A NIMAGUS的模仿型勒索软件攻击，它模仿良性程序的行为来伪装其加密任务。它首先从一个良性程序中学习行为模式，然后生成并协调子进程以执行与良性程序相同的行为的加密任务。我们评估了它对六种最先进的检测技术的有效性，结果显示它能成功逃避这些防御。我们详细调查了为什么它们无效以及A NIMAGUS与现有勒索软件样本的区别。最后，我们讨论了潜在的对策以及检测工具可以从我们的工作中获益的好处。"
+    },
+    "\\\\NAS\\Library\\Papers\\IEEE S&P\\2023(44th)SP\\Session 9C：Malware and malicious sites\\SoK：History is a Vast Early Warning System：Auditing the Provenance of System Intrusions.pdf": {
+        "title": "SoK：History is a Vast Early Warning System：Auditing the Provenance of System Intrusions",
+        "abstract": "审计是操作系统安全的一个核心支柱，最近才成为公共研究的一个活跃领域。这种复苏的兴趣在很大程度上归因于数据溯源的概念，这是一种通过迭代解析审计日志条目并将其转化为依赖图的技术，以解释系统执行的历史。溯源通过对复杂的入侵行为进行因果分析，有助于精确的威胁检测和调查。然而，缺乏基础审计文献，加上最近发表的研究成果的快速发布，使得很难获得该领域进展和挑战的整体图景。\n\n在这项工作中，我们对基于溯源的系统审计文献进行调查和分类，将贡献分为基于审计日志捕获和分析流程的分层分类。我们认识到，减少层仍然是进一步推广因果分析技术的一个关键障碍，因此我们通过对最近发布的DARPA透明计算数据集进行了一次雄心勃勃的独立评估，评估了8种示例减少技术。我们的实验发现，过去的方法经常从审计日志中修剪出一组重叠的活动，从而减少了将它们并行应用所产生的协同效益；此外，我们观察到存储效率和异常检测性能之间存在反比关系。然而，我们还观察到，日志减少技术能够有效地与数据压缩相协同，可能将日志保留成本降低多个数量级。最后，我们讨论了该领域有希望的未来方向。"
     }
 }
