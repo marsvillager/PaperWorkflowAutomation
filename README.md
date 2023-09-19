@@ -31,7 +31,7 @@ parent_dir_name: str = "usenix_paper_2023"
 
 效果：
 
-![image-20230906113352408](./img/usenix_show.png)
+<img src="./img/usenix_show.png" alt="image-20230906113352408" style="zoom: 67%;" />
 
 ### Details
 
@@ -119,7 +119,7 @@ parent_dir_name: str = "2023(30th)"
 
 效果：
 
-![image-20230906113743388](./img/ndss_show.png)
+<img src="./img/ndss_show.png" alt="image-20230906113743388" style="zoom:67%;" />
 
 ### Details
 
@@ -162,11 +162,11 @@ parent_dir_name: str = "2023(44th)"
 
 > ⚠️ 实测发现存在未下载完整导致如下图所示 pdf 无法读取的情况，请求返回 200 因此也难以进行区分，此时**请删除错误格式的 pdf 后（预览查看更快）重新运行程序**，已下载的完整 pdf 会自动跳过不再重新下载以节省时间
 
-![image-20230906144058923](./img/unexpected.png)
+<img src="./img/unexpected.png" alt="image-20230906144058923" style="zoom: 50%;" />
 
 效果：
 
-![image-20230906153749931](./img/s&p_show.png)
+<img src="./img/s&p_show.png" alt="image-20230906153749931" style="zoom:67%;" />
 
 ### Details
 
@@ -274,20 +274,22 @@ def add_prefix_links(pdf_url: str) -> str:
 
 # 二、论文概述
 
-> ⚠️ 两种方式（默认关闭了，因为 ChatGPT 3.5 在胡说八道）
+> ⚠️ 两种方式全局概述（默认关闭了，因为 ChatPDF 不准确，ChatGPT 3.5 在胡说八道）
 >
 > - [ChatPDF - Chat with any PDF](https://www.chatpdf.com/)，需要上传文件，但这种方式最大的问题是分析的**不准确**，所以不推荐，也未做后续的优化
 > - ChatGPT，由于 ***token*** 和 ***请求速率* 的限制**，整个处理时间较为**漫长**
 >   - （1）需要对 pdf 进行分页（可调整函数的参数）然后**分若干次上传**
 >   - （2）OpenAI GPT-3.5 Turbo 模型的请求速率限制为每分钟 3 个请求，所以每次请求通过 `time.sleep(20)` 来**等待 20 s 后进行下一次的请求**
 
-## Use (推荐 ChatGPT)
+## Use
 
 > ⚠️ 断点机制
 >
 > 已处理完的内容会被保存起来（根据 `json` 文件的 <pdf 路径> 判断）, 下次**同样的目录输入**会跳过已处理部分而非从头开始
 
-位于项目根目录下,  `python  ./summary/chatgpt.py` 后分别输入（）：
+### ChatGPT
+
+位于项目根目录下,  `python  ./summary/chatgpt.py` 后分别输入：
 
 - *Please input the API Key of ChatGPT:*
   - API Key of ChatGPT 
@@ -314,6 +316,24 @@ def add_prefix_links(pdf_url: str) -> str:
 ```
 
 <img src="./img/chatgpt_show.png" alt="result"/>
+
+### GoogleTranslate
+
+> 步骤基本同上，除了 API 来源不同 [Google Translate API Documentation (googlecloud) | RapidAPI](https://rapidapi.com/googlecloud/api/google-translate1/)
+>
+> ⚠️basic 方案翻译不了多少
+>
+> [ERROR] RapidAPI has a processing error: {'message': 'You have exceeded the MONTHLY quota for Characters on your current plan, BASIC. Upgrade your plan at https://rapidapi.com/googlecloud/api/google-translate1'}
+
+位于项目根目录下,  `python  ./summary/google_translate.py` 后分别输入：
+
+- *Please input the API Key of RapidAPI:*
+  - API Key of RapidAPI 
+- *Please input the path to save results(default is ./sp_2023.json):*
+  - 结果保存路径
+- *Please input the absolute path of papers:* 
+  - **一篇论文的路径**
+  - 论文集的目录, 此时会依次处理**该目录下所有以 pdf 结尾的文件**
 
 ## [可视化](https://observablehq.com/)
 

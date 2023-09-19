@@ -139,8 +139,8 @@ def extract_specified_pdf_content(pdf_content: str, start: str, end1: str, end2:
 
     :param pdf_content: pdf 内容
     :param start: 开始位置
-    :param end1: 结束位置
-    :param end2: 结束位置
+    :param end1: 结束位置 1
+    :param end2: 结束位置 2
     :return: pdf 摘要
     """
     # 找到开始字符串的位置

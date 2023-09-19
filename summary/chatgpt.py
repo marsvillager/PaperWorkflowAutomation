@@ -75,7 +75,7 @@ def translate_abstract(api_key: str, content: str, proxy: dict[str, str]) -> jso
     :param proxy: 代理
     :return: 翻译内容
     """
-    abstract_content: str = extract_specified_pdf_content(content, 'Abstract', '1.', 'I.')
+    abstract_content: str = extract_specified_pdf_content(content, 'Abstract', 'Introduction', 'I.')
 
     return chat_with_gpt(api_key, f'请结合自己的理解将下面内容翻译成中文: {abstract_content}', proxy)
 
@@ -117,7 +117,7 @@ if __name__ == '__main__':
 
     # result path
     saved_path: str = input(
-        "Please input the path to save results(default is ./data/sp_2023.json): ") or './data/sp_2023.json'
+        "Please input the path to save results(default is ./data/usenix_2023.json): ") or './data/usenix_2023.json'
     logger.info(f"Saved path is <{saved_path}>")
     time.sleep(0.5)
 
