@@ -1,0 +1,350 @@
+{
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Blockchains\\As Strong As Its Weakest Link：How to Break Blockchain DApps at RPC Service.pdf": {
+        "title": "As Strong As Its Weakest Link：How to Break Blockchain DApps at RPC Service",
+        "abstract": "现代区块链已经从加密货币基础发展为去中心化的信任平台，支持更多种类的去中心化应用程序，也称为DApps。区块链远程过程调用（RPC）服务作为中介连接DApps与区块链网络。在这项工作中，我们将广泛存在于区块链RPC中的自由合约执行能力识别为一种拒绝服务（DoS）的漏洞，并提出DoERS攻击，一种对以太坊RPC服务的拒绝服务攻击，攻击者不需要支付任何以太币。\n\n为了了解DoERS在实际中的可利用性，我们对控制大多数DApp客户端连接以太坊主网的九个真实世界RPC服务进行了系统的测量研究。特别地，我们提出了一种基于孤立交易的新型测量技术，以发现黑盒RPC服务中的以前未知行为，包括负载均衡和燃气限制。我们还提出了进一步的DoERS策略，以规避这些行为所预期的保护措施。\n\n我们评估了DoERS攻击对已部署的RPC服务的有效性，最小程度地中断服务。结果表明，所有经过测试的九个服务（截至2020年4月）都容易受到DoERS攻击，这可能导致服务的延迟增加2:1X至50X。其中一些攻击只需要一个请求。此外，对于受限制的本地以太坊节点，每秒发送150个DoERS请求可以将受害节点的块同步速度减慢91%。\n\n我们提出了针对DoERS的缓解技术，既不会降低服务的可用性，又能实现不可预测的负载均衡、性能异常检测等。这些技术可以透明地集成到RPC服务中，对其客户端进行保护。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Blockchains\\Bitcontracts：Supporting Smart Contracts in Legacy Blockchains.pdf": {
+        "title": "Bitcontracts：Supporting Smart Contracts in Legacy Blockchains",
+        "abstract": "在这篇论文中，我们提出了Bitcontracts，一种创新的解决方案，可以在未经修改的旧加密货币（如比特币）上安全高效地执行通用智能合约。我们的解决方案的起点是一种离链执行模型，其中合约的发行者指定一组服务提供者来执行合约的代码。如果一定数量的服务提供者报告相同的执行结果，则接受合约的执行结果，并且客户可以自由选择信任和使用哪些合约。本文的主要技术贡献是如何在不修改底层区块链的情况下安全高效地实现这样的信任模型。我们还确定了一个通用属性集，以确保区块链系统能够安全地添加具有表达力的智能合约，并根据这些标准分析了流行的现有区块链。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Blockchains\\LaKSA：A Probabilistic Proof-of-Stake Protocol.pdf": {
+        "title": "LaKSA：A Probabilistic Proof-of-Stake Protocol",
+        "abstract": "我们介绍了一种大规模已知委员会股份协议（LaKSA），这是一种面向加密货币的链式权益证明协议，但不限于加密货币。LaKSA通过轻量级委员会投票来最小化节点之间的交互，从而提供比竞争系统更简单、更健壮、更可扩展的方案。它还缓解了之前系统的其他缺点，如高奖励方差和长确认时间。LaKSA在设计上可以支持大量节点，并提供概率安全保证，客户端可以通过计算基于其区块链视图的交易被撤销的概率来进行决策。我们对LaKSA进行了全面的分析，并对其实施和评估进行了报告。此外，我们的新的安全证明技术可以更广泛地应用于其他权益证明协议。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Blockchains\\RandRunner：Distributed Randomness from Trapdoor VDFs with Strong Uniqueness.pdf": {
+        "title": "RandRunner：Distributed Randomness from Trapdoor VDFs with Strong Uniqueness",
+        "abstract": "在分布式计算中，共同生成随机性一直是一个长期存在的问题。它在最先进的拜占庭容错（BFT）和区块链协议的设计中起着关键作用，同时也适用于远离这个领域的一系列应用。我们提出了RandRunner，一种具有独特保障集的随机信标协议，针对一个现实的系统模型。我们的设计避免了(BFT)共识协议及其所带来的高复杂性和通信开销的必要性。我们通过在RSA设置中引入对可验证延迟函数（VDFs）的新扩展来实现这一目标，该扩展不需要可信的交易商或分布式密钥生成（DKG），只依赖于经过深入研究的密码学假设。这种设计使得RandRunner能够容忍对抗性或失败的领导者，同时确保在可能出现的异步期间协议的安全性和活跃性。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Blockchains\\SquirRL：Automating Attack Analysis on Blockchain Incentive Mechanisms with Deep Reinforcement Learning.pdf": {
+        "title": "SquirRL：Automating Attack Analysis on Blockchain Incentive Mechanisms with Deep Reinforcement Learning",
+        "abstract": "激励机制是无权限区块链功能的核心：它们激励参与者运行和保护基础共识协议。然而，设计激励兼容的激励机制非常具有挑战性。因此，今天大多数公共区块链使用的激励机制的安全性属性并不被很好地理解和测试。在这项工作中，我们提出了SquirRL，一个使用深度强化学习来分析区块链激励机制攻击的框架。我们通过首先恢复已知的攻击（1）比特币中的最优自私挖矿攻击[56]和（2）区块保留攻击中的纳什均衡[18]来展示SquirRL的能力。我们还使用SquirRL获得了一些新的实证结果。首先，我们发现了一个直觉上不符合的问题，即当应用于具有不完全信息的多智能体马尔可夫博弈时，广泛使用的冲突对手模型的缺陷。其次，我们证明了在[56]中确定的最优自私挖矿策略实际上不是多智能体自私挖矿环境下的纳什均衡。事实上，我们的结果表明（但并没有证明），当超过两个竞争智能体参与自私挖矿时，没有可盈利的纳什均衡。这与现实中未观察到的自私挖矿现象一致。第三，我们发现了对以太坊最终化机制Casper the Friendly Finality Gadget（FFG）的简化版本的一种新攻击，该攻击允许策略性智能体将奖励增加多达30％。值得注意的是，[12]表明在Casper FFG中，诚实投票是纳什均衡；我们的攻击显示当Casper FFG与自私挖矿结合时，这不再成立。总的来说，我们的实验展示了SquirRL作为一个研究迄今为止尚未理论和实证理解的攻击设置的框架的灵活性和潜力。\n关键词-区块链，深度强化学习，激励机制\n平等贡献"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Crypto\\Forward and Backward Private Conjunctive Searchable Symmetric Encryption.pdf": {
+        "title": "Forward and Backward Private Conjunctive Searchable Symmetric Encryption",
+        "abstract": "动态可搜索对称加密（Dynamic searchable symmetric encryption，简称SSE）在外包对称加密数据的同时支持更新和关键字搜索，旨在最小化向不可信任的主机服务器泄露的信息。关于动态SSE的文献已经确定了两个关键的安全属性 - 前向隐私和后向隐私。前向隐私使得服务器很难将更新操作与先前执行的搜索操作相关联。后向隐私限制了服务器对已从数据库中删除的文档所了解的信息量。\n迄今为止，关于前向和后向私密SSE的研究主要集中在单个关键字搜索上。然而，为了使任何SSE方案真正实用，它至少应该支持连接关键字搜索。在这种情况下，大多数先前具有次线性搜索复杂性的SSE构造不支持动态数据库。唯一的例外是Kamara和Moataz（EUROCRYPT’17）的方案; 但它只实现了前向隐私。在连接关键字搜索的设置中实现前向和后向隐私，这是任何动态SSE方案最理想的安全概念，目前还未解决。\n在这项工作中，我们开发了第一个用于连接关键字搜索的前向和后向私密SSE方案。我们提出的方案称为Oblivious Dynamic Cross Tags（或简称ODXT），可以扩展到非常大的任意结构化数据库（包括属性-值和自由文本数据库）。ODXT通过高效地支持快速更新和连接关键字搜索来提供性能和安全之间的现实权衡，同时只产生与现有前向和后向隐私概念相符的适度访问模式泄漏给服务器。我们精确定义了ODXT的泄漏概况，并对其安全性进行了详细的形式分析。然后，我们通过开发原型实现并在包含数百万文档的真实世界数据库上评估其性能来证明ODXT的实用性。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Crypto\\More than a Fair Share：Network Data Remanence Attacks against Secret Sharing-based Schemes.pdf": {
+        "title": "More than a Fair Share：Network Data Remanence Attacks against Secret Sharing-based Schemes",
+        "abstract": "随着实用量子计算机的进展，对不依赖离散对数或因子分解问题的量子安全、安全通信方案的搜索越来越迅速。一种名为多路径切换与秘密分享的加密方案（MSSS）结合了秘密分享和多路径切换，以实现安全性，前提是对手不能全局观测所有路径，因此无法捕获足够的分享来重构信息。MSSS假设在路径上发送分享是一个原子操作，并且所有路径具有相同的延迟。\n\n我们发现了MSSS的一个侧信道漏洞，这是由于在真实网络中，发送分享不是一个原子操作，因为路径有多个跳点和不同的延迟。该信道称为网络数据残留（NDR），在所有依赖于传输原子性和所有路径具有相同延迟的方案中都存在，例如MSSS。我们在物理实验中证明了NDR的存在。然后，我们确定了两种旨在利用侧信道的新攻击，称为NDR Blind和NDR Planned，提出了用于分析这些攻击的分析模型，并使用基于ONOS SDN控制器的MSSS实现进行了演示。最后，我们提出了对抗这些攻击的对策，并展示了在仿真和Mininet实验中的有效性。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Crypto\\Obfuscated Access and Search Patterns in Searchable Encryption.pdf": {
+        "title": "Obfuscated Access and Search Patterns in Searchable Encryption",
+        "abstract": "可搜索对称加密(Searchable Symmetric Encryption, SSE)允许数据所有者将其加密数据安全地外包给云服务器，同时保持对其进行搜索和检索匹配文档的能力。大多数现有的SSE方案会泄露每个查询访问了哪些文档，即所谓的访问模式，因此容易受到可以恢复数据库或查询关键字的攻击。目前能够完全隐藏访问模式的技术，如ORAM或PIR，通信或计算成本较高，并且并非以搜索功能为目标设计。最近，Chen等人(2018年INFOCOM)提出了一种SSE的混淆框架，以合理的效用成本以差分隐私方式保护访问模式。然而，该方案在查询相同关键字时总是产生相同的混淆访问模式，从而泄漏了所谓的搜索模式，即某个查询被执行的次数。这种泄露使该方案容易受到某些数据库和查询恢复攻击。\n\n在本文中，我们提出了OSSE(Obfuscated SSE)，一种对每个查询独立混淆访问模式的SSE方案。这样可以隐藏搜索模式，并使我们的方案对依赖于此泄漏的攻击具有抵抗力。在对数据库和查询分布做出某些合理假设的情况下，我们的方案比基于ORAM的SSE具有更小的通信开销。此外，我们的方案在单一通信轮中运行，并且需要非常小的常量客户端存储空间。我们的实证评估表明，OSSE在保护不同查询恢复攻击方面非常有效，同时保持了合理的效用水平。与Chen等人的提案相比，我们的协议在一些最先进的攻击方面提供了更多的保护，这表明在设计有效的隐私保护SSE方案中隐藏搜索模式的重要性。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Crypto\\Practical Non-Interactive Searchable Encryption with Forward and Backward Privacy.pdf": {
+        "title": "Practical Non-Interactive Searchable Encryption with Forward and Backward Privacy",
+        "abstract": "在动态对称可搜索加密（Dynamic Symmetric Searchable Encryption，DSSE）中，前向隐私确保以前的搜索查询不能与未来的更新关联，而后向隐私则确保随后的搜索查询不能与过去删除的文档关联。在这项工作中，我们提出了一种通用的前向和后向隐私DSSE方案，据我们所知，这是第一个实用的、非交互式的、不依赖于可信执行环境的Type-II后向隐私DSSE方案。为此，我们首先引入了一种新的密码原语，称为对称可撤销加密（Symmetric Revocable Encryption，SRE），并提出了一种基于一些简洁密码原语的模块化构造。然后，我们基于提出的SRE提出了我们的DSSE方案，并使用轻量级对称原语进行实例化。最后，我们实现了我们的方案，并将其与迄今为止最有效的Type-II后向隐私方案（Demertzis等人，NDSS 2020）进行了比较。在典型的网络环境中，我们的结果显示，在相同的安全概念下，我们的方案的搜索性能超过了它2-11倍。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Embedded Security\\BaseSpec：Comparative Analysis of Baseband Software and Cellular Specifications for L3 Protocols.pdf": {
+        "title": "BaseSpec：Comparative Analysis of Baseband Software and Cellular Specifications for L3 Protocols",
+        "abstract": "—移动通信中，基带芯片起着至关重要的作用。然而，由于基带固件的复杂性和晦涩性，对其安全性进行评估是非常具有挑战性的。由于覆盖不同型号或版本需要大量的重复工作，因此手动分析是不可避免的。自动化分析也很不容易，因为基带固件非常庞大，并包含与复杂的移动通信协议相关的众多功能。因此，目前关于基带分析的现有方法仅限于单个供应商内的几个型号或版本。\n\n在本文中，我们提出了一种名为BASESPEC的新方法，它对基带软件和移动通信规范进行了比较分析。通过利用规范中的标准化消息结构，BASESPEC系统地检查了基带软件中实现的消息结构。它需要进行一次手动分析来确定消息结构如何嵌入目标固件中。然后，BASESPEC在语法和语义上对提取的消息结构与规范中的消息结构进行比较，最后报告不匹配之处。这些不匹配表示开发人员的错误，这些错误导致基带与规范不符合，或者暗示存在潜在的漏洞。我们使用来自三大供应商之一的9个型号的18个基带固件图像对BASESPEC进行了评估，并发现了数百个不匹配之处。通过分析这些不匹配之处，我们发现了9个错误案例，其中包括5个功能错误和4个与内存相关的漏洞。值得注意的是，其中两个是严重的远程代码执行0天漏洞。此外，我们还将BASESPEC应用于另一家供应商的3个型号，并发现了多个不匹配之处，其中两个导致我们发现了一个缓冲区溢出漏洞。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Embedded Security\\Evading Voltage-Based Intrusion Detection on Automotive CAN.pdf": {
+        "title": "Evading Voltage-Based Intrusion Detection on Automotive CAN",
+        "abstract": "—控制器局域网（CAN）被广泛应用于现代汽车，以实现车内电子控制单元（ECU）之间的通信。由于资源限制，CAN缺乏主流网络安全功能，易受到ECU冒充攻击的影响，即被入侵的（攻击者）ECU冒充未受攻击的（受害者）ECU并伪造后者的CAN消息。一种经济有效的最新防御措施是基于CAN总线电压的入侵检测系统（VIDS），它通过总线上的电压指纹识别每个消息的来源。由于电压指纹来自ECU的硬件特性，单独的攻击者ECU无法可控地修改它。因此，VIDS已被证明在检测涉及单一攻击者的冒充攻击方面非常有效。\n\n在本文中，我们发现了一种新颖的电压破坏策略，利用两个被入侵的ECU（即攻击者ECU与帮凶ECU一起工作）的能力来破坏VIDS记录的总线电压。通过利用这种策略以及CAN协议的基本缺陷，我们提出了一种新颖的冒充攻击称为DUET，它可以逃避所有现有的VIDS，无论它们使用的特征和分类算法如何。DUET采用两阶段攻击策略，首先在VIDS重新训练模式下操纵受害者ECU的电压指纹，然后在VIDS运行模式下冒充被操纵的指纹。我们在真实的CAN总线上对DUET进行了评估（包括两辆真实汽车中的三个），结果显示DUET至少有90％的成功冒充率，可以逃避两种最新的VIDS。\n\n最后，为了减轻ECU冒充攻击，我们主张开发成本效益的防御措施，远离“攻击vs. IDS”的竞赛。我们提出了一种轻量级防御措施称为RAID，在VIDS重新训练模式下，使每个ECU能够在其帧格式中进行协议兼容的修改，生成一种唯一的方言（由ECU发出）。RAID可以防止ECU电压指纹的破坏，并重新启用VIDS以检测包括DUET在内的所有ECU冒充攻击。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Embedded Security\\From Library Portability to Para-rehosting：Natively Executing Microcontroller Software on Commodity Hardware.pdf": {
+        "title": "From Library Portability to Para-rehosting：Natively Executing Microcontroller Software on Commodity Hardware",
+        "abstract": "在寻找微控制器（MCU）固件中的错误是具有挑战性的，即使对于拥有源代码的设备制造商来说也是如此。MCU运行的指令集与x86不同，并且提供了一个非常不同的开发环境。这使得许多现有的复杂软件测试工具在x86上失效。为了保持统一的开发和测试环境，一种简单的方法是将源代码重新编译成适用于通用计算机的本机可执行文件（称为重定位）。然而，临时重定位是一项艰巨而繁琐的任务，并且容易遇到许多问题（依赖库、内核依赖和硬件依赖）。在这项工作中，我们系统地探索了MCU软件的可移植性问题，并提出了参数重新定位来简化移植过程。具体来说，我们使用POSIX接口抽象实现了一个可移植的MCU（PMCU）。它模拟了MCU核心的常见功能。对于特定外设逻辑，我们提出了基于HAL的外设功能替代，其中高级硬件功能被主机上的等效后端驱动程序替换。这些后端驱动程序由精心设计的参数API调用，并且可以在许多MCU操作系统中重复使用。我们将常见的HAL功能分为四种类型，并实现了快速后端开发的模板。使用所提出的方法，我们已经成功地将包括广泛部署的Amazon FreeRTOS、ARM Mbed OS、Zephyr和LiteOS在内的九个MCU操作系统进行了重定位。为了证明我们的方法在安全测试方面的优越性，我们使用现成的动态分析工具（AFL和ASAN）对重新定位的程序进行了测试，并发现了28个以前未知的错误，其中5个被CVE确认，其余19个在撰写本文时已被供应商确认。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Embedded Security\\HERA：Hotpatching of Embedded Real-time Applications.pdf": {
+        "title": "HERA：Hotpatching of Embedded Real-time Applications",
+        "abstract": "内存损坏攻击是针对物联网设备的一种主要攻击手段。简单地更新易受攻击的物联网软件并不总是可能的，因为这会导致不可接受的停机时间和必须重新启动。对于高度可用的嵌入式系统，如医疗设备，以及任何有实时约束的嵌入式系统，必须避免这些副作用。为了避免系统停机和重新启动，先前的研究引入了热修补的概念。然而，现有的方法无法应用于资源受限的物联网设备。此外，可能存在硬件相关问题，即由于只读内存无法直接修改固件映像。\n在本文中，我们介绍了HERA（嵌入式实时应用的热修补）的设计和实现，该方法利用常见Cortex-M微控制器的硬件内置特性来执行嵌入式系统的热修补。HERA保持了硬实时约束，同时将额外资源使用降至最低。在一个案例研究中，我们将HERA应用于两个易受攻击的医疗设备。此外，我们利用HERA修补了FreeRTOS操作系统中的一个现有漏洞。这些应用程序展示了我们方法的高实用性和效率。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Federated Learning and Poisoning attacks\\Data Poisoning Attacks to Deep Learning Based Recommender Systems.pdf": {
+        "title": "Data Poisoning Attacks to Deep Learning Based Recommender Systems",
+        "abstract": "推荐系统在帮助用户在亚马逊、YouTube和谷歌新闻等各种网络服务中找到感兴趣的信息方面起着至关重要的作用。从基于邻居、基于关联规则、基于矩阵分解到基于深度学习的各种推荐系统已经在工业界得到开发和部署。其中，基于深度学习的推荐系统由于其卓越的性能而变得越来越受欢迎。\n\n在这项工作中，我们对基于深度学习的推荐系统进行了第一次系统研究，针对数据污染攻击。攻击者的目标是操纵推荐系统，使得攻击者选择的目标物品被推荐给许多用户。为了实现这个目标，我们的攻击向推荐系统中注入虚假用户，这些用户的评分经过精心设计。具体来说，我们将攻击形式化为一个优化问题，目的是注入的评分最大化目标物品被推荐给正常用户的数量。然而，解决这个优化问题具有挑战性，因为它是一个非凸整数规划问题。为了应对这一挑战，我们开发了多种技术来近似解决这个优化问题。我们在三个真实数据集上进行实验，包括小规模和大规模数据集，结果表明我们的攻击是有效的，并且优于现有的攻击方法。此外，我们尝试通过对正常用户和虚假用户的评分模式进行统计分析来检测虚假用户。我们的结果表明，即使部署了这样的检测器，我们的攻击仍然是有效的，并且优于现有的攻击方法。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Federated Learning and Poisoning attacks\\FLTrust：Byzantine-robust Federated Learning via Trust Bootstrapping.pdf": {
+        "title": "FLTrust：Byzantine-robust Federated Learning via Trust Bootstrapping",
+        "abstract": "拜占庭鲁棒联邦学习旨在使服务提供商在有限数量的恶意客户端存在的情况下学习到准确的全局模型。现有的拜占庭鲁棒联邦学习方法的关键思想是，在聚合客户端的本地模型更新之前，服务提供商对客户端的本地模型更新进行统计分析，并删除可疑的更新。然而，恶意客户端仍然可以通过向服务提供商发送精心制作的本地模型更新来破坏这些方法中的全局模型。根本原因在于现有联邦学习方法中没有可信的根源，即从服务提供商的角度来看，每个客户端都可能是恶意的。\n\n在这项工作中，我们通过提出FLTrust来弥合这一差距，这是一种新的联邦学习方法，其中服务提供商自身建立了信任。特别是，服务提供商自身收集一个干净的小型训练数据集（称为根数据集）用于学习任务，并基于此维护一个模型（称为服务器模型）来建立信任。在每次迭代中，服务提供商首先为来自客户端的每个本地模型更新分配一个信任分数，如果本地模型更新的方向与服务器模型更新的方向偏离得更远，则该本地模型更新的信任分数较低。然后，服务提供商对本地模型更新的幅度进行归一化，使其位于与服务器模型更新在向量空间中相同的超球体中。我们的归一化限制了具有较大幅度的恶意本地模型更新的影响。最后，服务提供商通过根据其信任分数加权计算归一化本地模型更新的平均值作为全局模型更新，用于更新全局模型。我们对来自不同领域的六个数据集进行了广泛的评估，结果表明我们的FLTrust对现有攻击和强适应性攻击都是安全的。例如，使用少于100个示例的根数据集，在40%-60%的恶意客户端的自适应攻击下，FLTrust仍然可以训练出与非攻击情况下FedAvg训练的全局模型一样准确的全局模型，其中FedAvg是非对抗性环境中的一种流行方法。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Federated Learning and Poisoning attacks\\Manipulating the Byzantine：Optimizing Model Poisoning Attacks and Defenses for Federated Learning.pdf": {
+        "title": "Manipulating the Byzantine：Optimizing Model Poisoning Attacks and Defenses for Federated Learning",
+        "abstract": "联邦学习（FL）使许多数据所有者（例如移动设备）能够在不共享其私有训练数据的情况下训练一个联合的机器学习模型（例如下一个单词预测分类器）。然而，已知FL容易受到恶意参与者（例如敌对拥有的移动设备）的毒化攻击，这些攻击旨在通过在联邦训练过程中发送恶意输入来破坏联合训练模型的准确性。在本文中，我们提出了一个针对FL的模型毒化攻击的通用框架。我们展示了我们的框架导致的毒化攻击在很大程度上超越了最先进的模型毒化攻击。例如，与先前发现的毒化攻击相比，我们的攻击导致FL模型的准确性降低了1.5到60个数量级。\n\n我们的工作表明，现有的拜占庭容错FL算法对模型毒化的容忍性比以前想象的要高得多。受此启发，我们设计了一种针对FL毒化的防御方法，称为分而治之（DnC）。我们证明DnC在击败模型毒化攻击方面优于所有现有的拜占庭容错FL算法，具体而言，在我们对不同数据集和模型进行的实验中，它的弹性提高了2.5到12个数量级。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Federated Learning and Poisoning attacks\\POSEIDON：Privacy-Preserving Federated Neural Network Learning.pdf": {
+        "title": "POSEIDON：Privacy-Preserving Federated Neural Network Learning",
+        "abstract": "在这篇论文中，我们解决了在N方分布式学习环境下，神经网络隐私保护训练和评估的问题。我们提出了一种新颖的系统POSEIDON，这是隐私保护神经网络训练领域中的首创。它采用多方基于格的密码学来保护训练数据、模型和评估数据的机密性，可以应对被动对手模型和多达N-1个参与方的串通。为了高效执行神经网络训练的安全反向传播算法，我们提供了一种通用的打包方法，可以对加密数据进行单指令多数据（SIMD）操作。我们还在密码学引导操作中引入了任意线性变换，优化了参与方之间的昂贵密码学计算，并定义了一个约束优化问题来选择密码学参数。我们的实验结果表明，POSEIDON的准确度与集中式或分散式的非隐私方法相似，并且它的计算和通信开销随参与方数量的增加呈线性增长。POSEIDON在MNIST数据集上的784个特征和60K个样本分布在10个参与方之间，可以在不到2小时内训练一个3层的神经网络。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Forensics and Audits\\ALchemist：Fusing Application and Audit Logs for Precise Attack Provenance without Instrumentation.pdf": {
+        "title": "ALchemist：Fusing Application and Audit Logs for Precise Attack Provenance without Instrumentation",
+        "abstract": "网络攻击变得越来越持久和复杂。大多数先进的攻击取证技术要么需要对软件应用进行注释和仪器化，要么依赖于高质量的执行分析作为异常检测的基础。我们提出了一种新颖的攻击取证技术ALchemist。它基于以下观察结果：内置的应用程序日志提供了关键的高级语义信息，审计日志提供了低级精细的信息，而且两者共享许多共同元素。因此，ALchemist是一种日志融合技术，将应用程序日志和审计日志相结合，以获取在任一日志中都看不到的关键攻击信息。它基于关系推理引擎Datalog，并具有推断新关系的能力，如执行的任务结构（例如，firefox中的选项卡），特别是在复杂的异步执行模型和日志事件之间的高级依赖关系存在的情况下。我们对包括firefox、Chromium和OpenOfﬁce在内的15个热门应用程序以及文献中的14个APT攻击进行了评估，结果表明，尽管ALchemist不需要仪器化，但它在将执行分区到自主任务（以避免虚假依赖）和推导出精确的攻击来源图方面非常有效，而且开销非常小。它还优于NoDoze和OmegaLog这两种不需要仪器化的先进技术。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Forensics and Audits\\C^2SR：Cybercrime Scene Reconstruction for Post-mortem Forensic Analysis.pdf": {
+        "title": "C^2SR：Cybercrime Scene Reconstruction for Post-mortem Forensic Analysis",
+        "abstract": "网络犯罪现场重建旨在重建以前的网络攻击传递过程的重要能力，对于网络取证（例如，对网络攻击执行的事后分析）非常重要。然而，现有的技术，如基于日志的取证或记录和回放技术，并不适合处理复杂且运行时间长的现代应用程序的网络犯罪现场重建和事后取证分析。具体来说，基于日志的网络取证技术经常受到检查能力不足和无法提供攻击展开详情的问题困扰。而记录和回放技术会引入显著的运行时开销，通常需要对终端用户系统进行大量修改，并且需要从头开始重放整个记录的执行过程。在本文中，我们提出了C2SR，一种新颖的技术，可以重建攻击传递链（即网络犯罪现场）以进行事后取证分析。它提供了一种非常理想的能力：可交互的部分执行重建。具体而言，它可以从长时间运行的程序的大型执行跟踪中重现感兴趣的部分执行。重建的执行还可以进行交互，允许取证分析人员利用在记录机器上不存在的调试和分析工具。C2SR的关键想法是通过资源对执行跟踪进行分区，并重现与原始执行一致的资源访问。它容忍不会导致不一致的资源访问的检查所需的用户交互。我们在26个真实世界的程序上进行的评估结果显示，C2SR具有较低的运行时开销（低于5.47%）和可接受的空间开销。我们还通过四个现实的攻击场景演示了C2SR成功重构了长时间运行的应用程序（如Web浏览器）的部分执行，并且可以显著减少用户理解事件所需的工作。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Forensics and Audits\\WATSON：Abstracting Behaviors from Audit Logs via Aggregation of Contextual Semantics.pdf": {
+        "title": "WATSON：Abstracting Behaviors from Audit Logs via Aggregation of Contextual Semantics",
+        "abstract": "从审计日志中提取行为：通过上下文语义的聚合\n摘要 - 端点监控解决方案广泛部署在当今的企业环境中，以支持高级攻击检测和调查。这些监视器持续记录系统级活动作为审计日志，并提供对安全事件的深入可见性。不幸的是，为了识别感兴趣的行为和检测潜在威胁，网络分析师面临着低级审计事件和高级系统行为之间的语义差距。为了弥合这一差距，现有的工作主要是将一系列审计日志与描述行为的知识库进行匹配。然而，指定这样的规则严重依赖于专家知识。本文介绍了WATSON，一种通过推断和聚合审计事件的语义来抽象行为的自动化方法。WATSON通过审计日志中的使用上下文来揭示事件的语义。通过将事件语义作为行为的表示，WATSON提取连接的系统操作作为行为。为了减少分析工作量，WATSON进一步将语义相似的行为聚类，并区分出代表进行分析师调查。在对良性和恶意行为进行评估时，WATSON展示了高准确性的行为抽象。此外，对于攻击调查，WATSON可以将分析工作量减少两个数量级。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Fuzzing\\Favocado：Fuzzing the Binding Code of JavaScript Engines Using Semantically Correct Test Cases.pdf": {
+        "title": "Favocado：Fuzzing the Binding Code of JavaScript Engines Using Semantically Correct Test Cases",
+        "abstract": "JavaScript运行时系统包括一些特殊的编程接口，称为绑定层。绑定层通过转换不同类型的数据来在JavaScript和不安全的低级语言（如C和C++）之间转换数据表示。由于JavaScript（和JavaScript引擎）在整个计算生态系统中的广泛应用，发现JavaScript绑定层中的错误非常重要。然而，现有的JavaScript模糊测试工具无法充分模糊绑定层，原因有两个主要挑战：生成语法和语义正确的测试用例以及减小模糊测试输入空间的大小。\n\n在本文中，我们提出了一种新颖的模糊测试方法，名为Favocado，专注于JavaScript运行时系统的绑定层模糊测试。Favocado通过提取语义信息和维护执行状态来生成语法和语义正确的JavaScript测试用例。这样，Favocado生成的测试用例不会引发意外的运行时异常，从而大大增加了触发绑定代码的机会。此外，利用绑定层的独特特性（相对隔离），Favocado通过将DOM对象分割成等价类，并在每个等价类中进行模糊测试，显著减小了模糊测试输入空间的大小。我们在实验中展示了Favocado的有效性，并证明Favocado优于现有的DOM模糊测试工具。最后，在评估过程中，我们在四个JavaScript运行时系统（Adobe Acrobat Reader，Foxit PDF Reader，Chromium和WebKit）中发现了61个以前未知的错误，其中33个是安全漏洞。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Fuzzing\\PGFUZZ：Policy-Guided Fuzzing for Robotic Vehicles.pdf": {
+        "title": "PGFUZZ：Policy-Guided Fuzzing for Robotic Vehicles",
+        "abstract": "—机器人车辆（RVs）正在成为现代系统的必要工具，包括自主送货服务、公共交通和环境监测。尽管它们被广泛部署，但RVs的安全和安全问题限制了它们的广泛采用。迄今为止，对RV安全的大多数尝试旨在提出防御措施，以加强其控制程序，以防止语法错误、输入验证错误和外部传感器欺骗攻击。在本文中，我们介绍了PGF UZZ，一种策略引导的模糊测试框架，用于验证RV是否遵守覆盖用户命令、配置参数和物理状态的已识别的安全和功能策略。PGF UZZ通过时间约束的时间逻辑公式来表达所需的策略，作为分析系统的模糊指导。具体而言，它生成模糊输入，以最小化度量“RV当前状态”与策略违规之间的距离。此外，它使用静态和动态分析，仅将模糊测试的工作集中在影响任何已执行策略的命令、参数和环境因素上的部分。这两种技术的结合使PGF UZZ能够显着提高模糊测试过程的效率。我们在三个RV控制程序（ArduPilot、PX4和Paparazzi）上验证了PGF UZZ，共有56个独特的策略。PGF UZZ发现了156个以前未知的错误，其中有106个被其开发者承认。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Fuzzing\\Reinforcement Learning-based Hierarchical Seed Scheduling for Greybox Fuzzing.pdf": {
+        "title": "Reinforcement Learning-based Hierarchical Seed Scheduling for Greybox Fuzzing",
+        "abstract": "—覆盖度指标在灰盒模糊测试中扮演着重要角色。最近的研究表明，细粒度的覆盖度指标可以使模糊器检测到传统边缘覆盖无法覆盖的错误。然而，细粒度的覆盖度指标也会选择更多无法被现有算法高效调度的种子。本研究通过引入多级覆盖度指标的新概念和相应的基于强化学习的分层调度器来解决这个问题。我们在DARPA CGC上对我们的原型进行评估，结果显示我们的方法明显优于AFL和AFLFAST：它可以检测到更多的错误，对180个挑战中的83个挑战获得更高的覆盖度，并在60个挑战中获得相同的覆盖度。更重要的是，它可以更快地检测到相同数量的错误并获得相同的覆盖度。在FuzzBench上，我们的方法在20个项目中有10个项目的覆盖度高于AFL++（Qemu）。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Fuzzing\\WINNIE ：Fuzzing Windows Applications with Harness Synthesis and Fast Cloning.pdf": {
+        "title": "WINNIE ：Fuzzing Windows Applications with Harness Synthesis and Fast Cloning",
+        "abstract": "模糊测试是一种新兴的技术，可以自动验证程序并发现其中的漏洞。它已经广泛应用于测试许多程序，并发现了成千上万个安全漏洞。然而，现有的模糊测试工作主要集中在类Unix系统上，因为Windows系统对模糊测试提出了独特的挑战：闭源生态系统、大量使用图形界面和缺乏快速的进程克隆机制。\n\n在本文中，我们提出了两种解决Windows模糊测试面临的挑战的方法。我们的系统Winnie首先尝试根据样本执行情况合成一个应用程序的测试驱动程序，这个简单的程序直接调用目标函数。然后，我们使用在Windows上高效实现的fork来测试这个测试驱动程序，而不是原始复杂的程序。使用这些技术，Winnie可以绕过无关的图形界面代码，测试应用程序内部的逻辑。我们使用Winnie对59个闭源Windows二进制文件进行了模糊测试，它成功为所有二进制文件生成了有效的模糊测试驱动程序。在我们的评估中，Winnie可以支持比现有的Windows模糊测试工具更多的程序数量，识别出3.9倍更多的程序状态，并且执行速度比现有工具快26.6倍。总体而言，Winnie在32个Windows二进制文件中找到了61个独特的漏洞。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Machine Learning\\FARE：Enabling Fine-grained Attack Categorization under Low-quality Labeled Data.pdf": {
+        "title": "FARE：Enabling Fine-grained Attack Categorization under Low-quality Labeled Data",
+        "abstract": "监督机器学习分类器广泛应用于攻击检测，但其训练需要大量高质量的标签。不幸的是，由于数据标注的高成本和攻击者的持续演化，实际中很难获得高质量的标签。没有这样的标签，训练和部署有针对性的对策是具有挑战性的。\n\n在本文中，我们提出了一种聚类方法FARE，以在低质量标签下实现细粒度的攻击分类。我们关注数据标签中的两个常见问题：1）某些攻击类别或家族的缺失标签；2）对不同攻击类型只有粗粒度标签可用。FARE的核心思想是充分利用有限的标签，同时利用底层数据分布来巩固低质量的标签。我们设计了一个集成模型，将多个无监督学习算法的结果与给定的标签融合，以减轻缺失类别和粗粒度标签的负面影响。然后，我们训练一个输入转换网络，将输入数据映射到低维潜在空间进行细粒度聚类。使用两个安全数据集（Android恶意软件和网络入侵跟踪），我们展示了FARE在聚类质量/正确性方面显著优于最先进的（半）监督学习方法。此外，我们通过与一家大型电子商务服务合作，对FARE进行了初步部署，用于检测欺诈账户。通过真实世界的A/B测试和手动调查，我们证明了FARE捕捉以前未见过的欺诈行为的有效性。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Machine Learning\\GALA：Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks.pdf": {
+        "title": "GALA：Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks",
+        "abstract": "机器学习即服务（MLaaS）使得各种智能应用能够在终端设备上运行。然而，隐私仍然是一个基本的挑战。利用同态加密（HE）为基础的线性计算和基于Garbled Circuit（GC）的非线性计算方案已经证明具有优越的性能，以实现隐私保护的MLaaS。然而，计算速度仍然存在显著差距。我们的调查发现，基于HE的线性计算在现代深度神经网络的总计算时间中占主导地位。此外，HE的线性计算中耗时最长的部分是一系列对置（Perm）操作，这对于隐私保护的MLaaS中的点积和卷积是必不可少的。本文重点研究了对HE的线性计算的深度优化，以最小化Perm操作，从而大幅减少总体计算时间。为此，我们提出了GALA：在隐私保护神经网络中的贪婪计算线性代数，将HE的线性计算视为一系列同态加法、乘法和Perm操作，并选择每个线性计算步骤中最廉价的操作来降低总体成本。GALA的贡献如下：（1）它引入了逐行权重矩阵编码，并结合了GC的非线性计算所需的共享生成，以减少点积的Perm操作；（2）它设计了一种先加后置的方法（称为内核分组）来减少卷积的Perm操作。因此，GALA有效地降低了HE的线性计算成本，这是几乎所有最新的隐私保护神经网络框架的关键构建模块，包括GAZELLE（Usenix Security'18）、DELPHI（Usenix Security'20）和CrypTFlow2（CCS'20）。通过对HE的线性计算进行深度优化，GALA可以作为一个即插即用的模块集成到这些系统中，进一步提高它们的效率。我们的实验结果显示，在不同的数据维度下，它在点积和卷积计算中实现了显著的加速，分别为700倍和14倍。同时，相对于GAZELLE，GALA在AlexNet、VGG、ResNet-18、ResNet-50、ResNet-101和ResNet-152上分别提供了2.5倍、2.7倍、3.2倍、8.3倍、7.7倍和7.5倍的运行时提升；相对于CrypTFlow2，分别提供了6.5倍、6倍、5.7倍、4.5倍、4.2倍和4.1倍的运行时提升。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Machine Learning\\Let's Stride Blindfolded in a Forest：Sublinear Multi-Client Decision Trees Evaluation.pdf": {
+        "title": "Let's Stride Blindfolded in a Forest：Sublinear Multi-Client Decision Trees Evaluation",
+        "abstract": "决策树是受欢迎的机器学习分类模型，因其简单和高效而受到青睐。Tai等人（ESORICS'17）提出了一种基于加法同态加密的隐私保护决策树评估协议，而无需引入用于隐藏树结构的虚拟节点，但它对每个决策节点进行安全比较，导致线性复杂度。后来的协议（DBSEC'18，PETS'19）实现了亚线性（客户端）复杂度，但服务器端的路径评估需要在2dreal和虚拟节点之间进行无意识传输，即使是对于深度为d的稀疏树也需要隐藏树结构。本文旨在兼顾两者的优点，因此提出了迄今为止最轻量级的协议。我们的完整树协议可以很容易地扩展到稀疏树设置和可重用外包设置：模型所有者（客户端）可以将决策树（属性）外包给两个不相互合作的服务器进行分类。外包扩展支持多客户端联合评估，这是第一种不使用多密钥完全同态加密的方法（TDSC'19）。我们还扩展了我们的协议，以实现对抗恶意对手的隐私保护。我们的实验比较了各种网络环境下的离线和在线通信成本以及在线计算时间，与Tueno等人（PETS'19）的亚线性协议和Kiss等人（PETS'19）的O（1）轮线性协议进行对比，后者可以被视为Tai等人的混淆电路变种。我们的协议在具有弱客户端的物联网场景和具有高维特征向量的大数据场景中表现出理想的性能。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Machine Learning\\Practical Blind Membership Inference Attack via Differential Comparisons.pdf": {
+        "title": "Practical Blind Membership Inference Attack via Differential Comparisons",
+        "abstract": "会员推理（MI）攻击通过推断给定的数据样本是否被用于训练目标学习模型（例如深度神经网络），从而影响用户的隐私。文献中存在两种类型的MI攻击，即使用和不使用影子模型的攻击。前者的成功与影子模型的质量密切相关，即影子模型与目标模型之间的可迁移性；后者只能通过对目标模型的黑盒探测访问，无法像使用影子模型的MI攻击那样对未知情况进行有效推理，这是因为标记有真实会员信息的合格样本数量不足。\n\n在本文中，我们提出了一种称为BLIND MI的MI攻击方法，通过一种新颖的方法（称为差分比较）来探测目标模型并提取会员语义。其高层思想是，BLIND MI首先通过将现有样本转换为新样本，生成一个非会员数据集，然后以迭代的方式将样本从目标数据集移动到生成的非会员集合中。如果样本的差分移动增加了集合距离，则BLIND MI将该样本视为非会员，反之亦然。\n\n我们通过与最先进的MI攻击算法进行比较来评估BLIND MI。我们的评估结果显示，在一些数据集（如Purchase-50和Birds-200）中，BLIND MI在盲目设置中（即对手不知道目标模型的架构和目标数据集的真实标签）相对于最先进的方法，F1-score提高了近20%。我们还展示了BLIND MI能够击败最先进的防御方法。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Machine Learning Applications\\CV-Inspector：Towards Automating Detection of Adblock Circumvention.pdf": {
+        "title": "CV-Inspector：Towards Automating Detection of Adblock Circumvention",
+        "abstract": "广告拦截的军备竞赛在过去几年中不断升级。最近出现了一整套绕过广告拦截器的绕过（CV）服务生态系统，旨在通过混淆网站内容，使广告拦截过滤列表难以区分广告和功能性内容。在本文中，我们调查了广告拦截社区最近的反绕过努力，这些努力利用了定制的过滤列表。特别是，我们分析了反绕过过滤列表（ACVL），该列表支持带有丰富语法和能力的高级过滤规则，专门用于对抗绕过。我们发现，保持ACVL规则的最新状态需要专家列表管理员持续监测已知使用CV服务的网站，并发现新的野外网站，这两项任务都需要相当大的人工努力。为了帮助自动化和扩展ACVL的管理，我们开发了CV-INSPECTOR，一种利用差分执行分析自动检测广告拦截绕过的机器学习方法。我们展示了CV-INSPECTOR在检测成功绕过广告拦截器的网站方面达到了93%的准确性。我们在前20000个网站上部署了CV-INSPECTOR，以发现在野外使用绕过的网站。我们进一步将CV-INSPECTOR应用于已知使用绕过的网站列表，并受到ACVL作者的密切监测。我们证明CV-INSPECTOR将人工标注工作量减少了98%，从而消除了ACVL作者的一个主要瓶颈。我们的工作是对广告拦截绕过军备竞赛现状的首次大规模研究，这是向自动化反绕过努力迈出的重要一步。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Machine Learning Applications\\FlowLens：Enabling Efficient Flow Classification for ML-based Network Security Applications.pdf": {
+        "title": "FlowLens：Enabling Efficient Flow Classification for ML-based Network Security Applications",
+        "abstract": "在大规模、高速网络中，网络安全领域出现了一种新兴趋势，即采用可编程交换机来执行各种安全任务。然而，由于现有解决方案专门针对特定任务，无法应对越来越多的基于机器学习的安全应用，即针对基于包大小或包间频率分布进行有针对性流分类的安全任务，这些任务借助于监督式机器学习算法。我们提出了FlowLens，一种利用可编程交换机高效支持多功能基于机器学习的安全应用的系统。FlowLens以线速采集包分布的特征，并直接在交换机上对流进行分类，使网络运营商能够在运行时重新使用此测量基元以服务于不同的流分类任务。为了应对可编程交换机的资源限制，FlowLens为每个流计算一个内存高效的相关特征表示，称为“流标记”。尽管流标记体积小，但包含足够的信息来进行准确的流分类。由于流标记高度可定制且应用相关，FlowLens可以通过多目标优化过程自动参数化流标记生成，以平衡其大小和准确性。我们在三个使用场景中评估了我们的系统：隐蔽信道检测、网站指纹识别和僵尸网络聊天检测。我们发现，非常小的标记使得FlowLens在隐蔽信道检测的监控能力上提高了150倍，与收集完整的包分布相比，准确性只下降了3%。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Machine Learning Applications\\PrivacyFlash Pro：Automating Privacy Policy Generation for Mobile Apps.pdf": {
+        "title": "PrivacyFlash Pro：Automating Privacy Policy Generation for Mobile Apps",
+        "abstract": "各种隐私法律要求移动应用程序具有隐私政策。基于问卷的政策生成器旨在帮助开发人员进行政策制定任务。然而，生成的政策取决于生成器的设计以及开发人员对其应用程序中隐私问题的正确回答能力。在本研究中，我们展示了使用流行的政策生成器生成的政策通常不能反映应用程序的隐私实践。我们认为，通过将基于问卷的方法与代码分析相结合，可以改进政策生成。我们设计并实现了PrivacyFlash Pro，一个用于iOS应用程序的隐私政策生成器，它利用静态分析。PrivacyFlash Pro识别出与隐私政策中表达的隐私实践相关的代码签名，这些代码签名由Plist权限字符串、框架导入、类实例化、授权方法和其他证据组成。包管理器中的资源用于识别库。我们在与40个iOS应用程序开发人员进行的可用性研究中测试了PrivacyFlash Pro，并得到了令人满意的结果，既能可靠地识别应用程序的隐私实践，又具有良好的可用性。我们测得的F-1分数为0.95，用于识别权限使用。40位开发人员中有24位将PrivacyFlash Pro的评分至少为9分（满分为10分），净推荐值得分为42.5。平均系统可用性评分为83.4，接近优秀水平。我们将PrivacyFlash Pro作为开源项目提供给iOS开发者社区。原则上，我们的方法是平台无关的，可以适应Android和Web平台。为了增加隐私透明度并减少合规问题，我们提出将隐私政策视为软件开发工件的理由。隐私政策的制定应成为软件开发过程的一部分，并遵循软件开发人员的思维模式。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Machine Learning Applications\\Towards Understanding and Detecting Cyberbullying in Real-world Images.pdf": {
+        "title": "Towards Understanding and Detecting Cyberbullying in Real-world Images",
+        "abstract": "网络欺凌已被广泛认识为困扰当今互联网用户的重要社会问题。这个问题涉及到施害者利用基于互联网的技术通过分享与网络欺凌相关的内容来欺负受害者。为了解决这个问题，研究人员研究了与这些内容相关的因素，并提出了基于这些因素的自动检测技术。然而，大部分这些研究主要关注了文本内容（如评论和短信）的因素，而很大程度上忽视了滥用视觉内容进行网络欺凌的问题。最近用户访问互联网的技术进步导致了一个新的网络欺凌模式。施害者可以通过发送和分发带有网络欺凌内容的图像来欺负受害者。为了了解图像中网络欺凌的威胁，本文报告了一项关于网络欺凌中使用的图像性质的全面研究。我们首先收集了一个包含19,300个有效图像的真实世界网络欺凌图像数据集。然后我们分析了数据集中的图像，并确定了与网络欺凌图像相关的因素，这些因素可以用于构建检测网络欺凌图像的系统。我们对网络欺凌图像因素的分析揭示了与传统冒犯性图像内容（如暴力和裸露）不同，网络欺凌图像中的因素往往是高度情境化的。通过测量基于所识别的因素的几个分类模型，我们进一步证明了这些因素的有效性。在我们的网络欺凌图像数据集上，基于多模态分类的最佳分类模型实现了93.36%的平均检测准确率。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Malware and Cyber-crime\\Differential Training：A Generic Framework to Reduce Label Noises for Android Malware Detection.pdf": {
+        "title": "Differential Training：A Generic Framework to Reduce Label Noises for Android Malware Detection",
+        "abstract": "在基于机器学习的恶意软件检测中，一个常见问题是训练数据可能包含噪声标签，并且在大规模上使训练数据无噪声是具有挑战性的。为了解决这个问题，我们提出了一个通用框架，用于减少训练数据中的噪声水平，以用于任何基于机器学习的Android恶意软件检测的训练。我们的框架利用两个相同的深度学习分类模型在给定的噪声训练数据集上进行训练的所有中间状态，并为每个输入样本生成一个噪声检测特征向量。然后，我们的框架对所有噪声检测特征向量应用一组异常检测算法，以在将其提供给任何基于机器学习的Android恶意软件检测方法之前减少给定训练数据的噪声水平。在我们对三种不同的Android恶意软件检测方法的实验中，我们的框架可以检测出不同训练数据集中不同噪声比率的错误标签的显著部分，并提高Android恶意软件检测方法的性能。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Malware and Cyber-crime\\Does Every Second Count. Time-based Evolution of Malware Behavior in Sandboxes.pdf": {
+        "title": "Does Every Second Count. Time-based Evolution of Malware Behavior in Sandboxes",
+        "abstract": "在恶意软件分析沙盒中，样本执行的时间是关键参数之一。将阈值设置得太高会阻碍可扩展性，减少一天内可以分析的样本数量；而设置得太低，则样本可能没有足够的时间展示其恶意行为，从而降低了收集到的数据的数量和质量。因此，分析师需要找到一个“甜点”，只收集到正确分类每个样本所需的最小信息量。任何多余的信息都会浪费资源，任何不足的信息都会危及实验。尽管这一参数非常重要，但目前没有清晰的指南来选择这个参数，也没有实验证明一种选择相对于另一种选择的利弊。为了填补这一空白，本文提供了关于执行时间对收集事件数量和质量影响的首个大规模研究。我们测量了系统调用和代码覆盖率的演变，以准确描述我们可以预期在沙盒中观察到的运行时行为的一部分。最后，我们实现了一种基于机器学习的恶意软件检测方法，并将其应用于在不同时间窗口收集的数据，以报告不同时间点观察到的事件的相关性。我们的研究结果显示，大多数样本的运行时间要么少于两分钟，要么超过十分钟。然而，大部分行为（以及执行的基本块的98%）都是在前两分钟内观察到的，这也是我们的机器学习分类器准确性较高的时间窗口。我们相信这些信息可以帮助未来的研究人员和工业沙盒更好地调整其分析系统。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Malware and Cyber-crime\\MINOS：A Lightweight Real-Time Cryptojacking Detection System.pdf": {
+        "title": "MINOS：A Lightweight Real-Time Cryptojacking Detection System",
+        "abstract": "新兴的基于WebAssembly（Wasm）的加密挖矿恶意软件在未经用户同意或知情的情况下秘密使用用户的计算资源。事实上，大多数受害者对于其计算能力被未经授权的使用并不知情，这是由于加密挖矿恶意软件作者采用了CPU限制和混淆等技术。存在一些基于动态分析的检测机制，旨在规避这些技术。然而，由于这些机制使用了动态特征，因此收集这些特征以及实际检测恶意软件需要让加密挖矿恶意软件运行一段时间，从而有效地进行挖矿，导致了显著的开销。为了解决这些限制，本文提出了M INOS，一种使用深度学习技术来实时准确检测未经授权的基于Wasm的挖矿活动存在的新颖、极其轻量级的加密挖矿检测系统。M INOS使用基于图像的分类技术来区分良性网页和使用Wasm实现未经授权挖矿的网页。具体而言，分类器采用了经过全面训练的卷积神经网络（CNN）模型，用于分类当前恶意和良性Wasm二进制文件的综合数据集。M INOS以低的TNR和FPR实现了异常高的准确度。此外，我们对MINOS进行了广泛的性能分析，结果显示所提出的检测技术可以在最新的现场加密挖矿恶意软件中实时检测挖矿活动，准确率达到了98.97%，平均耗时为25.9毫秒，同时最多使用了4%的CPU和6.5%的内存，证明M INOS具有高效性、轻量级、快速和计算成本低的特点。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Malware and Cyber-crime\\Understanding and Detecting International Revenue Share Fraud.pdf": {
+        "title": "Understanding and Detecting International Revenue Share Fraud",
+        "abstract": "高额费率电话号码经常被恶意方滥用，以获取经济利益，例如通过各种电话诈骗和移动恶意软件。这种利益来自于“分成”机制，使得高额费率号码的所有者可以从每分钟呼叫流量中获得一部分呼叫收入。本文重点研究国际共享收益欺诈（IRSF），该欺诈行为滥用常规国际电话号码，称为国际高额费率号码（IPRN）。IRSF通常涉及多个方（例如，一个欺诈电信运营商与高额费率服务提供商合作），他们收集并共享呼叫收入，并通常与其他欺诈计划结合起来，以产生无需支付的呼叫流量。尽管这种欺诈方案存在多年，但仍然是最常见的电话欺诈方案之一，据报道每年导致数十亿美元的损失。\n\n在本文中，我们从多个角度探讨IRSF生态系统，包括：（i）一个电话诱饵系统，观察对未使用电话号码范围（即电话号码灰色空间）的IRSF尝试，（ii）来自多个在线IPRN服务提供商的超过300万个测试IPRN和超过206,000个测试呼叫日志的数据集，最后，（iii）来自一家欧洲小型运营商的真实呼叫数据集，涉及689,000个呼叫记录，我们对其进行分析以找出IRSF案例。通过利用我们从（ii）中的观察结果，我们提出了几个可以用于IRSF检测的机器学习特征。我们在（iii）的数据集上验证了我们的方法，在检测欺诈呼叫方面达到了98%的准确率和0.28%的误报率。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Mobile Security\\On the Insecurity of SMS One-Time Password Messages against Local Attackers in Modern Mobile Devices.pdf": {
+        "title": "On the Insecurity of SMS One-Time Password Messages against Local Attackers in Modern Mobile Devices",
+        "abstract": "—包含一次性密码（OTPs）的短信消息是移动应用程序中进行身份验证的广泛使用机制。事实上，许多流行的应用程序使用通过短信接收的OTP作为唯一的身份验证因素，完全替代了基于密码的身份验证方案。尽管SMS OTP身份验证机制为终端用户提供了极大的便利，但它们也具有重大的安全影响。在本文中，我们研究基于SMS OTP的移动应用程序的身份验证方案，并且特别针对“本地攻击”这种情况进行了系统研究，即攻击者对受害者设备上的非特权第三方应用程序具有控制权的情况。\n\n本研究采用了逆向工程、形式验证、用户研究和大规模自动化分析相结合的方法进行。我们的工作不仅揭示了第三方应用程序中的漏洞，还发现了移动操作系统本身核心API的几个新的设计和实现缺陷。例如，我们发现两个官方的Android API在设计上存在漏洞，即使按照其文档使用，也会不可避免地导致不安全的身份验证方案的实现。此外，我们发现其他API容易被应用程序开发人员不安全地使用。\n\n我们的大规模研究发现了36个应用程序，共享数亿次安装，这些应用程序滥用这些API，使恶意的本地攻击者完全接管它们的账户。这些易受攻击的应用程序包括电报和Kakao Talk等全球最流行的即时通讯应用程序。最后，我们提出了一种新的更安全的基于短信的身份验证机制，并通过形式验证证明了其安全性。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Mobile Security\\Preventing and Detecting State Inference Attacks on Android.pdf": {
+        "title": "Preventing and Detecting State Inference Attacks on Android",
+        "abstract": "在安卓生态系统中，与安全有关的一个威胁是钓鱼攻击。对于移动平台来说，钓鱼攻击尤其成问题，因为它们无法为用户提供足够的信息来可靠地区分合法应用和冒充合法应用界面的恶意应用。决定钓鱼攻击成功率的一个关键因素是正确的时机：如果恶意冒充的界面在受害者预计与目标应用程序进行交互时出现，用户更容易提供敏感数据（如密码）。在安卓平台上，恶意软件通过进行所谓的状态推断攻击来确定正确的时机，例如推断用户启动目标应用程序的确切时刻并预计与之进行交互。尽管安卓应用沙盒旨在防止这些攻击，但仍然可能通过滥用泄漏此类敏感信息的易受攻击的API来实现：通常的场景是恶意应用程序“轮询”这些易受攻击的API，推断出用户即将使用目标应用程序的时机，并在正确的时间将冒充的界面显示在屏幕上。所有这类之前的漏洞在最新版的安卓中已经修复。\n\n本文提出了两个与防止和检测状态推断攻击相关的主要研究贡献。首先，我们讨论了一种新的漏洞检测系统的设计和实施，该系统专门旨在识别可用于进行状态推断攻击的新漏洞。我们的方法依赖于静态和动态分析技术，并且在最新版本的安卓中识别出了18个以前未知的漏洞（导致了6个CVE）。其次，我们展示了一种新的设备上分析系统，能够检测对易受攻击资源和API进行的利用尝试。该系统基于一个关键假设，即仅仅的“轮询行为”就可以作为潜在攻击的强烈信号，独立于其他因素（之前的研究依赖于这些因素）。我们对一组良性和恶意应用进行了实证分析，并发现这个假设是正确的。这种方法的优点是能够在滥用的API事先未知易受攻击时检测出利用尝试。我们将该系统作为安卓框架的修改实施，并展示它所带来的开销可以忽略不计。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Mobile Security\\The Abuser Inside Apps：Finding the Culprit Committing Mobile Ad Fraud.pdf": {
+        "title": "The Abuser Inside Apps：Finding the Culprit Committing Mobile Ad Fraud",
+        "abstract": "移动广告欺诈是对应用程序发布者和其用户的重要威胁，从而破坏应用市场的生态系统。以往关于检测移动广告欺诈的研究主要集中在构建预定义的测试场景，以排除用户参与识别广告欺诈的可能性。然而，由于它们依赖于上下文测试环境，这些研究忽视了跟踪哪些应用模块和哪些用户交互导致了观察到的广告欺诈。\n\n为了解决这些问题，本文提出了FraudDetective的设计和实现，这是一个动态测试框架，用于识别广告欺诈活动。FraudDetective专注于识别无用户交互而产生的欺诈活动。FraudDetective通过连接多个碎片化的堆栈跟踪，计算从观察到的广告欺诈活动到用户事件的完整堆栈跟踪，从而生成用户输入和观察到的欺诈活动之间的因果关系。我们修改了一个Android开源项目（AOSP），以发出检测到的广告欺诈活动及其完整堆栈跟踪，从而帮助确定观察到的欺诈活动的应用模块。我们在Google Play商店的48,172个应用上评估了FraudDetective。FraudDetective报告称，有74个应用负责34,453个广告欺诈活动，并发现98.6%的欺诈行为源于嵌入式第三方广告库。我们的评估结果表明，FraudDetective能够通过观察到的可疑行为推理准确地识别广告欺诈，而无需用户交互。实验结果还揭示了滥用广告服务提供商利用其广告库积极参与广告欺诈的新见解。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Mobile Security\\Understanding Worldwide Private Information Collection on Android.pdf": {
+        "title": "Understanding Worldwide Private Information Collection on Android",
+        "abstract": "移动电话使得大量私人信息的收集成为可能，包括唯一标识符（例如电子邮件地址）、用户的位置和短信内容。这些信息可以被应用程序收集并发送给第三方，用于各种目的。在本文中，我们进行了迄今为止对Android平台上私人信息收集（PIC）的最大规模研究。我们利用从一款流行的移动安全产品的用户收集的匿名化数据集，分析了在2018年至2019年的21个月期间内由1730万用户安装的210万个唯一应用程序生成的敏感信息流向。我们发现，87.2%的设备向至少五个不同的域发送私人信息，并且来自不同地区（例如亚洲与欧洲）的参与者对不同类型的信息感兴趣。美国（总流量的62%）和中国（总流量的7%）是收集最多私人信息的国家。我们的发现引发了有关数据监管的问题，并将鼓励决策者进一步规范公司如何使用和共享私人信息以及如何真正确保责任。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\'Smart' Home\\EarArray：Defending against DolphinAttack via Acoustic Attenuation.pdf": {
+        "title": "EarArray：Defending against DolphinAttack via Acoustic Attenuation",
+        "abstract": "—DolphinAttacks（即不可听声音命令）通过在超声波上调制可听声音，悄无声息地向语音助手注入恶意命令，并操控受控系统（例如门或智能音箱）。要消除DolphinAttacks是具有挑战性的，如果有可能的话，因为它需要修改麦克风硬件。在本文中，我们设计了EarArray，这是一种轻量级方法，不仅可以检测此类攻击，还可以在不需要任何额外硬件或硬件修改的情况下确定攻击者的方向。本质上，不可听的声音命令被调制为超声波，其衰减速度比可听声音快。通过检查智能设备上内置的多个麦克风接收到的命令声音信号，EarArray能够估计衰减速率，从而检测到攻击。我们提出了从声源到语音助手（例如智能音箱）的可听声音和超声波传播模型，并阐述了其基本原理及其可行性。我们使用两个特殊设计的麦克风阵列实现了EarArray，并且我们的实验结果显示，EarArray可以以99%的准确率检测到不可听的声音命令，并以97.89%的准确率识别攻击者的方向。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\'Smart' Home\\Hey Alexa, is this Skill Safe.：Taking a Closer Look at the Alexa Skill Ecosystem.pdf": {
+        "title": "Hey Alexa, is this Skill Safe.：Taking a Closer Look at the Alexa Skill Ecosystem",
+        "abstract": "亚马逊的语音助手Alexa通过自然语言对话，使用户能够直接与各种网络服务进行交互。它为开发人员提供了创建第三方应用程序（称为技能）在Alexa上运行的选项。虽然这些应用程序简化了用户与智能设备的交互，并增强了许多附加服务，但由于它们所处的个人设置，也引发了安全和隐私问题。本文旨在对Alexa技能生态系统进行系统分析。我们对Alexa技能进行了首次大规模分析，从七个不同的技能商店获得了90194个独特的技能。我们的分析揭示了当前技能审核过程存在的几个限制。我们展示了不仅恶意用户可以在任意开发者/公司名称下发布技能，而且在获得批准后可以对后端代码进行更改，引诱用户透露不需要的信息。接下来，我们对不同的技能劫持技术进行了形式化，并评估了这些技术的有效性。我们发现，虽然某些方法比其他方法更受欢迎，但在现实世界中并没有实质性的技能劫持滥用。最后，我们研究了不同类别技能的隐私政策的普及程度，更重要的是使用Alexa权限模型访问敏感用户数据的技能的政策内容。我们发现，约23.3%的此类技能没有完全披露与请求的权限相关的数据类型。我们通过提供一些建议来加强整体生态系统，并增强终端用户的透明度。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\'Smart' Home\\IoTSafe：Enforcing Safety and Security Policy with Real IoT Physical Interaction Discovery.pdf": {
+        "title": "IoTSafe：Enforcing Safety and Security Policy with Real IoT Physical Interaction Discovery",
+        "abstract": "物联网(IoT)平台为增加家庭自动化带来了巨大的便利。特别是，这些平台为管理多个物联网设备提供了许多新功能，以控制它们的物理环境。然而，这些功能也带来了新的安全挑战。例如，攻击者可以通过意外的物理交互来操纵物联网设备发动攻击。不幸的是，很少有现有的研究探讨物联网设备之间的物理交互及其对物联网安全的影响。在本文中，我们提出了一种新颖的动态安全策略执行系统，称为I OTSAFE，它可以考虑智能家居平台上的上下文特征来捕捉和管理真实的物理交互。为了识别物联网设备的真实物理交互，我们提出了一种运行时物理交互发现方法，该方法利用静态分析和动态测试技术来识别物联网设备之间的运行时物理交互。此外，I OTSAFE构建了临时物理交互的物理模型，可以预测即将发生的风险情况，并相应地阻止不安全的设备状态。我们在SmartThings平台上实现了一个I OTSAFE的原型。我们广泛的评估结果表明，在我们的实验环境中，I OTSAFE有效地识别出了130个潜在交互中的39个真实物理交互。I OTSAFE还成功地预测了与时间相关的物理交互的风险情况，准确率接近96%，并防止了高风险条件的发生。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\'Smart' Home\\PFirewall：Semantics-Aware Customizable Data Flow Control for Smart Home Privacy Protection.pdf": {
+        "title": "PFirewall：Semantics-Aware Customizable Data Flow Control for Smart Home Privacy Protection",
+        "abstract": "物联网（IoT）平台使用户能够部署家庭自动化应用。与此同时，随着大量敏感设备数据流向物联网平台，隐私问题也随之出现。实际上，流向平台的大部分数据并不触发自动化操作，而且一旦设备绑定到平台上，业主目前无法控制。我们提出了PFIREWALL，这是一个可定制的数据流控制系统，用于增强物联网平台用户的隐私。PFIREWALL会自动生成数据最小化策略，只披露最少量的数据以实现自动化。此外，PFIREWALL还提供接口供业主自定义个人隐私偏好，通过定义用户指定策略。为了执行这些策略，PFIREWALL在不修改平台、物联网设备或中心的情况下，透明地干预和调节物联网设备与平台之间的通信。针对四个真实测试平台的评估结果显示，PFIREWALL将发送到平台的物联网数据减少了97%，而不影响家庭自动化，并有效地减轻了用户活动推断/跟踪攻击和其他隐私风险。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Mobile Security\\Your Phone is My Proxy：Detecting and Understanding Mobile Proxy Networks.pdf": {
+        "title": "Your Phone is My Proxy：Detecting and Understanding Mobile Proxy Networks",
+        "abstract": "住宅代理最近成为一项受欢迎的服务，代理提供商通过他们控制的数百万个代理节点来中继客户的网络流量。我们发现，其中许多代理节点是移动设备，在代理网络中扮演的角色可能会带来重大的安全影响，因为移动设备往往对隐私和资源非常敏感。然而，迄今为止，人们对他们的参与程度几乎没有做出任何努力，更不用说这些设备是如何被代理网络招募的，以及它们可能带来的安全和隐私风险是什么。\n\n在本文中，我们报告了关于移动代理生态系统的第一项测量研究。我们的研究得益于一种新颖的测量基础设施，它使我们能够识别代理提供商，发现代理软件开发工具包（SDK），检测基于代理SDK构建的安卓代理应用程序，收集代理IP地址，并了解代理流量。通过这个基础设施收集到的信息带给我们对这个生态系统的新的理解和重要的安全发现。具体而言，我们发现有4个代理提供商以每月每100万活跃用户（MAU）五万美元的价格提供移动代理SDK给应用开发者作为一种竞争的应用程序变现渠道。1701个安卓APK文件（属于963个安卓应用程序）被发现已集成了这些代理SDK，其中大部分可以在Google Play上找到，总安装量至少为3亿次。此外，48.43%的这些APK文件被至少5个杀毒引擎标记为恶意软件，这可能解释了为什么86.60%的963个安卓应用程序在2019年10月之前已从Google Play中删除。此外，尽管这些应用程序在流量中继时显示用户同意对话框，但我们的用户研究表明用户同意的文本非常令人困惑。我们甚至发现了一个偷偷中继流量而不显示任何通知的代理SDK。我们还捕获了62.5万个蜂窝代理IP地址，以及在代理流量中观察到的一系列可疑活动，如广告欺诈。我们已向受影响的各方报告了我们的发现，并提出了建议和检测代理应用程序和代理流量的方法。\n\n对应作者"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Network Policies\\From WHOIS to WHOWAS：A Large-Scale Measurement Study of Domain Registration Privacy under the GDPR.pdf": {
+        "title": "From WHOIS to WHOWAS：A Large-Scale Measurement Study of Domain Registration Privacy under the GDPR",
+        "abstract": "当一个域名注册时，注册人和其他相关人员的信息会被注册商或注册局拥有的WHOIS数据库记录下来，这些数据库是对公众开放的。然而，由于欧洲联盟的《通用数据保护条例》（GDPR）的执行，某些WHOIS数据（即关于欧洲经济区（EEA）注册人的记录）需要在向公众发布之前进行删除。据传，一些WHOIS提供商已经采取了行动。然而，到目前为止，还没有系统研究来量化WHOIS提供商在应对GDPR方面所做的更改、他们的数据删除策略以及对依赖WHOIS数据的其他应用的影响。\n\n在这项研究中，我们报告了第一次大规模测量研究，以回答这些问题，希望能指导GDPR的执行，并在合规过程中识别问题。通过分析跨越两年的12亿个WHOIS记录的集合，我们得以进行这项研究。为了自动化分析任务，我们构建了一个基于无监督学习的新系统GCChecker，它为提供商分配合规评分。我们对WHOIS的GDPR合规性的发现是多方面的。其中一些重要发现包括，我们发现GDPR对WHOIS有深远影响，超过85%的受访大型WHOIS提供商在规模上删除EEA记录。令人惊讶的是，超过60%的大型WHOIS数据提供商也删除非EEA记录。我们还发现了各种合规性缺陷，如不完全删除。对安全应用的影响非常显著，可能需要重新设计。我们相信不同的社区（安全、域名和法律）应该共同努力解决问题，以实现更好的WHOIS隐私和效用。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Network Policies\\Mondrian：Comprehensive Inter-domain Network Zoning Architecture.pdf": {
+        "title": "Mondrian：Comprehensive Inter-domain Network Zoning Architecture",
+        "abstract": "设计IT安全基础设施的一个核心要素是将信息资产逻辑地分割为共享相同安全要求和策略的网络区域。随着越来越多的业务生态系统迁移到云端，对网络区域操作和管理的大型企业网络提出了额外的网络安全要求，使得其具有挑战性。在本文中，我们介绍了一个新的概念，即安全地连接物理和逻辑上非相邻区域的跨域中转区域，以简化复杂的网络区域结构。通过跨区域转换点，我们还确保通信的完整性和保密性，同时提供轻量级的安全策略执行。逻辑集中的网络协调器实现了可扩展和灵活的网络管理。我们的实施证明，新的架构仅在中转过程中增加了几微秒的额外处理延迟。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Network Policies\\Reining in the Web's Inconsistencies with Site Policy.pdf": {
+        "title": "Reining in the Web's Inconsistencies with Site Policy",
+        "abstract": "多年来，浏览器通过HTTP头部采用了越来越多的客户端强制执行安全策略。这些机制对于Web应用程序的安全性是基础的，并且通常在每个页面上部署。然而，这种方式可能导致不一致性，因为在相同安全边界（以源或站点的形式）内的不同页面可能表达不一致的安全要求。在本文中，我们将cookie安全属性、CSP和HSTS的不一致性形式化，并通过爬取15000个热门网站量化不一致性的程度和影响。我们展示了许多网站通过遗漏或错误配置上述机制来危及自身的安全，从而导致不必要的XSS、cookie盗取和HSTS停用。然后，我们使用我们的数据来分析最近的源策略(proposal)在多大程度上可以解决不一致性的问题。不幸的是，我们得出结论，当前的源策略设计存在重大缺陷，限制了其在满足实际网站需求的同时解决安全不一致性的实际适用性。基于这些观察，我们提出了站点策略(Site Policy)，旨在克服源策略的缺陷，并使任何不安全行为都变得明确。我们提供了站点策略的原型实现，并提供了支持工具链，用于初始策略生成、安全分析和测试部署。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Network Policies\\Understanding the Growth and Security Considerations of ECS.pdf": {
+        "title": "Understanding the Growth and Security Considerations of ECS",
+        "abstract": "—域名系统（DNS）对于互联网上的通信至关重要。因此，对DNS的任何提议的更改或扩展都可能对网络通信产生深远的影响。在本文中，我们探讨了最近一个扩展DNS的叫做EDNS Client Subnet (ECS)的影响。这个扩展通过向递归域名服务器之上的DNS名称服务器提供客户端IP地址的前缀，将客户端信息的可见性扩展给更多的域名操作者。这引发了许多关于这种改变对依赖DNS的网络通信的影响的问题。\n\n在本文中，我们通过使用几个DNS视角来测量ECS的部署情况，提供了一项长期研究的结果。我们展示了尽管是一个可选的扩展，ECS随着时间的推移已经得到了稳定的采用，即使对于不受其用途影响的网站也是如此。此外，我们观察到ECS提供的客户端子网可能比最初预期的隐私性更差，大多数子网对应于/24 CIDR或更小的子网。最后，我们观察到DNS的引入导致了几个正面和负面的后果。例如，在分析递归之上的DNS数据时，DNS可以帮助安全工作，因为增加了客户端网络信息。然而，同样的客户端信息有可能加剧现有的DNS泄漏等安全问题。最终，本文讨论了基本协议的微小变化可能导致意想不到的积极和消极后果。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Network Protocols\\A Formal Analysis of the FIDO UAF Protocol.pdf": {
+        "title": "A Formal Analysis of the FIDO UAF Protocol",
+        "abstract": "FIDO协议套件旨在允许用户使用本地且可信的认证器登录远程服务。通过FIDO，依赖服务无需存储用户选择的秘密或其哈希值，从而消除了电子商务的一个主要攻击面。鉴于其日益普及，有必要对FIDO的安全承诺进行正式分析。在本文中，我们通过对FIDO UAF协议的安全假设和目标进行形式化，以及在ProVerif中对协议在不同场景下的建模，提出了对FIDO UAF协议的全面和形式化验证。我们的分析确定了FIDO UAF的每个安全目标所需的最小安全假设。我们以自动化的方式确认了之前手动发现的漏洞，并披露了几种新的攻击。在形式验证结果的指导下，我们还发现了两个流行的安卓FIDO应用程序中的两个实际攻击，并将其负责任地通知了供应商。此外，我们还提出了几个具体的建议，以修复协议中发现的问题和弱点。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Network Protocols\\NetPlier：Probabilistic Network Protocol Reverse Engineering from Message Traces.pdf": {
+        "title": "NetPlier：Probabilistic Network Protocol Reverse Engineering from Message Traces",
+        "abstract": "网络协议逆向工程是一项具有多个安全应用的重要挑战。一种流行的方法利用网络消息跟踪。这些方法依赖于成对的序列对齐和/或标记化。它们有各种限制，如处理大量消息的困难和处理固有不确定性。在本文中，我们提出了一种基于网络跟踪的协议逆向工程的新颖概率方法。首先利用多序列对齐来对齐所有消息，然后将问题简化为从对齐字段集中识别关键字字段。关键字字段确定消息的类型。识别是概率的，使用随机变量来指示每个字段（作为真正关键字）的可能性。在随机变量和消息观测值之间构建联合分布。然后进行概率推断来确定最有可能的关键字字段，这使得消息可以根据其真实类型正确地进行聚类，并且可以恢复消息格式和状态机。我们对10种协议进行的评估表明，我们的技术在性能上远远超过了现有技术，并且我们的案例研究展示了我们的技术在物联网协议逆向工程和恶意软件分析中的独特优势。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Network Protocols\\PHOENIX：Device-Centric Cellular Network Protocol Monitoring using Runtime Verification.pdf": {
+        "title": "PHOENIX：Device-Centric Cellular Network Protocol Monitoring using Runtime Verification",
+        "abstract": "当前蜂窝网络生态系统中的终端用户设备容易受到不同世代和协议层的许多不同漏洞的影响。回顾性修复这些漏洞可能是昂贵的、具有挑战性的，或者根本不可行。处理这种多样性漏洞集合的实用方法是在设备端运行时识别攻击尝试，并通过缓解和纠正措施来阻止它们。为了实现这个目标，在本文中我们提出了一种通用且可扩展的方法，称为P HOENIX，用于从设备视角识别n-天蜂窝网络控制平面漏洞以及网络运营商的危险做法。P HOENIX通过轻量级运行时验证技术监控设备端的蜂窝网络流量，以执行基于签名的意外行为检测。P HOENIX中的签名可以由蜂窝网络安全专家手动创建，也可以使用P HOENIX的可选组件自动合成，将签名合成问题简化为从信息源问题的语言学习。根据当检测到不希望的行为时PHOENIX可用的纠正措施，可以实现不同的P HOENIX实例化：当部署在基带处理器内部时，可以实现完整的防御；当作为移动应用程序部署时，可以实现用户警告系统；用于识别野外攻击的探针。在我们的评估中，P HOENIX的一个这样的实例能够以较高的数据包处理速度（每秒大约68000个数据包）识别出所有15个代表性的n-天漏洞和不安全的4G LTE网络实践，同时只产生适度的能源开销（约4mW）。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Network Protocols\\QPEP：An Actionable Approach to Secure and Performant Broadband From Geostationary Orbit.pdf": {
+        "title": "QPEP：An Actionable Approach to Secure and Performant Broadband From Geostationary Orbit",
+        "abstract": "卫星宽带服务是关键基础设施，为全球最偏远地区提供连接。然而，由于性能问题，许多地球同步卫星宽带服务没有进行加密，易受到远距离窃听攻击。本文探讨了这些问题的根本原因，并提出了广泛使用性能增强代理（PEPs）进行TCP优化的情况下，安全性和性能之间存在权衡的观点。对以往的缓解提案进行回顾发现，由于商业激励不一致和未经验证的“黑盒”加密产品的普及，这些提案在现实世界中的采用有限。\n为了解决这些缺点，我们设计并实现了一个完全开源且默认加密的PEP/VPN混合系统，称为QPEP。QPEP基于QUIC标准构建，使个人能够在没有ISP参与的情况下加密卫星流量。此外，我们还提供了一个基于Docker的可复制测试平台，用于通过模拟对QPEP和其他PEP应用程序进行基准测试。这些实验表明，与传统的VPN加密相比，QPEP可以使卫星用户的TCP流量加载网页时间（PLTs）提高高达72%。相对于其他未加密的PEP，QPEP提供了高达54%更快的PLTs，同时保护传输中的通信。我们简要讨论了QPEP如何利用QUIC协议的定制修改进行进一步优化。最终，我们的实验表明，QPEP的混合架构代表了一种有希望的新技术，可以在不对现有网络进行昂贵改变的情况下为卫星宽带带来安全性和性能。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Network Protocols\\The Bluetooth CYBORG：Analysis of the Full Human-Machine Passkey Entry AKE Protocol.pdf": {
+        "title": "The Bluetooth CYBORG：Analysis of the Full Human-Machine Passkey Entry AKE Protocol",
+        "abstract": "在这篇论文中，我们通过计算分析Passkey Entry作为一种密码学认证密钥交换（AKE）的整体，包括通常被忽视的用户协议交互，这些交互通常被视为带外通信。为了实现这一点，我们模拟了用户到设备通道，以及典型的设备到设备通道，并在这两种情况下考虑了对抗控制场景。特别是，我们分别捕捉了对发起设备和响应设备上的设备显示器的对抗控制，以及对用户输入机制的对抗控制，我们称之为CYBORG模型。CYBORG模型使得我们能够在已发表的攻击（如利用恶意软件和设备显示器的蓝牙用户协议）的背景下进行现实世界的安全分析。基于此，我们展示了所有版本的Passkey Entry在我们的模型中都无法提供安全性。最后，我们演示了如何对协议进行轻微修改，使其能够为所有当前版本的passkey生成以及我们提出的新的双重Passkey Entry生成模式提供更强的安全性保证。这些概念验证修改指出了改进用户协议设计方法的途径。最后，这项工作指出了基于妥协类型的漏洞类别，这些漏洞可在蓝牙Passkey Entry中被利用。\n\n关键词：蓝牙 \u0001 认证密钥交换 \u0001 CYBORG协议 \u0001 安全连接 \u0001 安全简单配对 \u0001 Passkey Entry \u0001 计算分析"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Network Security\\A Devil of a Time：How Vulnerable is NTP to Malicious Timeservers.pdf": {
+        "title": "A Devil of a Time：How Vulnerable is NTP to Malicious Timeservers",
+        "abstract": "网络时间协议（NTP）在互联网上同步计算机系统的时间，并在保证许多互联网应用程序的正确性和安全性方面起着关键作用。不幸的是，NTP易受所谓的时间偏移攻击的影响。这促使人们提出了认证NTP通信和保护NTP客户端的建议和标准化工作。然而，我们观察到，即使有这样的解决方案，NTP仍然容易受到恶意时间服务器的攻击。我们探讨了两种攻击策略对时间计算的影响：（1）破坏现有的NTP时间服务器，（2）将新的时间服务器注入NTP时间服务器池。我们首先展示了通过控制相当少的现有时间服务器，一个机会主义攻击者可以在状态级别甚至是大陆级别上改变时间。然后，我们证明了向NTP时间服务器池注入具有不成比例影响力的新时间服务器是非常简单的，并可以用于发动大规模的机会主义攻击和有目的的战略攻击。我们讨论了一种有希望的方法来缓解此类攻击。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Network Security\\Flexsealing BGP Against Route Leaks：Peerlock Active Measurement and Analysis.pdf": {
+        "title": "Flexsealing BGP Against Route Leaks：Peerlock Active Measurement and Analysis",
+        "abstract": "BGP路由泄漏经常导致跨域路由的严重中断。这些事件已经困扰互联网数十年，而部署和可用性问题则严重阻碍了对该问题的缓解。2016年提出的Peerlock以一种新的方法解决了路由泄漏问题。Peerlock通过允许传输提供商之间进行过滤协议来保护自己的网络，而无需广泛合作或信任基础设施。我们概述了Peerlock系统及其一种变体Peerlock-lite，并通过对控制平面进行实时互联网实验来测量它们的部署情况。我们的测量结果发现，在互连集团中的Tier 1网络之间存在显著的Peerlock保护，其中48%的潜在Peerlock过滤器已经部署，并且许多其他网络也部署了对Tier 1泄漏的过滤器。为了指导进一步的部署，我们还通过BGP模拟量化了Peerlock对当前观察水平和假设的未来部署情景下的路由泄漏的影响。这些实验结果显示，目前的Peerlock部署限制了40%的模拟泄漏仅向10%或更少的网络进行Tier 1泄漏。在Peerlock集团内已部署的同时，在所有大型ISP（所有网络的<1%）中战略性地进一步部署Peerlock-lite可以完全减轻约80%的模拟Tier 1路由泄漏。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Network Security\\OblivSketch：Oblivious Network Measurement as a Cloud Service.pdf": {
+        "title": "OblivSketch：Oblivious Network Measurement as a Cloud Service",
+        "abstract": "网络功能虚拟化使得以降低成本为目标的云服务成为多功能网络服务的可能。具体而言，网络测量任务，如重要流量检测和流量分布估计，可以为企业网络的性能和安全提供很多核心网络功能。然而，将网络测量服务部署在第三方多租户云服务提供商中会引发关键的隐私和安全问题。最近的研究表明，泄露和滥用流量统计数据可能导致严重的网络攻击，如分布式拒绝服务攻击（DDoS）、网络拓扑操纵和污染等。\n\n本文提出了一种使用Intel SGX的遗忘网络测量服务——OblivSketch。它利用硬件保护区（enclave）来生成和查询安全的网络统计数据。统计数据存储在SGX保护区内部的新设计的遗忘数据结构中，并通过数据遗忘算法进行查询，以防止由于对SGX内存的访问模式导致的数据泄露。为了证明其实用性，我们将OblivSketch作为一个完整的服务集成到现成的SDN框架中。评估结果表明，OblivSketch仅占用恒定且较小的内存空间（6MB），即可跟踪大量的流量（从30k到1.45m），并且对于包含70k个流量的5秒跟踪，它的响应时间不超过15毫秒，可以满足六个广泛采用的测量查询。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Network Security\\ROV++：Improved Deployable Defense against BGP Hijacking.pdf": {
+        "title": "ROV++：Improved Deployable Defense against BGP Hijacking",
+        "abstract": "我们研究并扩展了路由源验证（ROV），这是IETF对互域路由进行防御的基础。我们关注两种重要的劫持攻击：子前缀劫持和非路由前缀劫持。对于这两种攻击，我们表明，在部分部署的情况下，ROV提供的安全性效益令人失望。我们还提出了一种新的攻击，超前缀劫持，它完全绕过了ROV对非路由前缀劫持的防御。\n\n然后，我们提出了ROV++，这是ROV的一种新颖扩展，即使部分采用也能显著提高安全性效益。例如，对于边缘自治系统（没有客户或对等方的自治系统），如果采用统一的5％，ROV只能防止不到5％的子前缀劫持，而ROV++可以防止超过90％的子前缀劫持。ROV++还能很好地防御非路由前缀攻击和新颖的超前缀攻击。\n\n我们评估了几种ROV++的变体，它们都共享了防御方面的改进；包括“Lite”版本，只需使用现有的路由器即可部署。我们的评估基于对互联网拓扑进行的广泛模拟。\n\n我们还揭示了BGP的一个鲜为人知但非常重要的方面，这一方面在ROV的作用下被大大放大：可观察BGP路径（控制平面）与实际流量流动（数据平面）之间的不一致性。这些不一致性对安全性非常重要，并经常导致我们所称的隐藏劫持挑战。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Network Security\\Trust the Crowd：Wireless Witnessing to Detect Attacks on ADS-B-Based Air-Traffic Surveillance.pdf": {
+        "title": "Trust the Crowd：Wireless Witnessing to Detect Attacks on ADS-B-Based Air-Traffic Surveillance",
+        "abstract": "自动相关监视广播（Automatic Dependent Surveillance-Broadcast，简称ADS-B）已被广泛采用作为航空交通监视的事实标准。航空法规要求所有飞机主动广播包含身份、位置和移动信息的状态报告。然而，缺乏安全措施使得ADS-B容易受到技术能力强的对手的网络攻击，从而干扰空中安全。在本文中，我们利用由地面传感器基础设施收集的真实飞行数据，开发了一种非侵入式的信任评估系统，用于检测基于ADS-B的航空交通监视中的攻击。通过以众包方式利用地理分布传感器的冗余性，我们实施验证测试以实现通过无线见证来追求安全性。我们提案的核心是结合验证检查和机器学习（ML）辅助的接收模式分类，使用户收集的数据互相验证其他用户提供的数据。我们的系统是非侵入式的，因为它既不需要对已部署的硬件进行修改，也不需要对软件协议进行修改，只利用已有的数据。我们证明了我们的系统可以成功检测GPS欺骗、ADS-B欺骗，甚至是Sybil攻击，只要至少有三个良性传感器观测到该领域的空域。我们进一步能够区分攻击类型，识别受影响的传感器，并调整我们的系统以动态适应不断变化的航空交通条件。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Privacy\\All the Numbers are US：Large-scale Abuse of Contact Discovery in Mobile Messengers.pdf": {
+        "title": "All the Numbers are US：Large-scale Abuse of Contact Discovery in Mobile Messengers",
+        "abstract": "— 联系人发现允许移动通信软件用户方便地与他们通讯录中的人建立联系。在这项工作中，我们展示了当前已部署的联系人发现方法存在严重的隐私问题。\n我们对三个流行的移动通信软件（WhatsApp、Signal和Telegram）进行研究发现，与预期相反，大规模的爬虫攻击仍然是可能的。利用一个准确的移动电话号码前缀数据库和非常少的资源，我们查询了10%的美国移动电话号码用于WhatsApp，以及100%的美国移动电话号码用于Signal。对于Telegram，我们发现它的API公开了许多敏感信息，甚至包括未在该服务注册的号码。我们还提供了有趣的（跨通信软件的）使用统计数据，这也揭示了很少有用户更改默认的隐私设置。关于缓解措施，我们提出了新颖的技术来显著限制我们的爬虫攻击的可行性，尤其是一种新的增量联系人发现方案，它严格改进了Signal当前的方法。此外，我们通过比较三种高效反向哈希移动电话号码的方法，展示了当前部署的基于哈希的联系人发现协议的严重缺陷。为此，我们还提出了一种显著改进的非均匀分布输入的彩虹表构建方法，具有独立的研究价值。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Privacy\\Awakening the Web's Sleeper Agents：Misusing Service Workers for Privacy Leakage.pdf": {
+        "title": "Awakening the Web's Sleeper Agents：Misusing Service Workers for Privacy Leakage",
+        "abstract": "-服务工作者是由所有主要现代浏览器支持的一项强大技术，可以通过提供类似本地应用程序的功能来改善用户的浏览体验。尽管它们在开发者社区中越来越受到重视，但它们还没有受到安全研究人员的太多关注。在本文中，我们探讨了服务工作者的功能和内部工作原理，并进行了首次全面的大规模研究，了解它们在实际使用中的API。随后，我们展示了攻击者如何利用服务工作者的策略性布置，在包括Chrome和Firefox在内的大多数主要浏览器中进行历史嗅探。我们展示了两种利用这些浏览器中不适当隔离的全新历史嗅探攻击，包括一种非破坏性的基于缓存的版本。接下来，我们提出了一系列使用案例，说明我们的技术如何实现侵犯隐私的攻击，可以推断出敏感的应用程序级信息，比如用户的社交图谱。我们已向所有受影响的供应商披露了我们的技术，促使Chromium团队探索重新设计他们的站点隔离机制，以防止我们的攻击。我们还提出了一种可以由网站采用以保护其用户的对策，并开发了一个简化其部署的工具，从而促进其大规模采用。总的来说，我们的工作对于浏览器在没有对其安全性和隐私影响进行深入评估的情况下部署新功能的严重风险提出了警示。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Privacy\\Improving Signal's Sealed Sender.pdf": {
+        "title": "Improving Signal's Sealed Sender",
+        "abstract": "Signal通讯服务最近部署了一个封闭发件人功能，通过加密隐藏消息的发件人来提供发件人的匿名性，使服务提供商无法知道发件人的身份。我们从理论和实证的角度证明，当两方来回发送多个消息时，这种单向匿名性被破坏了；也就是说，封闭发件人的承诺在消息对话中无法保持一致。我们的攻击属于统计披露攻击（SDA）的一种，在Signal默认开启的传送回执的情况下，这种攻击尤为有效。传送回执会通知发件人消息已成功传送。我们使用理论和基于模拟的模型证明，Signal可以在仅5个消息中将封闭发件人的用户关联起来。我们的攻击不仅限于通过网络级别的标识符追踪用户，而是在Signal的应用层工作。这使得我们的攻击对于使用Tor或VPN作为匿名保护的用户尤其有效，因为这些用户本来可以免受网络追踪。我们提出了一系列实际的缓解策略，可以用来防止此类攻击，并且我们使用一种新的基于模拟的安全定义证明了我们的协议的安全性，该定义适用于任何一系列消息的单向匿名性。最简单的可证明安全解决方案使用了与Signal使用的（有缺陷的）封闭发件人协议中使用的许多相同机制，这意味着可以以相对较小的开销来部署。我们估计，在拥有数百万用户的系统中运行我们最复杂的解决方案的额外加密成本不到每月40美元。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Privacy\\Tales of Favicons and Caches：Persistent Tracking in Modern Browsers.pdf": {
+        "title": "Tales of Favicons and Caches：Persistent Tracking in Modern Browsers",
+        "abstract": "在线追踪的隐私威胁近年来引起了研究人员和从业者的广泛关注。这导致用户变得更加注重隐私，并且浏览器逐渐采用对抗措施来减轻某些基于cookie和无cookie的追踪形式。然而，现代浏览器的复杂性和功能丰富性往往导致部署看似无害的功能，但可以被对手轻易滥用。在本文中，我们介绍了一种新颖的追踪机制，它滥用了一种简单而普遍的浏览器功能：favicon。具体而言，一个网站可以通过将追踪标识符存储为浏览器专用的favicon缓存中的一组条目来跟踪用户在浏览会话中的活动，其中每个条目对应一个特定的子域名。在随后的用户访问中，当用户通过一系列子域名自动且快速重定向时，网站可以通过观察浏览器请求的favicon来重建标识符。更重要的是，现代浏览器中的favicon缓存具有几个独特的特征，使得这种追踪向量尤为强大，因为它是持久的（不受用户清除浏览器数据的影响），非破坏性的（在后续访问中重建标识符不会改变已缓存条目的组合），甚至跨越了隐身模式的隔离。我们通过实验评估了我们攻击的几个方面，并提出了一系列优化技术，使我们的攻击实用化。我们发现，将我们基于favicon的追踪技术与不随时间变化的不变浏览器指纹属性相结合，可以使一个网站在2秒内重建一个32位的追踪标识符。此外，我们的攻击适用于使用favicon缓存的所有主要浏览器，包括Chrome和Safari。由于我们攻击的严重性，我们建议对浏览器的favicon缓存行为进行更改，以防止这种追踪形式，并已将我们的发现公开给正在研究适当缓解策略的浏览器供应商。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Program Analysis 1\\KUBO：Precise and Scalable Detection of User-triggerable Undefined Behavior Bugs in OS Kernel.pdf": {
+        "title": "KUBO：Precise and Scalable Detection of User-triggerable Undefined Behavior Bugs in OS Kernel",
+        "abstract": "——未定义行为错误（UB）通常指的是一系列广泛存在于使用相对较低级编程语言（如C/C++）实现的软件中的编程错误。由于与硬件的紧密交互，操作系统内核特别容易受到UB的困扰。触发的UB通常会导致来自非特权用户空间程序的利用，并在操作系统内部引起关键的安全和可靠性问题。先前在内核中检测UB的工作不得不为可伸缩性而牺牲精确性，反过来，这些工作受到极高的虚警率的严重影响，严重损害了它们的可用性。我们提出了一种新颖的Linux内核静态UB检测器，称为KUBO，它同时实现了高精确性和整个内核的可扩展性。KUBO专注于检测可以由用户空间输入触发的关键UB。高精确性来自KUBO对UB触发路径和条件的可满足性的验证。整个内核的可扩展性是通过一种高效的过程间分析实现的，该分析以按需方式逐步沿调用链向后遍历。我们对多个版本的整个Linux内核（包括驱动程序）进行了KUBO的评估。KUBO在最新的Linux内核中发现了23个关键的未知UB。KUBO的虚警率仅为27.5％，远低于现有的内核UB检测器（91％）。我们的评估还显示，KUBO生成的错误报告易于整理。\n\n操作系统内核为应用程序提供关键的系统服务和硬件抽象。其安全性和稳定性一直是操作系统开发人员的首要任务。然而，在实践中，开发如此庞大而复杂的代码库时，错误和漏洞往往是不可避免的。根据NVD调查[1]，每年平均在Linux内核中发现超过400个新的漏洞。\n\n内核中经常被利用的一类漏洞是未定义行为（UB）错误，广义上包括语言标准中明确规定的所有未定义行为。例如，ANSI C [9]明确规定了在C语言实现的软件中许多行为是未定义的。UB的典型示例包括整数溢出、除以零、空指针引用、越界访问等。UB比许多其他特定错误的范围要广泛得多，并且可能导致各种安全和可靠性问题。从程序上下文单独看，UB可能似乎非常明显且容易检测，因为几乎每种类型的UB都有其已知的触发条件（即UB条件），并且只由几个独特的指令（即UB指令）引起。例如，当整数算术指令的结果超出整数值范围时，就会发生整数溢出。\n\n先前在内核中检测UB的工作大多遵循相同的基本思路。它们专注于代码中的UB指令，并尝试确定是否可以满足相应的UB条件。一些UB检测器[5]采用动态分析方法，在每个潜在的UB指令上通过运行时检查UB条件进行插装。这种方法会带来额外的开销和不完整性，即难以覆盖所有代码。其他UB检测器[38]，[37]则纯静态，因此在理论上可以是完整的。然而，它们为了可伸缩性而牺牲了精确性，通过限制自己只进行函数内部的分析。因此，这些检测器产生了极高的虚警量（即大多数检测到的UB实际上是不可行或不可触发的，因为UB条件永远无法满足，这不能通过区域或函数内部的分析来确定）。此外，先前的工作通常不考虑检测到的UB的实际后果。正如[13]所示，许多UB即使可以触发，也不会对程序产生真正有害的影响，因为它们通常在触发后立即被清理。\n\n因此，需要一种可伸缩的UB检测器，可以产生高质量的错误报告。然而，现有的检测器都存在缺陷，并且通常需要不切实际的人工工作来验证报告的错误。例如，KINT [37]在Linux内核上生成了125,172个错误报告，但只有在团队进行了两次仅涵盖838个报告的错误审查马拉松后，才确认了其中17个。\n\n在这项工作中，我们提出了KUBO（内核未定义行为Oracle），试图弥合这一差距，为内核中的关键UB提供可伸缩且精确的检测。\n\nKUBO专注于关键UB，这些UB可以由用户空间输入触发。例如，如果除法运算的分母直接来自用户空间输入，则被视为关键的拒绝服务（DoS）错误，因为它可以导致即时内核崩溃。KUBO采用一种新的向后回溯用户空间输入跟踪技术，以检查UB条件是否被此类输入修改。\n\n为了实现可伸缩和高精确度的检测，KUBO执行按需增量的过程间分析，从每个UB指令开始，并回溯到潜在的用户空间输入位置。这种名为增量调用链向上遍历的分析仅在需要时回溯到选择的调用函数上。需要是通过经验性的UB可触发性指标（称为BugTriggerability Indicator，BTI）确定的。在分析BTI为真后，KUBO扫描相关参数，并只深入调用者对其进行污染。这种过程间分析的设计使KUBO能够在不牺牲检测准确性或忽略过程间数据和控制依赖性的情况下，分析整个内核代码库。\n\nKUBO沿途收集路径约束，并与SMT求解器[15]一起解决它们和UB条件，以确保每个检测到的UB都可以通过用户空间输入到达和控制。由于这种分析的按需和增量性质，KUBO"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Program Analysis 1\\Processing Dangerous Paths - On Security and Privacy of the Portable Document Format.pdf": {
+        "title": "Processing Dangerous Paths - On Security and Privacy of the Portable Document Format",
+        "abstract": "PDF是文件交换的事实标准。通常会从潜在不可信的来源（如电子邮件附件或从互联网下载）打开PDF文件。在这项工作中，我们对恶意PDF文档的能力进行了深入分析。我们不是专注于实现错误，而是滥用PDF标准本身的合法功能，通过系统地识别PDF文件结构中的危险路径。这些危险路径导致的攻击可分为四个通用类别：（1）影响处理文档的主机的拒绝服务攻击。（2）泄露受害者计算机上的个人数据的信息披露攻击。（3）对受害者系统进行数据操纵。（4）在受害者计算机上执行代码。对28个流行的PDF处理应用程序进行评估显示，其中26个至少对一种攻击存在漏洞。最后，我们提出了一种基于PDF特性系统保护的方法论。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Program Analysis 1\\Shadow Attacks：Hiding and Replacing Content in Signed PDFs.pdf": {
+        "title": "Shadow Attacks：Hiding and Replacing Content in Signed PDFs",
+        "abstract": "数字签名的PDF文件用于合同和发票，以确保其内容的真实性和完整性。打开已签名的PDF文件的用户希望在任何修改时看到警告。2019年，Mladenov等人揭示了PDF查看器实现中的各种解析漏洞。他们展示了可以修改PDF文件而不使签名无效的攻击。因此，受影响的PDF查看器供应商实施了防止所有攻击的对策。\n\n本文介绍了一种新型攻击，我们称之为影子攻击。影子攻击绕过了所有现有的对策，并破坏了数字签名PDF的完整性保护。与先前的攻击相比，影子攻击不滥用PDF查看器中的实现问题。相反，影子攻击利用PDF规范提供的巨大灵活性，使影子文档保持符合标准。由于影子攻击只滥用合法功能，很难加以缓解。\n\n我们的研究结果显示，在29个测试的PDF查看器中，有16个（包括Adobe Acrobat和Foxit Reader）容易受到影子攻击的影响。我们介绍了我们的工具PDF-Attacker，可以自动生成影子攻击。此外，我们还实施了PDF-Detector，用于防止对影子文档进行签名或在应用于签名PDF后对其进行取证检测。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Program Analysis 1\\Towards Measuring Supply Chain Attacks on Package Managers for Interpreted Languages.pdf": {
+        "title": "Towards Measuring Supply Chain Attacks on Package Managers for Interpreted Languages",
+        "abstract": "包管理器已经成为现代软件开发过程中至关重要的一部分。它们允许开发人员重用第三方代码，共享自己的代码，减少代码库，并简化构建过程。然而，最近的报告显示，攻击者滥用包管理器来分发恶意软件，给开发人员和最终用户带来了重大安全风险。例如，eslint-scope是一个在Npm上每周下载量达数百万次的包，被入侵以窃取开发人员的凭据。为了了解导致最近供应链攻击可能性的安全漏洞和错误的信任，我们提出了一个比较框架，以定性评估解释性语言的包管理器的功能和安全特性。根据定性评估，我们应用了元数据、静态分析和动态分析等众所周知的程序分析技术来研究注册表滥用。我们的初步努力发现了339个新的恶意包，我们向注册表报告了这些包，请求其删除。包管理器维护人员确认了其中的278个（占报告的339个包的82%），其中有三个包的下载量超过了100,000次。对于这些包，我们获得了官方的CVE编号，以帮助加快从受感染受害者中删除这些包。我们概述了将程序分析工具定制为解释性语言所面临的挑战，并将我们的流程作为一个参考点发布给社区，以便在保护软件供应链方面提供帮助。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Program Analysis 1\\XDA：Accurate, Robust Disassembly with Transfer Learning.pdf": {
+        "title": "XDA：Accurate, Robust Disassembly with Transfer Learning",
+        "abstract": "准确而健壮地对剥离二进制文件进行反汇编是具有挑战性的。困难的根源在于剥离二进制文件中缺乏高级结构，如指令和函数边界，并且必须基于不完整的信息进行恢复。当前的反汇编方法依赖于启发式方法或简单的模式匹配来近似恢复，但这些方法通常不准确且脆弱，尤其是在不同的编译器优化中。\n\n我们提出了一种基于迁移学习的反汇编框架XDA，它学习了机器码中存在的不同上下文依赖关系，并将这些知识转化为准确和健壮的反汇编。我们设计了一个自监督学习任务，受到掩码语言模型的启发，用于学习二进制文件中字节序列之间的交互作用。该任务的输出是编码了输入二进制文件的字节标记之间复杂上下文依赖关系的字节嵌入，然后可以对下游的反汇编任务进行微调。\n\n我们在从SPEC CPU2017、SPEC CPU2006和BAP语料库中获取的3,121个二进制文件上评估了XDA在两个反汇编任务上的性能，恢复函数边界和汇编指令。这些二进制文件是由GCC、ICC和MSVC在x86/x64 Windows和Linux平台上的4个优化级别编译的。XDA在恢复函数边界和指令方面分别实现了99.0%和99.7%的F1分数，在两个任务上均超过了先前的最新技术水平。它还保持了与最快的基于机器学习的方法相当的速度，并且比IDA Pro等手写的反汇编器快多达38倍。我们在https://github.com/CUMLSec/XDA上发布了XDA的代码。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Program Analysis 2\\Bringing Balance to the Force：Dynamic Analysis of the Android Application Framework.pdf": {
+        "title": "Bringing Balance to the Force：Dynamic Analysis of the Android Application Framework",
+        "abstract": "安卓的应用程序框架在保护用户的私人数据和系统完整性方面起着至关重要的作用。因此，它成为了各种先前研究的目标，这些研究分析了其安全策略和执行。这些研究揭示了不同的安全问题，包括文档不完整、框架内的权限再分配以及访问控制的不一致性。然而，除了其中一个以外，其他所有先前的研究都是基于静态代码分析的。因此，它们的结果提供了一个片面的视角，继承了将静态分析应用于庞大而复杂的代码库的局限性和缺点。更重要的是，不同安全应用程序的性能，包括恶意软件分类和最低权限应用程序，取决于这些分析结果，但由于这种不平衡的分析方法，这些应用程序目前受到不准确和不完整结果的影响。为了补充和完善这种方法论，并因此改进依赖于它的应用程序的质量，我们将应用程序框架的动态分析添加到当前的研究领域，并展示了这一举措对于改善先前结果的质量和推进领域的必要性。通过将我们称为DYNAMO的解决方案应用于文献中的四个重要用例，并对结果进行综合性的观察，我们验证了但也反驳了并扩展了先前静态分析解决方案的现有结果。通过对结果差异的根本原因进行手动调查，我们得出了新的见解和专业知识，对于改进应用程序框架的静态和动态测试都具有价值。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Program Analysis 2\\Refining Indirect Call Targets at the Binary Level.pdf": {
+        "title": "Refining Indirect Call Targets at the Binary Level",
+        "abstract": "——强制实施细粒度的控制流完整性（CFI）对于增加软件安全性至关重要。然而，对于商业现成（COTS）二进制文件来说，构建高精度的控制流图（CFG）是具有挑战性的，因为没有源级信息（如符号和类型）来辅助间接分支目标的推断。缺乏源级信息相对于其他类型的间接分支，给间接调用的目标推断带来了额外的挑战。指针分析可能是解决这个问题的一个有前途的方法，但是在二进制级别上没有实用的指针分析框架来推断间接调用的目标。值集分析（VSA）是目前最先进的二进制级别指针分析，但不适用于大型程序。它还具有高度保守的设计，因此导致低精度的CFG构建。本文介绍了一个名为BPA的二进制级别指针分析框架，用于构建准确和高精度的CFG。它是在二进制级别上执行指针分析的一种新方法，重点解决间接调用目标的问题。BPA采用了几种主要技术，包括假设块内存模型和内存访问分析来将内存分割成块，以在可扩展性和精度之间取得更好的平衡。在评估中，我们证明BPA相对于当前最先进的技术提高了34.5%的精度，而不引入错误的负面影响。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Program Analysis 2\\SymQEMU：Compilation-based symbolic execution for binaries.pdf": {
+        "title": "SymQEMU：Compilation-based symbolic execution for binaries",
+        "abstract": "符号执行是一种强大的软件分析和错误检测技术。基于编译的符号执行是一种最近提出的方法，已经显示出在源代码可用时显著提高符号执行性能。我们展示了一种新颖的技术，可以实现二进制文件的基于编译的符号执行（即不需要源代码）。我们的系统SymQEMU在QEMU的基础上构建，修改目标程序的中间表示，然后将其转换为主机架构。这使得SymQEMU能够将符号执行能力编译到二进制文件中，并获得相关的性能优势，同时保持架构的独立性。\n\n我们介绍了我们的方法和实现，并且展示了它在统计上显著优于最先进的二进制符号执行工具S2E和QSYM；在一些基准测试中，甚至比基于源代码的SymCC表现更好。此外，我们的工具在经过充分测试的libarchive库中发现了一个之前未知的漏洞，展示了它在测试现实世界软件中的实用性。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Program Analysis 2\\TASE：Reducing Latency of Symbolic Execution with Transactional Memory.pdf": {
+        "title": "TASE：Reducing Latency of Symbolic Execution with Transactional Memory",
+        "abstract": "我们介绍了一种名为TASE的工具的设计和实现，该工具使用事务内存来减少具有少量符号状态的符号执行应用程序的延迟。在操作具体值时，执行路径是以本机方式执行的，只有当执行遇到符号值（或建模函数）时，本机执行被暂停并开始解释执行。当不再遇到符号值时，执行将返回到本机模式。TASE设计中的关键创新是一种将检查值是否为符号值的成本分摊到少数指令上的技术，以及使用硬件支持的事务内存（TSX）来实现本机执行，在检测到使用符号值时（可能会晚一些）回滚并无效。我们展示了TASE有潜力显著改进一些对延迟敏感的符号执行应用，比如验证客户端在客户端-服务器应用程序中的行为的方法。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Side-channels and Speculation\\Hunting the Haunter - Efficient Relational Symbolic Execution for Spectre with Haunted RelSE.pdf": {
+        "title": "Hunting the Haunter - Efficient Relational Symbolic Execution for Spectre with Haunted RelSE",
+        "abstract": "Spectre是一种于2018年1月公开的微架构攻击。通过利用推测来窃取机密信息。对于密码库来说，检测Spectre尤为重要，因此已经提出了软件级别的防御措施。然而，防御的正确性和Spectre的检测都面临挑战，一方面是由于推测路径引起的探索空间的爆炸性增长，另一方面是由于在不同的编译阶段引入了新的Spectre漏洞。我们提出了一个名为Haunted RelSE的优化方案，可以在二进制级别上实现可伸缩的Spectre漏洞检测。我们证明了这个优化在语义上是正确的，相对于现有工具中使用的更加朴素的显式推测探索方法。我们在一个符号分析工具中实现了Haunted RelSE，并在一个被广泛测试的Spectre-PHT互斥测试集以及我们提出的一个新的Spectre-STL互斥测试集上进行了大量测试。我们的技术比现有技术和工具找到了更多的违规行为，并且具有更好的可伸缩性，可以分析现实世界中的密码库并发现新的违规行为。通过我们的工具，我们发现了一种名为索引掩码的Spectre-PHT的标准防御措施以及用于编译位置无关可执行文件的众所周知的gcc选项引入了Spectre-STL的违规行为。我们提出并验证了一种修正索引掩码以避免这个问题的方法。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Side-channels and Speculation\\Rosita：Towards Automatic Elimination of Power-Analysis Leakage in Ciphers.pdf": {
+        "title": "Rosita：Towards Automatic Elimination of Power-Analysis Leakage in Ciphers",
+        "abstract": "自从二十多年前引入以来，侧信道攻击一直是一个严重的安全威胁。尽管许多密码实现采用了掩码技术来防止此类攻击，但由于硬件中的意外交互作用，它们经常泄漏秘密信息。我们提出了ROSITA，一个代码重写引擎，它使用一个泄漏仿真器，我们对其进行修改以正确模拟目标系统的微架构。我们使用ROSITA自动保护AES、ChaCha和Xoodoo的掩码实现。对于AES和Xoodoo，我们在100万个迹线上显示出没有可观察到的泄漏，并且性能仅降低了不到21%。对于具有显着更多泄漏的ChaCha，ROSITA消除了99%以上的泄漏，但性能损失为64%。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Side-channels and Speculation\\Screen Gleaning：A Screen Reading TEMPEST Attack on Mobile Devices Exploiting an Electromagnetic Side Channel.pdf": {
+        "title": "Screen Gleaning：A Screen Reading TEMPEST Attack on Mobile Devices Exploiting an Electromagnetic Side Channel",
+        "abstract": "我们介绍了一种称为屏幕窃取（screen gleaning）的TEMPEST攻击，该攻击可以在没有视觉线路的情况下读取移动设备的屏幕，揭示手机屏幕上显示的敏感信息。屏幕窃取攻击使用天线和软件定义无线电（SDR）来接收设备发送到屏幕上显示的电磁信号，例如带有安全代码的消息。这种特殊设备可以将信号重新创建为灰度图像，我们称之为anemage。在这里，我们展示了它可以用于读取安全代码。屏幕窃取攻击具有挑战性，因为人类观察者通常无法直接解释图像。我们展示了这个挑战可以通过机器学习，具体来说是深度学习分类器来解决。随着SDR和深度学习的快速发展，屏幕窃取将变得越来越严重。在本文中，我们演示了安全代码攻击，并提出了一个测试平台，为屏幕窃取攻击提供了一个标准设置，可以用不同的攻击者模型进行测试。最后，我们分析了屏幕窃取攻击者模型的维度，并讨论了可能的对策来应对它们。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Side-channels and Speculation\\SpecTaint：Speculative Taint Analysis for Discovering Spectre Gadgets.pdf": {
+        "title": "SpecTaint：Speculative Taint Analysis for Discovering Spectre Gadgets",
+        "abstract": "软件补丁是针对Spectre类型攻击的关键缓解方法。它利用序列化指令来禁用程序中潜在Spectre小工具的推测执行。不幸的是，目前没有有效的解决方案来检测Spectre类型攻击的小工具。在本文中，我们提出了一种新颖的Spectre小工具检测技术，通过在推测执行路径上启用动态污点分析来实现。为此，我们在系统级别（在CPU模拟器内部）模拟和探索了推测执行。我们实现了一个名为SpecTaint的原型来展示我们提出的方法的效果。我们在Spectre样本数据集上评估了SpecTaint，并将其与现有的最先进的Spectre小工具检测方法在现实世界应用程序上进行了比较。我们的实验结果表明，与现有方法相比，SpecTaint在检测精度和召回率方面有很大的优势，并且它还能够在实际应用程序（如Caffe和Brotli）中检测到新的Spectre小工具。此外，与其他方法相比，SpecTaint在修补检测到的小工具后显著降低了性能开销。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Software Defenses\\Detecting Kernel Memory Leaks in Specialized Modules with Ownership Reasoning.pdf": {
+        "title": "Detecting Kernel Memory Leaks in Specialized Modules with Ownership Reasoning",
+        "abstract": "内核空间由硬件和所有进程共享，因此其内存使用量更有限，而且与用户空间内存相比，内存更难回收；因此，内核中的内存泄漏很容易导致严重的拒绝服务攻击。这个问题在长时间运行的服务器中尤为严重。内核代码广泛使用动态（堆）分配，并且内核中的许多代码模块提供了自己的内存管理抽象。另一方面，内核代码涉及高度复杂的数据流，因此很难确定对象应该在哪里释放。考虑到操作系统内核的复杂和关键性质以及其高度专业化，现有方法在有效和彻底检测内核内存泄漏方面很大程度上失败。在本文中，我们提出了一种静态检测系统K-M ELD，用于检测内核内存泄漏。K-M ELD具有多个新技术，可以自动识别专门的分配/释放函数，并确定预期的内存释放位置。具体而言，我们首先开发了一种使用和结构感知方法，以有效识别专门的分配函数，并采用一种新的规则挖掘方法来识别相应的释放函数。然后，我们开发了一种新的所有权推理机制，该机制采用增强的逃逸分析和消费函数分析来推断预期的释放位置。通过将K-M ELD应用于Linux内核，我们确认了其有效性：它发现了218个新的错误，其中41个被分配了CVE编号。在这218个错误中，有115个是在专门的模块中发现的。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Software Defenses\\POP and PUSH：Demystifying and Defending against (Mach) Port-oriented Programming.pdf": {
+        "title": "POP and PUSH：Demystifying and Defending against (Mach) Port-oriented Programming",
+        "abstract": "苹果设备（如iPhone、MacBook、iPad和Apple Watch）是攻击者的高价值目标。尽管这些设备使用不同的操作系统（如iOS、macOS、iPadOS、watchOS和tvOS），但它们都基于一个名为XNU的混合内核。现有的攻击表明，XNU中的漏洞可以被利用以提升权限和越狱设备。为了减轻这些威胁，最新系统中已经部署了多种安全机制。\n\n在本文中，我们首先对苹果部署的减轻措施进行了系统评估，并证明大部分措施可以通过破坏一种特殊类型的内核对象（即Mach端口对象）来绕过。我们将这种类型的攻击总结为（Mach）端口对象导向编程（POP）。因此，我们定义了多个攻击原语来发动攻击，并展示了在最近发布的系统（即iOS 13和macOS 10.15）上实现完全内存操作的现实场景。为了防御POP，我们提出了Port Ultra-SHield（PUSH）系统来减少未受保护的Mach端口对象数量。具体而言，PUSH自动定位潜在的POP原语，并对相关的系统调用进行仪器化，以保证Mach端口内核对象的完整性。它不需要系统修改，仅引入2%的运行时开销。PUSH框架已经在一家领先公司的超过40,000台macOS设备上部署。我们的系统检测到的18个公开利用和一个零日利用的评估证明了PUSH的有效性。我们相信，所提出的框架将有助于设计和实现更安全的XNU内核。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Software Defenses\\Доверя'й, но проверя'й：SFI safety for native-compiled Wasm.pdf": {
+        "title": "Доверя'й, но проверя'й：SFI safety for native-compiled Wasm",
+        "abstract": "WebAssembly（Wasm）是一种与平台无关的字节码，提供了良好的性能和运行时隔离。为了实现隔离，编译器在将Wasm编译为本机机器码时插入了安全检查。虽然这种方法廉价，但也需要对编译器的正确性进行信任，信任编译器已经正确地在每个适当的位置插入了每个必要的检查。不幸的是，Wasm编译器中的细微错误可能会破坏（并已经破坏过）隔离保证。为了解决这个问题，我们提出了在编译后验证Wasm二进制文件的内存隔离性。我们在VeriWasm中实现了这种方法，VeriWasm是一个用于从Wasm编译的本机x86-64二进制文件的静态离线验证器；我们证明了验证器的正确性，并发现它可以检测到没有误报的错误。最后，我们描述了在Fastly部署VeriWasm的情况。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Trusted Computing\\CHANCEL：Efficient Multi-client Isolation Under Adversarial Programs.pdf": {
+        "title": "CHANCEL：Efficient Multi-client Isolation Under Adversarial Programs",
+        "abstract": "Intel SGX旨在为不受信任的云机器提供用户数据的机密性。然而，处理机密用户数据的应用程序可能存在泄漏信息的错误或被恶意编程以收集用户数据。现有的研究试图解决这个问题，但没有考虑单个enclave中的多客户端隔离。我们展示了，通过不支持这种enclave内的隔离，它们在同时处理不同enclave进程中的多个客户端时会遇到显著的减速，这是由于SGX的限制所导致的。\n\n本文提出了C HANCEL，这是一个专为单个SGX enclave中的多客户端隔离而设计的沙盒。特别是，CHANCEL允许程序的线程在服务请求时同时访问每个线程的内存区域和共享的只读内存区域。每个线程一次只处理一个客户端的请求，并且通过使用多客户端软件故障隔离（MCSFI）方案与其他线程隔离开来。此外，CHANCEL支持各种enclave内的服务，如内存文件系统和受保护的客户端通信，以确保程序与外部世界的交互完全中介。我们实现了C HANCEL，并在SGX硬件上使用微基准测试和真实目标场景进行了评估，包括私人信息检索和产品推荐服务。我们的结果表明，C HANCEL在微基准测试中比基线多进程沙盒性能提高了4.06至53.70倍，在真实工作负载上提高了0.02至21.18倍，同时提供强大的安全保障。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Trusted Computing\\DOVE：A Data-Oblivious Virtual Environment.pdf": {
+        "title": "DOVE：A Data-Oblivious Virtual Environment",
+        "abstract": "用户可以通过使用可信执行环境（TEEs）来改善远程通信的安全性，以防止对敏感数据的直接审查和篡改。即使使用高级语言编写的应用程序，如R、Python和Ruby，也可以实现这一点。然而，这会在编程便利性和使用微架构侧信道进行攻击的风险之间产生权衡。\n在本文中，我们认为通过为复杂的编程环境（如R）添加仪器，可以针对重要应用程序解决这个问题，以生成专门设计用于支持排除侧信道的计算的数据混淆记录（DOT）。然后，使用称为数据混淆虚拟环境（DOVE）的小型可信计算基础在包含敏感数据的可信执行环境（TEE）上评估这样的记录。\n为了激发问题，我们演示了R语言中的一些微妙的侧信道漏洞。然后，我们为R提供了DOVE的说明性设计和实现，创建了第一个抗侧信道的R编程堆栈。我们证明了DOT生成和DOVE评估提供的两阶段架构可以为复杂的编程语言提供实用性能和高安全性，以抵御侧信道攻击。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Trusted Computing\\Emilia：Catching Iago in Legacy Code.pdf": {
+        "title": "Emilia：Catching Iago in Legacy Code",
+        "abstract": "—近来对于在可信执行环境（如Intel SGX）中利用旧有代码实现可信代码的机制引起了人们的兴趣。然而，由于旧有代码通常假设操作系统的存在，这自然引发了对旧有代码进行Iago攻击的担忧。我们观察到，并非所有旧有代码都容易受到Iago攻击，只有在旧有代码中以不安全的方式使用系统调用返回值时才会存在Iago漏洞。\n\n基于这一观察，我们开发了Emilia，通过对应用程序使用系统调用返回值进行模糊测试，自动检测旧有应用程序中的Iago漏洞。我们使用Emilia发现了17个应用程序中的51个Iago漏洞，并发现Iago漏洞普遍存在且较为常见。我们对发现的漏洞进行了深入分析，并得出结论，虽然Iago漏洞较为常见，但大多数（82.4%）可以通过在系统调用转发层进行简单的无状态检查来减轻风险，而其余的则最好通过查找和修补旧有代码来解决。最后，我们研究和评估了Emilia设计中的不同权衡。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Web Security\\Deceptive Deletions for Protecting Withdrawn Posts on Social Media Platforms.pdf": {
+        "title": "Deceptive Deletions for Protecting Withdrawn Posts on Social Media Platforms",
+        "abstract": "在在线社交平台上，过度分享措辞不当的思想和个人信息是普遍存在的。在许多情况下，用户后悔发布这样的内容。为了追溯修正用户分享决策中的这些错误，大多数平台提供了（删除）机制来撤回内容，社交媒体用户经常使用这些机制。具有讽刺意味和可能不幸的是，这些删除操作使用户更容易受到恶意行为者的侵犯，这些行为者专门大规模追踪删除的帖子。之所以进行这种追踪的原因很简单：删除帖子是一个强有力的信号，表明该帖子可能对其所有者有害。今天，许多存档服务已经在扫描社交媒体上的这些已删除的帖子。此外，正如我们在这项工作中所展示的，强大的机器学习模型可以大规模检测到有害的删除操作。\n\n为了遏制这种对用户被遗忘权利的全球性对手，我们引入了欺骗性删除（Deceptive Deletion），这是一种最大程度减小对手优势的机制。我们的机制注入了虚假的删除操作，从而在被删除的帖子中创建了一个对抗局面，其中对手试图对已删除的帖子中的有害内容进行分类，而挑战者则利用虚假的删除操作来伪装真实的有害删除操作。我们在两个玩家之间形式化了这个欺骗游戏，确定了在哪些条件下对手或挑战者可以确定地赢得游戏，并讨论了这两个极端之间的情况。我们将欺骗性删除机制应用于Twitter上的一个真实任务：隐藏有害推文的删除操作。我们展示了一个强大的全球对手可以被一个强大的挑战者击败，从而显著提高了隐私保护的门槛，并在社交平台上能够真正被遗忘的能力中给予了一线希望。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Web Security\\SerialDetector：Principled and Practical Exploration of Object Injection Vulnerabilities for the Web.pdf": {
+        "title": "SerialDetector：Principled and Practical Exploration of Object Injection Vulnerabilities for the Web",
+        "abstract": "在过去的十年中，随着网络应用的普及，代码复用攻击大量出现。这些攻击源于对象注入漏洞（OIV），使得攻击者控制的数据可以滥用网络应用程序代码库中的合法代码片段，执行恶意计算，如远程代码执行。当不可信数据用于实例化攻击者控制类型的对象，并触发可用但不一定被应用程序使用的代码执行时，就会发生OIV。在网络应用程序领域，OIV可能在客户端数据反序列化过程中出现，例如HTTP请求，在服务器端后端应用程序处理之前重建对象图。\n\n本文提出了第一个系统化的方法来检测和利用.NET应用程序中包括框架和库的OIV。我们的关键洞察力是：OIV的根本原因是来自应用程序的公共入口点（例如HTTP请求处理程序）到创建任意类型对象的敏感方法（例如反射API）的不可信信息流，以调用触发执行gadget的方法（例如本地/虚拟方法）。基于这一洞察，我们开发和实现了SerialDetector，一个基于污点的数据流分析，可以自动发现.NET程序集中的OIV模式。然后，我们使用这些模式来匹配公开可用的gadget，并自动验证OIV攻击的可行性。\n\n通过对Azure DevOps Server等复杂生产软件的深入评估，我们展示了我们方法的有效性。我们描述了主要的威胁模型，并报告了SerialDetector发现的几个远程代码执行漏洞，包括Azure DevOps Server上的三个CVE。我们还对最近公开可用的CVE进行了广泛的安全分析。我们的结果表明，SerialDetector可以有效且高效地检测OIV。我们公开发布我们的工具，以支持开放科学，并鼓励研究人员和实践者进一步探索这个主题。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Web Security\\To Err.Is Human：Characterizing the Threat of Unintended URLs in Social Media.pdf": {
+        "title": "To Err.Is Human：Characterizing the Threat of Unintended URLs in Social Media",
+        "abstract": "为了使其服务更加用户友好，在线社交媒体平台会自动识别与URL对应的文本，并将其渲染为可点击的链接。在本文中，我们展示了这些服务用于识别URL的技术通常过于宽松，可能导致在社交网络消息中显示意外的URL。我们发现，诸如Twitter等流行平台，如果用户在句子末尾的句号后忘记输入空格，并且下一句的第一个单词恰好是有效的顶级域名，它们将会将文本渲染为可点击的URL。攻击者可以利用这些意外的URL注册相应的域名，并向数百万Twitter用户暴露任意的恶意内容。为了评估意外URL对社交媒体用户的威胁，我们对7个月内推文中的意外URL进行了大规模研究。通过设计一个能够区分推文中有意和意外URL的分类器，我们发现有数万个意外URL是由数千万粉丝的账户发布的。作为研究的一部分，我们还注册了45个意外域名，并量化攻击者通过注册正确的域名在正确的时机获取的流量。最后，由于我们发现的严重性，我们提出了一个轻量级的浏览器扩展，可以在用户撰写推文时即时分析并提醒他们可能存在意外URL，并发出警告，使用户在推文发布前能够修正自己的错误。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Web Security\\Who's Hosting the Block Party. Studying Third-Party Blockage of CSP and SRI.pdf": {
+        "title": "Who's Hosting the Block Party. Studying Third-Party Blockage of CSP and SRI",
+        "abstract": "网络已经发展成为我们日常生活中最广泛使用的应用平台。第一方网络应用程序依赖于许多不同的第三方提供辅助功能，如地图或广告，来为其网站提供支持。在本文中，我们旨在了解这种外包对两个关键安全机制——内容安全策略（CSP；用于减轻跨站脚本攻击）和子资源完整性（SRI；用于减轻第三方攻击）的不利影响程度，通过在10,000个顶级网站上进行为期12周的纵向研究。在假设第一方希望部署CSP和SRI，并能使其代码与这些机制相兼容的前提下，我们评估有多少网站能够在没有第三方合作的情况下完全部署这些机制。对于那些无法在没有合作的情况下完成部署的网站，我们还测量了有多少第三方需要共同使其代码符合要求，以实现第一方对CSP和SRI的使用。"
+    },
+    "\\\\NAS\\Library\\Papers\\NDSS\\2021(28th)\\Web Security\\Zoom on the Keystrokes：Exploiting Video Calls for Keystroke Inference Attacks.pdf": {
+        "title": "Zoom on the Keystrokes：Exploiting Video Calls for Keystroke Inference Attacks",
+        "abstract": "由于最近的世界事件，视频通话已成为个人和专业远程通信的新常态。然而，如果视频通话中的参与者不小心，他/她可能会向其他通话者透露自己的私人信息。在本文中，我们设计并评估了一种攻击框架，可以从视频通话的视频流中推断出一种私人信息——按键输入，即通话过程中的文本输入。我们使用不同的实验设置和参数，包括不同的网络摄像头、视频分辨率、键盘、服装和背景，评估了我们基于视频的按键输入推断框架。在通常发生且真实的设置下，我们相对较高的按键推断准确率突显了对此类攻击的意识和对策的必要性。因此，我们还提出并评估了一些有效的缓解技术，可以在用户在视频通话过程中输入时自动保护用户的隐私安全。"
+    }
+}
