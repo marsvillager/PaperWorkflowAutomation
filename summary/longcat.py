@@ -16,11 +16,11 @@ sys.path.append(root_dir)
 from log import logger
 
 
-def chat_with_gpt(api_key: str, messages: str, proxy: dict[str, str]) -> json:
+def chat_with_longcat(api_key: str, messages: str, proxy: dict[str, str]) -> json:
     """
-    调用 chatgpt 3.5 api
+    调用 LongCat api
 
-    :param api_key: chatgpt 3.5 api
+    :param api_key: LongCat 3.5 api
     :param messages: 问题
     :param proxy: 代理
     :return: 回答
@@ -31,17 +31,18 @@ def chat_with_gpt(api_key: str, messages: str, proxy: dict[str, str]) -> json:
     }
 
     data = {
-        "model": "gpt-3.5-turbo",
+        "model": "LongCat-Flash-Chat",
         "messages": [
             {
                 "role": "user",
                 "content": messages
             }
         ],
+        "max_tokens": 1000,
         "temperature": 0.7
     }
 
-    response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=data, proxies=proxy)
+    response = requests.post("https://api.longcat.chat/openai/chat/completions", headers=headers, json=data, proxies=proxy)
     if "choices" in response.json() and isinstance(response.json()["choices"], list) and len(
             response.json()["choices"]) > 0:  # choices 存在且为非空列表
         content: str = response.json()["choices"][0]["message"]["content"]
@@ -49,55 +50,42 @@ def chat_with_gpt(api_key: str, messages: str, proxy: dict[str, str]) -> json:
 
         return content
     else:  # choices 不存在或为空列表
-        logger.error(f"ChatGPT has a processing error: {response.json()}")
+        logger.error(f"LongCat has a processing error: {response.json()}")
         sys.exit()
-
-
-# def clear_dialogue(api_key: str, proxy: dict[str, str]) -> None:
-#     """
-#     清除历史对话(ChatGPT 具有上下文感知的功能)
-#
-#     :param api_key: chatgpt 3.5 api
-#     :param proxy: 代理
-#     :return: none
-#     """
-#     chat_with_gpt(api_key, f'结束对话, 忘记全部的历史对话, 开始新一轮的对话, 要求接下来的对话之前的影响', proxy)
-#
-#     return None
 
 
 def translate_abstract(api_key: str, content: str, proxy: dict[str, str]) -> json:
     """
     翻译论文摘要部分
 
-    :param api_key: chatgpt 3.5 api
+    :param api_key: LongCat 3.5 api
     :param content: 论文内容
     :param proxy: 代理
     :return: 翻译内容
     """
     abstract_content: str = extract_specified_pdf_content(content, 'Abstract', 'Introduction', 'I.')
 
-    return chat_with_gpt(api_key, f'请结合自己的理解将下面内容翻译成中文: {abstract_content}', proxy)
+    return chat_with_longcat(api_key, f'请结合自己的理解将下面内容翻译成中文: {abstract_content}', proxy)
 
 
 def summarize_paper(api_key: str, contents: list, proxy: dict[str, str]) -> json:
     """
     概括论文
 
-    :param api_key: chatgpt 3.5 api
+    :param api_key: LongCat api
     :param contents: 论文内容
     :param proxy: 代理
     :return: 论文概述
     """
 
-    # chat_with_gpt(api_key, f'我即将提交的文本将分为几个部分, 请仅回复“收到”, 等到所有部分都提供完之后再具体回答我的问题', proxy)
+    # chat_with_longcat(api_key, f'我即将提交的文本将分为几个部分, 请仅回复“收到”, 等到所有部分都提供完之后再具体回答我的问题', proxy)
     for content in contents:
-        # OpenAI GPT-3.5 Turbo 模型的请求速率限制(每分钟 3 个请求)
+        # 模型的请求速率限制(每分钟 3 个请求)
         time.sleep(20)
 
-        chat_with_gpt(api_key, f"{content} 文本未提供完, 仅回复“收到”", proxy)
+        chat_with_longcat(api_key, f"{content} 文本未提供完, 仅回复“收到”", proxy)
 
-    return chat_with_gpt(api_key, f'用一长段话连贯地讲述上述论文的核心问题、主要贡献、解决方法等(中文表述)', proxy)
+    return chat_with_longcat(api_key, f'用一长段话连贯地讲述上述论文的核心问题、主要贡献、解决方法等(中文表述)', proxy)
 
 
 if __name__ == '__main__':
@@ -110,9 +98,9 @@ if __name__ == '__main__':
     # logger.info(f"Your proxy is http://127.0.0.1:{ports}")
     # time.sleep(0.5)
 
-    # ChatGPT API key
-    chatgpt: str = input("Please input the API Key of ChatGPT: ")
-    logger.info(f"Your API key is <{chatgpt}>")
+    # LongCat API key
+    longcat: str = input("Please input the API Key of longcat: ")
+    logger.info(f"Your API key is <{longcat}>")
     time.sleep(0.5)
 
     # result path
@@ -141,10 +129,6 @@ if __name__ == '__main__':
     else:
         paper_list: list = find_pdf(papers)  # 目录
 
-    # 清除历史对话
-    # 非常抱歉，但作为一个语言模型，我无法忘记先前的历史对话。每次对话都会受到之前的对话内容的影响。
-    # clear_dialogue(chatgpt, proxies)
-
     for paper in paper_list:
         # 跳过 Table of Contents.pdf
         if "Table of Contents.pdf" in paper:
@@ -165,12 +149,12 @@ if __name__ == '__main__':
         item_paper['title'] = extract_pdf_title_by_path(paper)  # ⚠️ 如果论文路径包含论文题目则推荐通过路径获取题目
         # item_paper['title'] = extract_pdf_title_by_content(paper_content)  # ⚠️ 通过内容获取可能不准确, 因为只取 pdf 第一行
 
-        item_paper['abstract'] = translate_abstract(chatgpt, paper_content[0], proxies)
-        # OpenAI GPT-3.5 Turbo 模型的请求速率限制(每分钟 3 个请求)
+        item_paper['abstract'] = translate_abstract(longcat, paper_content[0], proxies)
+        # 模型的请求速率限制(每分钟 3 个请求)
         time.sleep(20)
         # I'm sorry, but I'm not able to provide any further information based on the incomplete text provided.
         # 胡说八道
-        # item_paper['abstract(llm)'] = summarize_paper(chatgpt, paper_content, proxies)
+        # item_paper['abstract(llm)'] = summarize_paper(longcat, paper_content, proxies)
 
         summary_papers[paper] = item_paper
 
@@ -178,7 +162,3 @@ if __name__ == '__main__':
         with open(saved_path, 'w', encoding='utf-8') as file:
             json.dump(summary_papers, file, indent=4, ensure_ascii=False)
         logger.info(f"Results saved to <{saved_path}>")
-
-        # 清除历史对话
-        # 非常抱歉，但作为一个语言模型，我无法忘记先前的历史对话。每次对话都会受到之前的对话内容的影响。
-        # clear_dialogue(chatgpt, proxies)
