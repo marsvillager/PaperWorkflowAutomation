@@ -152,8 +152,7 @@ if __name__ == '__main__':
         item_paper['abstract'] = translate_abstract(longcat, paper_content[0], proxies)
         # 模型的请求速率限制(每分钟 3 个请求)
         time.sleep(20)
-        # I'm sorry, but I'm not able to provide any further information based on the incomplete text provided.
-        # 胡说八道
+        
         # item_paper['abstract(llm)'] = summarize_paper(longcat, paper_content, proxies)
 
         summary_papers[paper] = item_paper
