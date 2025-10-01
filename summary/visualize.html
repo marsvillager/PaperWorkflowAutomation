@@ -2,13 +2,106 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PaperSummarize</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body, html {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        header {
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .iframe-container {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* 加载状态样式 */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            color: #6c757d;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
-    <!--Edge 和 Chrome 可能失败, 火狐可以打开-->
-    <!-- 插入 Observable Notebook iframe -->
-    <iframe width="100%" height="500" frameborder="0"
-        src="https://observablehq.com/d/68b5282c605b0863">
-    </iframe>
+    <div class="container">
+        <div class="iframe-container">
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <span>Loading Observable Notebook...</span>
+            </div>
+            <iframe 
+                id="observableIframe"
+                width="100%" 
+                height="100%" 
+                frameborder="0"
+                src=""
+                onload="document.getElementById('loading').style.display='none'">
+            </iframe>
+        </div>
+    </div>
+
+    <script>
+        // 设置iframe的src（替换为您的实际链接）
+        document.getElementById('observableIframe').src = "https://observablehq.com/embed/68b5282c605b0863?cell=*";
+        
+        // 处理iframe内部导航，保持外部页面不刷新
+        document.getElementById('observableIframe').addEventListener('load', function() {
+            const iframe = this;
+            iframe.contentWindow.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A' && e.target.getAttribute('target') !== '_blank') {
+                    e.preventDefault();
+                    iframe.src = e.target.href;
+                }
+            });
+        });
+    </script>
 </body>
 </html>
